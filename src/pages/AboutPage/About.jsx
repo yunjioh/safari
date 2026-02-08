@@ -22,10 +22,8 @@ const About = () => {
         ease: "none",
         scrollTrigger: {
           trigger: el,
-          start: "50% top",
-          end: "+=100%",
+          start: "20% top",
           scrub: true,
-          pin: true,
           anticipatePin: 1,
         },
       });
@@ -34,7 +32,7 @@ const About = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: el,
-          start: "50% 30%",
+          start: "20% 30%",
           toggleActions: "play none none reverse",
         },
       });
@@ -45,7 +43,7 @@ const About = () => {
         { x: 0, opacity: 1, filter: "blur(0px)", duration: 0.9, ease: "power3.out" },
       ).fromTo(
         ".profile-wrapper",
-        { x: 100, opacity: 0, scale: 0.98, filter: "blur(6px)" },
+        { x: 200, opacity: 0, scale: 0.98, filter: "blur(6px)" },
         { x: 0, opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.9, ease: "power3.out" },
       );
     }, el);
@@ -60,17 +58,6 @@ const About = () => {
         subTitle="THIS IS ME"
         mainTitle="UX/UI DESIGNER"
         decoTitle="YUNJI OH"
-      />
-      <SubTitle
-        align="right"
-        title={`Possesses solid coding skills\nand is proficient in design tools.`}
-        description={[
-          { text: "탄탄한 ", highlight: false },
-          { text: "코딩 스킬", highlight: true, color: "purple" },
-          { text: "을 겸비하고 있으며, ", highlight: false },
-          { text: "디자인 툴", highlight: true, color: "yellow" },
-          { text: "과 AI 도구를 능숙하게 다룹니다.", highlight: false },
-        ]}
       />
 
       <div className="content-section">

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./Hobby.css";
-import Title from "../../components/Title";
+import ScrollReveal from "../../components/ScrollReveal";
 import SubTitle from "../../components/SubTitle";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -51,12 +51,12 @@ const Hobby = () => {
   return (
     <section className="hobby" id="process">
       <div className="hobby-header">
-        <Title
-          subTitle="THIS IS ME"
-          mainTitle="HOBBIES: "
-          decoTitle="MUSIC · EXERCISE · INSPIRATION · THEATER · TRAVEL"
-        />
 
+        <ScrollReveal delay={0.3}>
+          <h2 className="hobbyTit">
+            HOBBIES: <span>MUSIC · EXERCISE · INSPIRATION · THEATER · TRAVEL</span>
+          </h2>
+        </ScrollReveal>
         <SubTitle
           align="right"
           title={`Possesses solid coding skills\nand is proficient in design tools.`}

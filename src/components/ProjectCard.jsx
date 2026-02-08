@@ -13,13 +13,13 @@ const ProjectCard = ({ project }) => {
 
           <div className="project-info">
             <p className="duration-text">
-              <strong style={{ color: project.pointColor }}>DURATION</strong>{" "}
+              <strong >DURATION</strong>{" "}
               {project.duration}
             </p>
 
             <p className="role-text">
-              <strong style={{ color: project.pointColor }}>PROJECT ROLE</strong>{" "}
-              <strong>{project.role}</strong>
+              <strong>PROJECT ROLE</strong>{" "}
+              <p>{project.role}</p>
             </p>
 
             <p className="detail-text">{project.detail}</p>
@@ -30,7 +30,7 @@ const ProjectCard = ({ project }) => {
               <div className="contrib">
                 {project.contribution.map((item, idx) => (
                   <div className="contrib-row" key={idx}>
-                    <span className="contrib-label" style={{ color: project.pointColor }}>{item.label}</span>
+                    <span className="contrib-label">{item.label}</span>
                     <span className="contrib-value">{item.value}%</span>
                   </div>
                 ))}
@@ -38,8 +38,8 @@ const ProjectCard = ({ project }) => {
             )}
 
             <div className="button-group">
-              <Button text="WEBSITE  →" bgColor={project.pointColor} />
-              <Button text="PROPOSAL  →" bgColor={project.pointColor} />
+              <Button text="WEBSITE  →"/>
+              <Button text="PROPOSAL  →" />
             </div>
           </div>
         </div>

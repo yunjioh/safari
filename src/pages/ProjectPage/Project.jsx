@@ -7,20 +7,21 @@ import "./Project.css";
 gsap.registerPlugin(ScrollTrigger);
 
 const projectData = [
-    {
+  {
     subTitle: "영양제 복용 관리 어플",
     mainTitle: `Dr.Pill app`,
     decoTitle: "MANAGEMENT APP",
     duration: "2025.09 - 2025.10",
     role: "“이 프로젝트에서는 서비스의 UX 기획부터 최종 디자인까지 전 과정을 수행하였습니다”",
     detail: `더블 다이아몬드 프로세스를 바탕으로 데스크 리서치와 사용자 조사를 통해 문제를 정의하고, 
-    페르소나 및 여정 지도를 설계하여 전략적 솔루션을 도출했습니다.
+페르소나 및 여정 지도를 설계하여 전략적 솔루션을 도출했습니다.
 이를 정보 구조(IA)와 와이어프레임으로 구체화한 뒤, 일관된 디자인 시스템을 구축하여 서비스 전반의 UI를 설계했습니다.
 총 4차례의 피드백 과정을 거쳐 스토리보드와 인터랙션이 포함된 고도화된 프로토타입을 제작하며, 
 기획부터 최종 전달(Deliver)까지의 프로젝트 사이클을 완수했습니다.`,
     image: "/img/project1.svg",
     pointColor: "var(--blue)",
-     contribution: [
+    bgGradient: "#F1EFDF",
+    contribution: [
       { label: "기획", value: 90 },
       { label: "디자인", value: 90 },
       { label: "개발", value: 60 },
@@ -39,7 +40,8 @@ const projectData = [
 유지되도록 기여했습니다.`,
     image: "/img/project2.svg",
     pointColor: "var(--orange)",
-     contribution: [
+    bgGradient: "#F5FFC9",
+    contribution: [
       { label: "기획", value: 90 },
       { label: "디자인", value: 90 },
       { label: "개발", value: 60 },
@@ -52,91 +54,36 @@ const projectData = [
     duration: "2025.12 - 2026.01",
     role: "“이 프로젝트에서는 메인 페이지와 핵심 기능을 디자인하고, 이후 개발에 참여하여 배포하였습니다”",
     detail: `이 프로젝트의 메인 디자이너로서 서비스의 시각 시스템을 총괄하며 메인 페이지와 핵심 기능을 디자인했습니다. 
-    직접 설계한 화면을 React 기반의 컴포넌트 단위로 구현하여 디자인 의도가 반영되도록 하였습니다. 
-    이후 배너와 포스터 등 제작은 물론, Vercel 배포와 최종 QA를 도맡아 하며 실제 서비스로 완성되는 전 과정을 책임졌습니다.`,
+직접 설계한 화면을 React 기반의 컴포넌트 단위로 구현하여 디자인 의도가 반영되도록 하였습니다. 
+이후 배너와 포스터 등 제작은 물론, Vercel 배포와 최종 QA를 도맡아 하며 실제 서비스로 완성되는 전 과정을 책임졌습니다.`,
     image: "/img/project3.svg",
     pointColor: "var(--purple)",
-     contribution: [
+    bgGradient: "#E1DAF7",
+    contribution: [
       { label: "기획", value: 90 },
       { label: "디자인", value: 90 },
       { label: "개발", value: 60 },
     ],
   },
 ];
+
 const Project = () => {
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-  const el = containerRef.current;
-  if (!el) return;
-
-  const ctx = gsap.context(() => {
-    const cards = gsap.utils.toArray(".project-slide", el);
-    if (cards.length <= 1) return;
-
-    // ✅ 초기: 전부 오른쪽 대기, 첫 카드만 0
-    gsap.set(cards, { xPercent: 100, scale: 1, opacity: 1 });
-    gsap.set(cards[0], { xPercent: 0 });
-
-    // ✅ 기본 zIndex: 첫 카드가 위 (중요)
-    cards.forEach((card, i) => gsap.set(card, { zIndex: cards.length - i }));
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: el,
-        start: "top top",
-        end: () => `+=${(cards.length - 1) * window.innerHeight}`,
-        pin: true,
-        scrub: 1,
-        invalidateOnRefresh: true,
-        anticipatePin: 1,
-
-        // ✅ 한 장씩 걸림(스냅)
-        snap: {
-          snapTo: 1 / (cards.length - 1),
-          duration: { min: 0.12, max: 0.25 },
-          ease: "power3.out",
-          inertia: false,
-        },
-
-        // markers: true,
-      },
-    });
-
-    for (let i = 1; i < cards.length; i++) {
-      // ✅ 들어오는 카드만 순간 최상단으로
-      tl.set(cards[i], { zIndex: cards.length + 10 }, i - 1);
-
-      // ✅ 덮으며 들어오기
-      tl.to(
-        cards[i],
-        { xPercent: 0, ease: "none", duration: 1 },
-        i - 1
-      );
-
-      // ✅ 전환 끝나면 이전 카드는 아래로 내려두기
-      tl.set(cards[i - 1], { zIndex: 1 }, i);
-    }
-
-    ScrollTrigger.refresh();
-  }, el);
-
-  return () => ctx.revert();
-}, []);
-
-
+  const BASE_TOP = 80;
+  const STACK_GAP = 28;
   return (
-    <section ref={containerRef} className="project-outer" id="project">
-      <div className="project-stack-container">
-        {projectData.map((project, index) => (
-          <div className="project-slide" key={index}>
-            <div className="project-inner-content">
-              <ProjectCard project={project} />
-            </div>
+    <main className="project-page">
+      <section className="project-sticky-stack">
+        {projectData.map((project, idx) => (
+          <div
+            key={project.id}
+            className="project-sticky-item"
+            style={{ top: `${BASE_TOP + idx * STACK_GAP}px`, zIndex: 10 + idx,  "--bg-gradient": project.bgGradient, }}
+          >
+            <ProjectCard project={project} />
           </div>
         ))}
-      </div>
-    </section>
+      </section>
+    </main>
   );
 };
 

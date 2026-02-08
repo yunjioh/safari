@@ -28,7 +28,6 @@ function App() {
       <Hobby />
       <Skill />
       <Gallery />
-      <Preview />
       <Project />
       <Coding />
       <Think />

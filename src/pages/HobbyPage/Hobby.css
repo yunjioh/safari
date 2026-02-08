@@ -7,6 +7,23 @@
   margin: 220px 129px 175px;
 }
 
+.hobbyTit {
+  color: black;
+  font-size: 200px;
+  line-height: 0.5;
+  font-family: "Basis Grotesque Arabic Pro", sans-serif;
+  font-weight: 500;
+  letter-spacing: -5px;
+  text-align: left;
+  margin-bottom: 200px;
+}
+
+.hobbyTit span {
+  font-size: 98px;
+  color: #9e9e9e;
+  font-weight: normal;
+}
+
 .hobby .title-container .title.deco {
   color: #9e9e9e;
   font-size: 65px;
@@ -114,9 +131,11 @@
     width: 250px;
     right: 5%;
   }
+
   .hobby-item:nth-child(even) .hobby-thumb {
     left: 5%;
   }
+
   .hobby-title {
     font-size: 1.5rem;
   }

@@ -1,170 +1,186 @@
-.coding {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 300px 129px;
-  overflow: hidden;
+.coding{
+  background:#000;
+  min-height:100vh;
+  align-items:center;
+  padding:300px 129px;
+  overflow: hidden; /* 섹션 밖으로 안 튀게 */
 }
 
-.coding .sub-title {
-  color: #9e9e9e;
+.coding .title{ color:#fff; }
+.coding .sub-title{ color:#9e9e9e; }
+
+/* ✅ 왼쪽 텍스트 + 오른쪽 비주얼 “2단 구성” */
+.coding-container{
+  width:100%;
 }
 
-.coding-container {
-  width: 100vw;
+.coding-info{
+  flex:1;
+  padding-top: 10px;
 }
 
-.coding-info {
-  flex: 1;
+.c-desc{
+  font-size:25px;
+  line-height:1.7;
+  text-align:left;
+  color:#a0a0a0;
+  word-break:keep-all;
+  margin-top: 24px;
 }
 
-.c-name {
-  font-size: 35px;
-  text-align: left;
-  font-weight: 400;
-  margin-bottom: 25px;
-  letter-spacing: -0.5px;
+.coding-visual{
+  flex:1.25;
+  position:relative;
+  margin-top:auto; /* 이미지처럼 아래쪽에 카드 배치 */
+  min-width:0;
+  z-index: 10;
 }
 
-.c-desc {
-  font-size: 25px;
-  line-height: 1.7;
-  text-align: left;
-  color: #a0a0a0;
-  word-break: keep-all;
+/* =========================
+   ✅ 슬라이더 영역(이미지처럼)
+   ========================= */
+.swiper-wrap{
+  position:relative;
+  width:100%;
+  z-index: 10;
 }
 
-.c-nav-btns {
-  display: flex;
-  gap: 12px;
-  margin-top: 50px;
-  align-items: center;
+/* ✅ pill: 카드 위에 떠있게 */
+.tech-tabs{
+  position:absolute;
+  top:-47px;
+  left:0;
+  right:0;
+  height:0;
+  pointer-events:none;
+  z-index: -1;
 }
 
-.nav-btn {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background-color: #1a1a1a;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  transition: all 0.3s ease;
+.tech-tab{
+  position:absolute;
+  padding:10px 30px;
+  border-radius:999px;
+  font-size:25px;
+  font-weight:500;
+  white-space:nowrap;
 }
 
-.nav-btn:hover {
-  background-color: #333;
-  transform: scale(1.05);
-}
-
-.coding-visual {
-  position: relative;
-  margin-top: auto;
-}
-
-.tech-tab {
-  padding: 10px 30px;
-  border-radius: 30px;
-  font-size: 25px;
-}
-
-.tech-tab.blue {
-  background-color: #5289ff;
-  color: white;
-  position: absolute;
-  left: 10%;
-  top: -10%;
-  transform: rotate(2deg);
-}
-
-.tech-tab.orange {
-  background-color: #ff8e1d;
-  color: white;
-  position: absolute;
-  top: -9%;
-  left: 40%;
+.tech-tab.orange{
+  background:#ff8e1d;
+  color:#fff;
+  left:34%;
   transform: rotate(-6deg);
 }
 
-.tech-tab.neon {
-  background-color: #c2ff52;
-  position: absolute;
-  top: -10%;
-  left: 60%;
+.tech-tab.neon{
+  background:#9F75FF;
+  left:56%;
   transform: rotate(8deg);
-  color: black;
 }
 
-.mockup-container {
-  position: relative;
+.tech-tab.blue{
+  background:#5289ff;
+  color:#fff;
+  left:78%;
+  transform: rotate(2deg);
 }
 
-.mockup-img {
-  border-radius: 20px;
-  overflow: hidden;
-  position: relative;
-  z-index: 2;
+/* ✅ 가로 스크롤: 중앙 스냅 + 양쪽 반쪽 노출 */
+.swiper{
+  display:flex;
+  gap:26px;
+
+  overflow-x:auto;
+  overflow-y:hidden;
+
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+
+  scrollbar-width:none;
+}
+.swiper::-webkit-scrollbar{ display:none; }
+
+.slide{
+  flex: 0 0 min(840px, 44vw);
+
+  scroll-snap-align: center;   /* ✅ start → center */
+  scroll-snap-stop: always;
+
+  border-radius: 18px;
+  overflow:hidden;
+  background:#111;
+  border:1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.55);
 }
 
-.mockup-bg-deco {
-  position: absolute;
-  top: 10px;
-  right: -20px;
-  width: 100%;
-  height: 100%;
-  background: #1a1a1a;
-  border-radius: 20px;
-  z-index: 1;
+.slide-media,
+.slide img{
+  width:100%;
+  height:100%;
 }
 
-/* ===== 3D Ring Carousel ===== */
-.ring-stage {
-  position: relative;
-  width: min(840px, 44vw);
-  height: min(520px, 55vh);
-  margin: auto;
-  perspective: 1200px;
-  perspective-origin: 50% 50%;
-  display: grid;
-  place-items: center;
+.slide img{
+  object-fit:cover;
+  display:block;
 }
 
-.ring {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  will-change: transform;
-}
+/* ✅ 양옆 네비 버튼: 카드 중간 높이에 고정 */
+.nav-btn{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  background:#1a1a1a;
+  color:#fff;
+  border:none;
+  cursor:pointer;
 
-.ring-card {
-  position: absolute;
-  left: 50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  position:absolute;
   top: 50%;
-  transform-style: preserve-3d;
-  transform: translate(-50%, -50%);
+  transform: translateY(-50%);
+  z-index: 10;
+
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
-.ring-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.nav-btn:hover{
+  background:#333;
+  transform: translateY(-50%) scale(1.05);
 }
 
-/* 앞쪽 카드 강조 */
-.ring-card.is-front {
-  transform: translate(-50%, -50%) translateZ(20px);
-}
+/* 이미지처럼 바깥쪽에 위치 */
+.nav-left{ left:-90px; }
+.nav-right{ right:-90px; }
 
-.ring-caption {
-  margin-top: 20px;
+/* 캡션 */
+.ring-caption{
+  margin-top: 50px;
   font-size: 35px;
-  color: #111;
-  opacity: 0.8;
-  text-align: center;
+  color: rgba(255,255,255,0.75);
+  text-align:center;
+}
+
+/* 반응형 */
+@media (max-width:1100px){
+  .coding{
+    padding:180px 40px;
+  }
+  .coding-container{
+    flex-direction:column;
+    gap:50px;
+  }
+
+  .nav-left{ left:-10px; }
+  .nav-right{ right:-10px; }
+
+  .slide{
+    flex-basis: 86vw; /* 모바일은 1장 */
+    height: 320px;
+  }
+
+  .tech-tabs{ top:-60px; }
+  .tech-tab{ font-size:18px; padding:8px 18px; }
 }

@@ -48,13 +48,6 @@ useEffect(() => {
       0.25
     );
 
-    // 3) (선택) 카드가 “살짝 더 작아지며 착 붙는” 느낌
-    tl.to(
-      videoLayerRef.current,
-      { scale: 1.2, ease: "power2.inOut", duration: 0.5 },
-      0.55
-    );
-
     // (원하면) 문구도 여기서 순차 노출 가능
   }, heroRef);
 

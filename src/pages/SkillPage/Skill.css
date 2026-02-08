@@ -1,10 +1,13 @@
 .skill {
-  background-color: #021526;
   font-family: "Basis Grotesque Arabic Pro", sans-serif;
   min-height: 120vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+}
+
+.skill .title-container {
+  margin-bottom: 0;
 }
 
 .skill-header {
@@ -16,16 +19,7 @@
   margin-bottom: 50px;
 }
 
-.skill .sub-phrase {
-  color: white;
-}
-
-.skill .sub-title {
-  color: white;
-}
-
 .skill .title {
-  color: white;
   white-space: pre-wrap;
 }
 
@@ -69,6 +63,7 @@
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
