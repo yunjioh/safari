@@ -92,7 +92,7 @@
 }
 
 .brand-title {
-  font-size: clamp(64px, 8vw, 150px);
+  font-size: clamp(64px, 7vw, 150px);
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 0.9;

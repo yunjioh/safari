@@ -8,20 +8,20 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Hero() {
   const heroRef = useRef(null);
   const videoLayerRef = useRef(null);
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       // ✅ 초기값 세팅
       gsap.set(".decoder-wrap", {
         scale: 1,
+        transformOrigin: "50% 85%",
         opacity: 1,
       });
 
-      // ✅ 비디오 레이어(카드) 초기: 아래에서 대기
+      // ✅ 비디오 레이어(카드) 초기: 아래에서 대기 + 안 보임
       gsap.set(videoLayerRef.current, {
-        y: "150%",
-        scale: 1.2,
-        opacity: 0,
+        y: "190%",
+        scale: 1.5, // ⭐ 처음부터 "카드 크기"로
+        transformOrigin: "50% 50%",
       });
 
       const tl = gsap.timeline({
@@ -34,24 +34,17 @@ export default function Hero() {
         },
       });
 
-      // 1) 중앙 마스크 텍스트가 커지며 사라짐
-      tl.to(".decoder-wrap", { 
-        opacity: 0, 
-        scale: 2.5, 
-        ease: "power2.inOut" 
-      }, 0);
+      // 1) 텍스트가 커지며 사라짐
+      tl.to(".decoder-wrap", { opacity: 0, scale: 2, ease: "power2.inOut" }, 0);
 
-      // 2) 풀스크린 비디오 카드가 아래에서 올라옴
+      // 2) 텍스트가 사라질 때, 영상 카드가 올라오며 나타남
       tl.to(
         videoLayerRef.current,
-        { 
-          y: "0%", 
-          opacity: 1, 
-          scale: 1,
-          ease: "power2.out"
-        },
-        0.2
+        { y: "0%", opacity: 1, ease: "power2.out", duration: 1.0 },
+        0.25,
       );
+
+      // (원하면) 문구도 여기서 순차 노출 가능
     }, heroRef);
 
     return () => ctx.revert();
@@ -62,7 +55,9 @@ export default function Hero() {
       <div className="header">
         <div className="hero-name">OH YUNJI</div>
         <nav className="hero-nav">
-          <a href="#home" className="active">Home</a>
+          <a href="#home" className="active">
+            Home
+          </a>
           <a href="#about">About</a>
           <a href="#process">Process</a>
           <a href="#project">Project</a>
@@ -83,26 +78,28 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ✅ 핵심: 사파리 대응 마스크 영역 */}
-      <div className="hero-center">
-        <div className="decoder-wrap">
-          {/* 비디오가 나오는 글자 영역 */}
-          <div className="decoder-mask-container">
-            <video
-              className="decoder-video"
-              src="/video/video.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-            />
-          </div>
-          {/* 글자 외곽선 영역 */}
-          <div className="decoder-stroke-text">DECODER</div>
-        </div>
-      </div>
+     {/* ✅ DECODER (영상 마스크) - Safari 호환: CSS -webkit-mask */}
+<div className="hero-center">
+  <div className="decoder-wrap" aria-label="DECODER masked video">
+    {/* 마스크가 적용될 레이어 */}
+    <div className="decoder-mask-container">
+      <video
+        className="decoder-video"
+        src="/video/video.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
+    </div>
 
-      {/* ✅ 스크롤 후 나타나는 풀스크린 비디오 */}
+    {/* 외곽선 텍스트 */}
+    <div className="decoder-stroke-text">DECODER</div>
+  </div>
+</div>
+
+
+      {/* ✅ 스크롤 전환: 풀스크린 비디오 레이어 */}
       <div className="full-video-layer" ref={videoLayerRef}>
         <video
           className="full-video"
