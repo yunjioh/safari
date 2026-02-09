@@ -45,16 +45,55 @@ const Hobby = () => {
         },
       },
     );
+  }, []);
+  useEffect(() => {
+    // 1. 중앙 선 애니메이션 (기존 유지)
+    gsap.fromTo(
+      lineRef.current,
+      { scaleY: 0 },
+      {
+        scaleY: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hobby-list",
+          start: "top 70%",
+          end: "bottom bottom",
+          scrub: true,
+        },
+      },
+    );
 
+    // 2. 이미지 개별 패럴랙스 효과 추가
+    const items = document.querySelectorAll(".hobby-item");
+    items.forEach((item) => {
+      const img = item.querySelector(".hobby-thumb img");
+
+      gsap.fromTo(
+        img,
+        {
+          y: 30,
+        },
+        {
+          y: -30,
+          ease: "none",
+          scrollTrigger: {
+            trigger: item,
+            start: "top 60%", // 화면 하단에 보일 때부터
+            end: "bottom top", // 화면 상단으로 사라질 때까지
+            scrub: 1.5, // 선보다 약간 더 쫀득하게(느리게) 반응
+          },
+        },
+      );
+    });
   }, []);
 
   return (
     <section className="hobby" id="process">
       <div className="hobby-header">
-
         <ScrollReveal delay={0.3}>
           <h2 className="hobbyTit">
-            HOBBIES: <span>MUSIC · EXERCISE · INSPIRATION · THEATER · TRAVEL</span>
+            HOBBIES:{" "}
+            <span>MUSIC · EXERCISE · INSPIRATION · THEATER · TRAVEL</span>
           </h2>
         </ScrollReveal>
         <SubTitle
@@ -69,7 +108,7 @@ const Hobby = () => {
           ]}
         />
       </div>
-      <div className="selected-projects-label">Selected Projects</div>
+      <div className="selected-projects-label">START</div>
 
       <div className="hobby-list">
         <div
@@ -90,10 +129,6 @@ const Hobby = () => {
             </div>
           </div>
         ))}
-      </div>
-
-      <div className="go-to-site">
-        <a href="#contact">GO TO SITE</a>
       </div>
     </section>
   );

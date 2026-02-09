@@ -1,186 +1,196 @@
-.coding{
-  background:#000;
-  min-height:100vh;
-  align-items:center;
-  padding:300px 129px;
-  overflow: hidden; /* 섹션 밖으로 안 튀게 */
+.coding {
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden; /* 필수: 오른쪽 대기 시 가로 스크롤 방지 */
+  position: relative;
 }
 
-.coding .title{ color:#fff; }
-.coding .sub-title{ color:#9e9e9e; }
-
-/* ✅ 왼쪽 텍스트 + 오른쪽 비주얼 “2단 구성” */
-.coding-container{
-  width:100%;
+.coding-visual {
+  position: relative;
+  width: 100%;
+  margin-bottom: 200px;
+  will-change: transform, opacity; /* 애니메이션 성능 최적화 */
+}
+.coding .title-container {
+  margin-bottom: 100px;
 }
 
-.coding-info{
-  flex:1;
-  padding-top: 10px;
+.subTitle {
+  text-align: left;
+  margin-bottom: 150px;
 }
 
-.c-desc{
-  font-size:25px;
-  line-height:1.7;
-  text-align:left;
-  color:#a0a0a0;
-  word-break:keep-all;
-  margin-top: 24px;
+.coding-info {
+  padding: 150px 129px 0;
 }
 
-.coding-visual{
-  flex:1.25;
-  position:relative;
-  margin-top:auto; /* 이미지처럼 아래쪽에 카드 배치 */
-  min-width:0;
-  z-index: 10;
+.coding-visual {
+  position: relative;
+  width: 100%;
+  margin-bottom: 200px;
 }
 
-/* =========================
-   ✅ 슬라이더 영역(이미지처럼)
-   ========================= */
-.swiper-wrap{
-  position:relative;
-  width:100%;
-  z-index: 10;
+.swiper-wrap {
+  position: relative;
+  width: 100%;
+  opacity: 1;
 }
 
-/* ✅ pill: 카드 위에 떠있게 */
-.tech-tabs{
-  position:absolute;
-  top:-47px;
-  left:0;
-  right:0;
-  height:0;
-  pointer-events:none;
-  z-index: -1;
+.swiper-container {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.tech-tab{
-  position:absolute;
-  padding:10px 30px;
-  border-radius:999px;
-  font-size:25px;
-  font-weight:500;
-  white-space:nowrap;
+.swiper-track-centered {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-.tech-tab.orange{
-  background:#ff8e1d;
-  color:#fff;
-  left:34%;
-  transform: rotate(-6deg);
+.slide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transition:
+    transform 0.8s cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 0.5s;
+  cursor: none;
 }
 
-.tech-tab.neon{
-  background:#9F75FF;
-  left:56%;
-  transform: rotate(8deg);
+.slide-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
-.tech-tab.blue{
-  background:#5289ff;
-  color:#fff;
-  left:78%;
-  transform: rotate(2deg);
+.slide img {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  width: 100%;
 }
 
-/* ✅ 가로 스크롤: 중앙 스냅 + 양쪽 반쪽 노출 */
-.swiper{
-  display:flex;
-  gap:26px;
-
-  overflow-x:auto;
-  overflow-y:hidden;
-
-  scroll-snap-type:x mandatory;
-  scroll-behavior:smooth;
-
-  scrollbar-width:none;
-}
-.swiper::-webkit-scrollbar{ display:none; }
-
-.slide{
-  flex: 0 0 min(840px, 44vw);
-
-  scroll-snap-align: center;   /* ✅ start → center */
-  scroll-snap-stop: always;
-
-  border-radius: 18px;
-  overflow:hidden;
-  background:#111;
-  border:1px solid rgba(255,255,255,0.10);
-  box-shadow: 0 24px 60px rgba(0,0,0,0.55);
+/* ✅ Tech Tabs 위치 고정 */
+.tech-tabs {
+  position: absolute;
+  top: -14%;
+  width: 100%;
+  z-index: 0;
 }
 
-.slide-media,
-.slide img{
-  width:100%;
-  height:100%;
+.tech-tab {
+  position: absolute;
+  padding: 10px 30px;
+  border-radius: 999px;
+  font-size: 20px;
+}
+.tech-tab.orange {
+  background: #ff8e1d;
+  color: #fff;
+  right: 10%;
+  transform: rotate(-5deg);
+}
+.tech-tab.neon {
+  background: #9f75ff;
+  color: #fff;
+  right: 20%;
+  transform: rotate(5deg);
+}
+.tech-tab.blue {
+  background: #5289ff;
+  color: #fff;
+  right: 30%;
+  transform: rotate(-2deg);
 }
 
-.slide img{
-  object-fit:cover;
-  display:block;
-}
-
-/* ✅ 양옆 네비 버튼: 카드 중간 높이에 고정 */
-.nav-btn{
-  width:80px;
-  height:80px;
-  border-radius:50%;
-  background:#1a1a1a;
-  color:#fff;
-  border:none;
-  cursor:pointer;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  position:absolute;
+/* ✅ 네비게이션 버튼 */
+.nav-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 10;
-
-  transition: transform 0.2s ease, background 0.2s ease;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+.nav-btn:hover {
+  background: #fff;
+  color: #000;
+}
+.nav-left {
+  left: 3%;
+}
+.nav-right {
+  right: 3%;
+}
+.cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  color: white;
+  opacity: 0;
+  transform: scale(0.6);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  z-index: 100;
 }
 
-.nav-btn:hover{
-  background:#333;
-  transform: translateY(-50%) scale(1.05);
+.slide:hover .cursor {
+  opacity: 1;
+  transform: scale(1);
 }
 
-/* 이미지처럼 바깥쪽에 위치 */
-.nav-left{ left:-90px; }
-.nav-right{ right:-90px; }
-
-/* 캡션 */
-.ring-caption{
-  margin-top: 50px;
-  font-size: 35px;
-  color: rgba(255,255,255,0.75);
-  text-align:center;
+.cursor-text {
+  width: 100%;
+  height: 100%;
+  animation: spin 6s linear infinite; /* 원래 6s spin */
+  fill: white;
 }
 
-/* 반응형 */
-@media (max-width:1100px){
-  .coding{
-    padding:180px 40px;
-  }
-  .coding-container{
-    flex-direction:column;
-    gap:50px;
-  }
+.cursor text {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+}
 
-  .nav-left{ left:-10px; }
-  .nav-right{ right:-10px; }
+.cursor-arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg); /* 원래 주신 -45도 */
+  font-size: 40px;
+  font-weight: 100;
+  z-index: 2;
+}
 
-  .slide{
-    flex-basis: 86vw; /* 모바일은 1장 */
-    height: 320px;
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
   }
-
-  .tech-tabs{ top:-60px; }
-  .tech-tab{ font-size:18px; padding:8px 18px; }
+  to {
+    transform: rotate(360deg);
+  }
 }

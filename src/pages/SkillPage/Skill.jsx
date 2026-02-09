@@ -120,7 +120,7 @@ const Skill = () => {
             { text: "탄탄한 ", highlight: false },
             { text: "코딩 스킬", highlight: true, color: "purple" },
             { text: "을 겸비하고 있으며, ", highlight: false },
-            { text: "디자인 툴", highlight: true, color: "yellow" },
+            { text: "디자인 툴", highlight: true, color: "orange" },
             { text: "과 AI 도구를 능숙하게 다룹니다.", highlight: false },
           ]}
         />

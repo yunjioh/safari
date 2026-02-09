@@ -28,7 +28,6 @@
 
 .hero-nav {
   display: flex;
-  gap: 15px;
   padding: 8px 14px;
   background: rgba(255, 255, 255, 0.75);
   border: 1px solid rgba(0, 0, 0, 0.45);
@@ -40,16 +39,16 @@
 .hero-nav a {
   color: #000;
   font-family: "Basis Grotesque Arabic Pro", sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   text-decoration: none;
-  padding: 4px 6px;
+  padding: 4px 10px;
   border-radius: 999px;
 }
 
 .hero-nav a.active {
   background: #111;
-  color: #fff;
+  color: #bbff52;
 }
 
 /* 하단 라인 박스 */
@@ -156,8 +155,8 @@
 }
 
 .video-text {
-  font-size: 30px;
+  font-size: 50px;
+  font-weight: 500;
   color: white;
-  opacity: 0;
   transform: translateY(10px);
 }

@@ -1,5 +1,5 @@
 /* =============================
-   ProjectCard 내부 레이아웃
+ ProjectCard 내부 레이아웃
 ============================= */
 .project {
   width: 100%;
@@ -12,8 +12,45 @@
   box-sizing: border-box;
 }
 
-.project-page {
-  background: #000;
+.down_arrow {
+  display: flex;
+  justify-content: center;
+}
+
+.down_arrow div {
+  text-align: center;
+  position: relative;
+  display: flex;
+  position: relative;
+}
+
+.down_arrow div::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  background-color: white;
+  width: 30px;
+  transform: translateX(-50%);
+  -webkit-animation: down 2.3s ease-out infinite forwards;
+  animation: down 2.3s ease-out infinite forwards;
+}
+
+@keyframes down {
+  0%,
+  100% {
+    -webkit-clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0);
+  }
+  25% {
+    -webkit-clip-path: inset(100% 0 0 0);
+    clip-path: inset(100% 0 0 0);
+  }
+  50% {
+    -webkit-clip-path: inset(0 0 100% 0);
+    clip-path: inset(0 0 100% 0);
+  }
 }
 
 .project .title {
@@ -25,10 +62,6 @@
 
 .project .sub-title {
   font-size: 20px;
-}
-
-.project .sub-title {
-  color: rgba(0, 0, 0, 0.45);
 }
 
 .text-area {
@@ -48,8 +81,7 @@
 }
 
 strong {
-  font-size:22px;
-  /* 섹션 라벨 느낌 */
+  font-size: 22px; /* 섹션 라벨 느낌 */
   font-weight: 700;
   display: block;
   margin-bottom: 10px;
@@ -66,16 +98,13 @@ strong {
 .role-text {
   margin-top: 10px;
   font-size: 20px;
-  font-weight: 700;
-  /* role은 강조 */
-  color: rgba(0, 0, 0, 0.85);
+  font-weight: 600;
 }
 
 .detail-text {
   margin-top: 10px;
   font-size: 18px;
   line-height: 1.75;
-  color: rgba(0, 0, 0, 0.72);
 }
 
 .button-group {
@@ -86,17 +115,16 @@ strong {
 }
 
 .project .main-button {
-  background-color: #000;
+  background-color: #333;
   color: white;
-  font-size: 16px;
+  font-size: 12px;
   font-family: "Pretendard", sans-serif;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.2px;
 }
 
-/* 오른쪽 이미지 영역(시안처럼 넓게) */
 .project img {
-  width: min(520px, 38vw);
+  width: min(570px, 38vw);
   height: auto;
   display: block;
 }
@@ -125,13 +153,6 @@ strong {
   opacity: 0.65;
 }
 
-.bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 18px;
-}
-
 /* sticky가 동작하려면 상위에 overflow가 막히면 안 됨 */
 .project-page {
   width: 100%;
@@ -145,16 +166,11 @@ strong {
 .project-sticky-item {
   position: sticky;
   margin: 0 auto 60px;
-  border-radius: 50px;
-
-  background: var(--bg-gradient, #ffffff);
+  border-radius: 20px;
+  background: white;
   width: min(1780px, 92vw);
 }
 
-.project-sticky-item .project {
-  border-radius: 28px;
-  overflow: hidden;
-}
 .project .title-container {
   margin-bottom: 68px;
 }

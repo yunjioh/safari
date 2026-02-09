@@ -4,7 +4,7 @@
 
 .subTitle.right {
   text-align: right;
-    margin-left: auto;
+  margin-left: auto;
 }
 
 .sub-phrase {
@@ -19,4 +19,5 @@
 .sub-desc {
   font-size: 23px;
   color: #9e9e9e;
+  white-space: pre-wrap;
 }

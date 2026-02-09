@@ -1,66 +1,87 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef } from "react";
 import "./Think.css";
 import Title from "../../components/Title";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const questions = [
   {
     id: 1,
-    q: "왜 개발이 아닌 UI/UX 디자인을 선택하게 되었나요?",
-    a: "기능을 구현하는 것보다 사용자의 경험을 설계하는 과정에 더 큰 흥미를 느꼈습니다.",
+    q: "왜 디자인을 선택했나요?",
+    a: "사용자 경험 설계에 매력을 느꼈습니다.",
   },
   {
     id: 2,
-    q: "디자인할 때 가장 중요하게 생각하는 것은 무엇인가요?",
-    a: "사용자의 입장에서 불편함 없이 자연스럽게 흐르는 경험을 만드는 것입니다.",
+    q: "중요하게 생각하는 것은?",
+    a: "자연스러운 흐름을 만드는 것입니다.",
   },
-  {
-    id: 3,
-    q: "문제를 해결하는 과정에서 가장 중요하게 여기는 단계는?",
-    a: "문제를 정확히 정의하고 본질을 파악하는 단계라고 생각합니다.",
-  },
+  { id: 3, q: "가장 중요한 단계는?", a: "본질을 파악하는 정의 단계입니다." },
   {
     id: 4,
-    q: "지금까지 진행한 프로젝트 중 가장 기억에 남는 것은?",
-    a: "기획부터 디자인, 구현까지 전 과정에 참여했던 프로젝트가 가장 기억에 남습니다.",
+    q: "기억에 남는 프로젝트?",
+    a: "전 과정에 참여했던 프로젝트입니다.",
   },
 ];
 
 const Think = () => {
-  const [openId, setOpenId] = useState(null);
+  const sectionRef = useRef(null);
+  const cardsRef = useRef([]);
 
-  const toggle = (id) => {
-    setOpenId(openId === id ? null : id);
-  };
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        cardsRef.current,
+        { x: 0, opacity: 0, scale: 0.5 },
+        {
+          x: (i) => (i - 1.5) * 320,
+          opacity: 1,
+          scale: 1,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "+=500",
+            scrub: 1.5,
+          },
+        },
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section className="think">
+    <section className="think" ref={sectionRef}>
       <div className="think-header">
         <Title
           subTitle="I THINK"
           mainTitle={
             <>
-              MY THOUGHTS <br />
-              ON DESIGN
+              MY THOUGHTS <br /> ON DESIGN
             </>
           }
         />
       </div>
 
-      <div className="think-list">
-        {questions.map((item) => (
+      <div className="think-container">
+        {questions.map((item, i) => (
           <div
             key={item.id}
-            className={`think-item ${openId === item.id ? "open" : ""}`}
-            onClick={() => toggle(item.id)}
+            className="think-card-wrapper"
+            ref={(el) => (cardsRef.current[i] = el)}
           >
-            <div className="think-question">
-              <span className="think-q-label">QUESTION0{item.id}</span>
-              <p>{item.q}</p>
-              <span className="think-arrow">⌄</span>
-            </div>
+            <div className="think-card-inner">
+              {/* 앞면: 질문 */}
+              <div className="think-card front">
+                <span className="think-q-label">QUESTION 0{item.id}</span>
+                <p className="think-q-text">{item.q}</p>
+              </div>
 
-            <div className="think-answer">
-              <p>{item.a}</p>
+              {/* 뒷면: 답변 */}
+              <div className="think-card back">
+                <p className="think-a-text">{item.a}</p>
+              </div>
             </div>
           </div>
         ))}

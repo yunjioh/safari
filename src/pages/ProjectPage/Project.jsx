@@ -20,7 +20,7 @@ const projectData = [
 기획부터 최종 전달(Deliver)까지의 프로젝트 사이클을 완수했습니다.`,
     image: "/img/project1.svg",
     pointColor: "var(--blue)",
-    bgGradient: "#F1EFDF",
+    bgGradient: "black",
     contribution: [
       { label: "기획", value: 90 },
       { label: "디자인", value: 90 },
@@ -40,7 +40,7 @@ const projectData = [
 유지되도록 기여했습니다.`,
     image: "/img/project2.svg",
     pointColor: "var(--orange)",
-    bgGradient: "#F5FFC9",
+    bgGradient: "black",
     contribution: [
       { label: "기획", value: 90 },
       { label: "디자인", value: 90 },
@@ -58,7 +58,7 @@ const projectData = [
 이후 배너와 포스터 등 제작은 물론, Vercel 배포와 최종 QA를 도맡아 하며 실제 서비스로 완성되는 전 과정을 책임졌습니다.`,
     image: "/img/project3.svg",
     pointColor: "var(--purple)",
-    bgGradient: "#E1DAF7",
+    bgGradient: "black",
     contribution: [
       { label: "기획", value: 90 },
       { label: "디자인", value: 90 },
@@ -72,6 +72,11 @@ const Project = () => {
   const STACK_GAP = 28;
   return (
     <main className="project-page">
+      <div class="down_arrow">
+        <div>
+          <img src="img/arrow.png" alt="down_arrow" />
+        </div>
+      </div>
       <section className="project-sticky-stack">
         {projectData.map((project, idx) => (
           <div

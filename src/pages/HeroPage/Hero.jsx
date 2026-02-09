@@ -8,60 +8,56 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Hero() {
   const heroRef = useRef(null);
   const videoLayerRef = useRef(null);
-useEffect(() => {
-  const ctx = gsap.context(() => {
-    // ✅ 초기값 세팅
-    gsap.set(".decoder-wrap", {
-      scale: 1,
-      transformOrigin: "50% 85%",
-      opacity: 1,
-    });
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // ✅ 초기값 세팅
+      gsap.set(".decoder-wrap", {
+        scale: 1,
+        transformOrigin: "50% 85%",
+        opacity: 1,
+      });
 
-    // ✅ 비디오 레이어(카드) 초기: 아래에서 대기 + 안 보임
-    gsap.set(videoLayerRef.current, {
-      y: "190%",
-      scale: 1.5,               // ⭐ 처음부터 "카드 크기"로
-      transformOrigin: "50% 50%",
-    });
+      // ✅ 비디오 레이어(카드) 초기: 아래에서 대기 + 안 보임
+      gsap.set(videoLayerRef.current, {
+        y: "190%",
+        scale: 1.5, // ⭐ 처음부터 "카드 크기"로
+        transformOrigin: "50% 50%",
+      });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: heroRef.current,
-        start: "top top",
-        end: "+=300%",
-        scrub: 1,
-        pin: true,
-      },
-    });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "+=300%",
+          scrub: 1,
+          pin: true,
+        },
+      });
 
-    // 1) 텍스트가 커지며 사라짐
-    tl.to(
-      ".decoder-wrap",
-      { opacity: 0, scale: 2, ease: "power2.inOut" },
-      0
-    );
+      // 1) 텍스트가 커지며 사라짐
+      tl.to(".decoder-wrap", { opacity: 0, scale: 2, ease: "power2.inOut" }, 0);
 
-    // 2) 텍스트가 사라질 때, 영상 카드가 올라오며 나타남
-    tl.to(
-      videoLayerRef.current,
-      { y: "0%", opacity: 1, ease: "power2.out", duration: 1.0 },
-      0.25
-    );
+      // 2) 텍스트가 사라질 때, 영상 카드가 올라오며 나타남
+      tl.to(
+        videoLayerRef.current,
+        { y: "0%", opacity: 1, ease: "power2.out", duration: 1.0 },
+        0.25,
+      );
 
-    // (원하면) 문구도 여기서 순차 노출 가능
-  }, heroRef);
+      // (원하면) 문구도 여기서 순차 노출 가능
+    }, heroRef);
 
-  return () => ctx.revert();
-}, []);
-
-
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section className="hero" ref={heroRef} id="home">
       <div className="header">
         <div className="hero-name">OH YUNJI</div>
         <nav className="hero-nav">
-          <a href="#home" className="active">Home</a>
+          <a href="#home" className="active">
+            Home
+          </a>
           <a href="#about">About</a>
           <a href="#process">Process</a>
           <a href="#project">Project</a>
@@ -85,7 +81,11 @@ useEffect(() => {
       {/* ✅ DECODER (영상 마스크) */}
       <div className="hero-center">
         <div className="decoder-wrap" aria-label="DECODER masked video">
-          <svg className="decoder-svg" viewBox="0 0 1600 520" preserveAspectRatio="xMidYMax meet">
+          <svg
+            className="decoder-svg"
+            viewBox="0 0 1600 520"
+            preserveAspectRatio="xMidYMax meet"
+          >
             <defs>
               {/* 마스크: 텍스트 부분만 보이게 */}
               <mask id="decoderMask">
@@ -146,8 +146,7 @@ useEffect(() => {
           playsInline
         />
         <div className="video-text-overlay">
-          <p className="video-text">디자인으로 세상을 해독합니다.</p>
-          <p className="video-text">코드로 가치를 구축합니다.</p>
+          <p className="video-text">ABOUT ME</p>
         </div>
       </div>
     </section>

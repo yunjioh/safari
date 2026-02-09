@@ -1,10 +1,53 @@
 .contact {
-  padding: 120px 129px;
+  position: relative;
+  width: 100%;
+  height: 80vh; /* 80vh 고정 */
+  background-color: #fff; /* 기본 배경 */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 중앙에서 상하로 확장되는 선 */
+.contact-bg-line {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 80vh;
+  background-color: #bbff52; /* 요청하신 연두색 */
+  transform: translateY(-50%) scaleY(0); /* 중앙에서 높이 0으로 시작 */
+  transform-origin: center center;
+  z-index: 1;
+  will-change: transform;
+}
+
+/* 거대 배경 텍스트 */
+.contact-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20vw;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.03); /* 아주 연하게 */
+  z-index: 1;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* 컨텐츠 영역 (보내주신 스타일 적용) */
+.contact-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: 120px 129px; /* 보내주신 패딩 유지 */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: var(--orange);
-  color: #111;
+  box-sizing: border-box;
 }
 
 .contact-top {
@@ -31,7 +74,6 @@
   line-height: 1.6;
   color: black;
   font-weight: 500;
-  margin-bottom: 178px;
 }
 
 .contact-info a {
@@ -54,6 +96,7 @@
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 0.9;
+  margin: 0;
 }
 
 .copyright {
@@ -61,17 +104,20 @@
   color: black;
 }
 
+/* 모바일 대응 */
 @media (max-width: 768px) {
   .contact {
+    height: auto;
+    min-height: 80vh;
+  }
+  .contact-container {
     padding: 80px 24px 40px;
   }
-
   .contact-bottom {
     flex-direction: column;
     align-items: flex-start;
     gap: 24px;
   }
-
   .brand-title {
     font-size: 64px;
   }

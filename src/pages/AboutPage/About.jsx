@@ -21,7 +21,7 @@ const About = () => {
         ease: "none",
         scrollTrigger: {
           trigger: el,
-          start: "20% top",
+          start: "top top",
           scrub: true,
           anticipatePin: 1,
         },
@@ -48,13 +48,13 @@ const About = () => {
         },
       ).fromTo(
         ".profile-wrapper",
-        { x: 200, opacity: 0, scale: 0.98, filter: "blur(6px)" },
+        { x: 50, opacity: 0, scale: 0.98, filter: "blur(6px)" },
         {
           x: 0,
           opacity: 1,
           scale: 1,
           filter: "blur(0px)",
-          duration: 0.9,
+          duration: 0.5,
           ease: "power3.out",
         },
       );
