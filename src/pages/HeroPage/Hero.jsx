@@ -8,20 +8,20 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Hero() {
   const heroRef = useRef(null);
   const videoLayerRef = useRef(null);
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       // ✅ 초기값 세팅
       gsap.set(".decoder-wrap", {
         scale: 1,
-        transformOrigin: "50% 85%",
         opacity: 1,
       });
 
-      // ✅ 비디오 레이어(카드) 초기: 아래에서 대기 + 안 보임
+      // ✅ 비디오 레이어(카드) 초기: 아래에서 대기
       gsap.set(videoLayerRef.current, {
-        y: "190%",
-        scale: 1.5, // ⭐ 처음부터 "카드 크기"로
-        transformOrigin: "50% 50%",
+        y: "150%",
+        scale: 1.2,
+        opacity: 0,
       });
 
       const tl = gsap.timeline({
@@ -34,17 +34,24 @@ export default function Hero() {
         },
       });
 
-      // 1) 텍스트가 커지며 사라짐
-      tl.to(".decoder-wrap", { opacity: 0, scale: 2, ease: "power2.inOut" }, 0);
+      // 1) 중앙 마스크 텍스트가 커지며 사라짐
+      tl.to(".decoder-wrap", { 
+        opacity: 0, 
+        scale: 2.5, 
+        ease: "power2.inOut" 
+      }, 0);
 
-      // 2) 텍스트가 사라질 때, 영상 카드가 올라오며 나타남
+      // 2) 풀스크린 비디오 카드가 아래에서 올라옴
       tl.to(
         videoLayerRef.current,
-        { y: "0%", opacity: 1, ease: "power2.out", duration: 1.0 },
-        0.25,
+        { 
+          y: "0%", 
+          opacity: 1, 
+          scale: 1,
+          ease: "power2.out"
+        },
+        0.2
       );
-
-      // (원하면) 문구도 여기서 순차 노출 가능
     }, heroRef);
 
     return () => ctx.revert();
@@ -55,9 +62,7 @@ export default function Hero() {
       <div className="header">
         <div className="hero-name">OH YUNJI</div>
         <nav className="hero-nav">
-          <a href="#home" className="active">
-            Home
-          </a>
+          <a href="#home" className="active">Home</a>
           <a href="#about">About</a>
           <a href="#process">Process</a>
           <a href="#project">Project</a>
@@ -78,64 +83,26 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ✅ DECODER (영상 마스크) */}
+      {/* ✅ 핵심: 사파리 대응 마스크 영역 */}
       <div className="hero-center">
-        <div className="decoder-wrap" aria-label="DECODER masked video">
-          <svg
-            className="decoder-svg"
-            viewBox="0 0 1600 520"
-            preserveAspectRatio="xMidYMax meet"
-          >
-            <defs>
-              {/* 마스크: 텍스트 부분만 보이게 */}
-              <mask id="decoderMask">
-                <rect width="100%" height="100%" fill="black" />
-                <text
-                  x="50%"
-                  y="90%"
-                  textAnchor="middle"
-                  className="decoder-text"
-                  fill="white"
-                >
-                  DECODER
-                </text>
-              </mask>
-            </defs>
-
-            {/* 영상은 foreignObject로 넣고 mask 적용 */}
-            <foreignObject
-              x="0"
-              y="0"
-              width="100%"
-              height="100%"
-              mask="url(#decoderMask)"
-            >
-              <div className="decoder-videoBox">
-                <video
-                  className="decoder-video"
-                  src="/video/video.mp4"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                />
-              </div>
-            </foreignObject>
-
-            {/* 텍스트 외곽선(선명하게) */}
-            <text
-              x="50%"
-              y="78%"
-              textAnchor="middle"
-              className="decoder-stroke"
-            >
-              DECODER
-            </text>
-          </svg>
+        <div className="decoder-wrap">
+          {/* 비디오가 나오는 글자 영역 */}
+          <div className="decoder-mask-container">
+            <video
+              className="decoder-video"
+              src="/video/video.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+          </div>
+          {/* 글자 외곽선 영역 */}
+          <div className="decoder-stroke-text">DECODER</div>
         </div>
       </div>
 
-      {/* ✅ 스크롤 전환: 풀스크린 비디오 레이어 */}
+      {/* ✅ 스크롤 후 나타나는 풀스크린 비디오 */}
       <div className="full-video-layer" ref={videoLayerRef}>
         <video
           className="full-video"
