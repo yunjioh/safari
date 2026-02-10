@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react"; // useState 추가
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./Hero.css";
@@ -8,19 +8,19 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Hero() {
   const heroRef = useRef(null);
   const videoLayerRef = useRef(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // 메뉴 상태 추가
+
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // ✅ 초기값 세팅
+      // ✅ 기존 GSAP ScrollTrigger 로직 (동일하게 유지)
       gsap.set(".decoder-wrap", {
         scale: 1,
         transformOrigin: "50% 85%",
         opacity: 1,
       });
-
-      // ✅ 비디오 레이어(카드) 초기: 아래에서 대기 + 안 보임
       gsap.set(videoLayerRef.current, {
         y: "190%",
-        scale: 1.5, // ⭐ 처음부터 "카드 크기"로
+        scale: 1.5,
         transformOrigin: "50% 50%",
       });
 
@@ -34,17 +34,12 @@ export default function Hero() {
         },
       });
 
-      // 1) 텍스트가 커지며 사라짐
       tl.to(".decoder-wrap", { opacity: 0, scale: 2, ease: "power2.inOut" }, 0);
-
-      // 2) 텍스트가 사라질 때, 영상 카드가 올라오며 나타남
       tl.to(
         videoLayerRef.current,
         { y: "0%", opacity: 1, ease: "power2.out", duration: 1.0 },
         0.25,
       );
-
-      // (원하면) 문구도 여기서 순차 노출 가능
     }, heroRef);
 
     return () => ctx.revert();
@@ -54,17 +49,43 @@ export default function Hero() {
     <section className="hero" ref={heroRef} id="home">
       <div className="header">
         <div className="hero-name">OH YUNJI</div>
-        <nav className="hero-nav">
-          <a href="#home" className="active">
+
+        {/* ✅ 햄버거 버튼 추가 (1024px 이하에서 노출) */}
+        <button
+          className={`hamburger ${isMenuOpen ? "active" : ""}`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        {/* ✅ 메뉴 클래스에 상태에 따른 active 추가 */}
+        <nav className={`hero-nav ${isMenuOpen ? "active" : ""}`}>
+          <a
+            href="#home"
+            className="active"
+            onClick={() => setIsMenuOpen(false)}
+          >
             Home
           </a>
-          <a href="#about">About</a>
-          <a href="#process">Process</a>
-          <a href="#project">Project</a>
-          <a href="#contact">Contact</a>
+          <a href="#about" onClick={() => setIsMenuOpen(false)}>
+            About
+          </a>
+          <a href="#process" onClick={() => setIsMenuOpen(false)}>
+            Process
+          </a>
+          <a href="#project" onClick={() => setIsMenuOpen(false)}>
+            Project
+          </a>
+          <a href="#contact" onClick={() => setIsMenuOpen(false)}>
+            Contact
+          </a>
         </nav>
       </div>
 
+      {/* ... 나머지 JSX (hero-bottomBox, hero-center 등)는 동일 ... */}
       <div className="hero-bottomBox">
         <div className="hero-bottom-content">
           <div className="hero-bottom left">
@@ -78,28 +99,22 @@ export default function Hero() {
         </div>
       </div>
 
-     {/* ✅ DECODER (영상 마스크) - Safari 호환: CSS -webkit-mask */}
-<div className="hero-center">
-  <div className="decoder-wrap" aria-label="DECODER masked video">
-    {/* 마스크가 적용될 레이어 */}
-    <div className="decoder-mask-container">
-      <video
-        className="decoder-video"
-        src="/video/video.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
-      />
-    </div>
+      <div className="hero-center">
+        <div className="decoder-wrap" aria-label="DECODER masked video">
+          <div className="decoder-mask-container">
+            <video
+              className="decoder-video"
+              src="/video/video.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+          </div>
+          <div className="decoder-stroke-text">DECODER</div>
+        </div>
+      </div>
 
-    {/* 외곽선 텍스트 */}
-    <div className="decoder-stroke-text">DECODER</div>
-  </div>
-</div>
-
-
-      {/* ✅ 스크롤 전환: 풀스크린 비디오 레이어 */}
       <div className="full-video-layer" ref={videoLayerRef}>
         <video
           className="full-video"

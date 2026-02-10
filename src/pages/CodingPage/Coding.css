@@ -3,6 +3,7 @@
   width: 100%;
   overflow: hidden; /* 필수: 오른쪽 대기 시 가로 스크롤 방지 */
   position: relative;
+  background-color: black;
 }
 
 .coding-visual {
@@ -14,8 +15,14 @@
 .coding .title-container {
   margin-bottom: 100px;
 }
-
-.subTitle {
+.coding .title {
+  color: white;
+}
+.coding .sub-title {
+  color: white;
+}
+.coding .subTitle {
+  color: white;
   text-align: left;
   margin-bottom: 150px;
 }
@@ -34,45 +41,6 @@
   position: relative;
   width: 100%;
   opacity: 1;
-}
-
-.swiper-container {
-  position: relative;
-  width: 100%;
-  height: 420px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.swiper-track-centered {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.slide {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transition:
-    transform 0.8s cubic-bezier(0.23, 1, 0.32, 1),
-    opacity 0.5s;
-  cursor: none;
-}
-
-.slide-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-.slide img {
-  object-fit: cover;
-  transition: transform 0.6s ease;
-  width: 100%;
 }
 
 /* ✅ Tech Tabs 위치 고정 */
@@ -193,4 +161,39 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.swiper-container {
+  width: 100%;
+  max-width: 1000px; /* 원하는 슬라이드 영역 너비 */
+  margin: 0 auto;
+  position: relative;
+}
+
+.swiper-track-horizontal {
+  display: flex; /* 가로 나열 */
+  width: 100%;
+}
+
+.slide {
+  flex: 0 0 100%; /* 한 화면에 1개씩 보일 때 */
+  width: 100%;
+  padding: 0 10px; /* 슬라이드 간 간격 */
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+}
+
+.slide-inner {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
 }

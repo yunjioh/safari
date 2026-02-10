@@ -1,74 +1,53 @@
 .skill {
-  font-family: "Basis Grotesque Arabic Pro", sans-serif;
-  min-height: 120vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
-.skill .title-container {
+.skill-header {
+  justify-content: space-between;
+  align-items: center;
+  padding: 12vw 6vw 50px;
+}
+
+.skill .subTitle.right {
   margin-bottom: 0;
 }
 
-.skill-header {
-  align-items: center;
-  padding: 12vw 6vw 0;
-}
-
-.skill .subTitle {
-  margin-bottom: 50px;
-}
-
 .skill .title {
-  white-space: pre-wrap;
+  width: 60%;
 }
-
-.skill-active-title {
-  position: absolute;
-  top: 35%;
-  width: 100%;
-  text-align: center;
-  font-size: 20px;
-  font-weight: 600;
-  color: inherit;
-  opacity: 0;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.skill-card:hover .skill-active-title {
-  opacity: 1;
-  transform: translateY(0);
-}
-
+/* 마키 애니메이션 정의 */
 .marquee-wrapper {
   width: 100%;
   margin-top: auto;
-  margin-bottom: 200px;
+  margin-bottom: 100px;
 }
 
 .marquee-content {
   display: flex;
   gap: 15px;
   width: max-content;
-  animation: scrollMarquee 40s linear infinite;
   align-items: flex-end;
   height: 400px;
-}
-
-.marquee-wrapper:hover .marquee-content {
-  animation-play-state: paused;
+  animation: scrollMarquee 40s linear infinite;
 }
 
 @keyframes scrollMarquee {
   0% {
     transform: translateX(0);
   }
-
   100% {
     transform: translateX(-50%);
   }
 }
 
+.marquee-wrapper:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+/* 카드 기본 스타일 */
 .skill-card {
   position: relative;
   width: 180px;
@@ -86,7 +65,6 @@
 
 .icon-box {
   font-size: 50px;
-  color: #000;
   transition: all 0.5s ease;
 }
 
@@ -94,41 +72,76 @@
   margin-top: 15px;
   font-size: 18px;
   font-weight: 500;
-  color: white;
-  transition: opacity 0.3s ease;
 }
 
+.skill-active-title,
 .skill-hover-desc {
   position: absolute;
-  width: 100%;
-  padding: 0 25px;
-  color: #fff;
-  font-size: 15px;
-  line-height: 1.6;
-  text-align: center;
-  word-break: keep-all;
   opacity: 0;
-  bottom: 50px;
   transition: all 0.4s ease;
-  transform: translateY(20px);
 }
 
+/* Hover 시 커지는 효과 (PC 위주) */
 .skill-card:hover {
   width: 250px;
   height: 350px;
-  background-color: #1a1a1a;
+  background-color: #1a1a1a !important;
 }
 
 .skill-card:hover .icon-box {
-  color: #fff;
   transform: translateY(-80px) scale(0.9);
-}
-
-.skill-card:hover .skill-name {
-  opacity: 0;
 }
 
 .skill-card:hover .skill-hover-desc {
   opacity: 1;
+  bottom: 50px;
   transform: translateY(0);
+  padding: 0 25px;
+  text-align: center;
+  font-size: 15px;
+}
+@media (max-width: 1100px) {
+  .skill .title {
+    width: 100%;
+  }
+}
+@media (max-width: 955px) {
+  .skill-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .marquee-wrapper {
+    margin-bottom: 50px;
+    padding: 0 6vw;
+  }
+
+  .marquee-content {
+    animation: none; /* 애니메이션 중단 */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3열 그리드 */
+    gap: 20px;
+    width: 100%;
+    height: auto;
+    align-items: center;
+  }
+
+  .skill-card {
+    width: 100% !important; /* 가로 고정 해제 */
+    height: 180px !important; /* 높이 고정 (모바일 가시성) */
+  }
+
+  /* 그리드 모드에서는 호버 시 커지는 효과 제거 (터치 환경 고려) */
+  .skill-card:hover {
+    transform: none;
+    height: 180px !important;
+    width: 100% !important;
+  }
+}
+
+/* 모바일 (600px 이하 2열) */
+@media (max-width: 600px) {
+  .marquee-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

@@ -5,7 +5,10 @@ import "../pages/ProjectPage/Project.css";
 
 const ProjectCard = ({ project }) => {
   return (
-    <section className="project">
+    <section
+      className="project"
+      style={{ backgroundColor: project.bgGradient }}
+    >
       <div className="project-content">
         <div className="text-area">
           <Title
@@ -19,9 +22,10 @@ const ProjectCard = ({ project }) => {
               <strong>DURATION</strong> {project.duration}
             </p>
 
-            <p className="role-text">
-              <strong>PROJECT ROLE</strong> <p>{project.role}</p>
-            </p>
+            <div className="role-text">
+              <strong>PROJECT ROLE</strong>
+              <p>{project.role}</p>
+            </div>
 
             <p className="detail-text">{project.detail}</p>
           </div>
@@ -49,7 +53,16 @@ const ProjectCard = ({ project }) => {
         <div className="image-display-area">
           {project.image && (
             <div className="image-wrapper">
-              <img src={project.image} alt={`${project.mainTitle} preview`} />
+              <picture>
+                {project.imageMobile && (
+                  <source
+                    media="(max-width: 1200px)"
+                    srcSet={project.imageMobile}
+                  />
+                )}
+
+                <img src={project.image} alt={`${project.mainTitle} preview`} />
+              </picture>
             </div>
           )}
         </div>

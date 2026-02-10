@@ -1,12 +1,31 @@
 .hero {
   position: relative;
   height: 100vh;
-  background: #fff;
-  /* 스크린샷처럼 화이트 */
+  background: #fff; /* 스크린샷처럼 화이트 */
   color: #000;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001; /* 메뉴보다 위에 위치 */
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  transition: all 0.3s ease;
 }
 
 /* 헤더 */
@@ -21,6 +40,7 @@
 }
 
 .hero-name {
+  font-family: "PP Editorial New", serif;
   font-size: 30px;
   font-weight: 900;
   letter-spacing: -1px;
@@ -30,8 +50,8 @@
   display: flex;
   padding: 8px 14px;
   background: rgba(255, 255, 255, 0.75);
+  border-radius: 30px;
   border: 1px solid rgba(0, 0, 0, 0.45);
-  border-radius: 999px;
   backdrop-filter: blur(10px);
   align-items: center;
 }
@@ -99,8 +119,7 @@
 
 .decoder-text,
 .decoder-stroke {
-  font-family: "Solemn Sojourn", serif;
-  /* 너가 쓰던 폰트 유지 */
+  font-family: "Solemn Sojourn", serif; /* 너가 쓰던 폰트 유지 */
   font-weight: 900;
   letter-spacing: -10px;
   font-size: 430px;
@@ -117,10 +136,8 @@
   inset: 0;
   z-index: 1;
   overflow: hidden;
-
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='520' viewBox='0 0 1600 520'%3E%3Ctext x='770' y='500' text-anchor='middle' font-family='Solemn Sojourn' font-weight='900' font-size='400' letter-spacing='60'%3EDECODER%3C/text%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='520' viewBox='0 0 1600 520'%3E%3Ctext x='770' y='500' text-anchor='middle' font-family='Solemn Sojourn' font-weight='900' font-size='400' letter-spacing='-60'%3EDECODER%3C/text%3E%3C/svg%3E");
-
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='520' viewBox='0 0 1600 520'%3E%3Ctext x='800' y='500' text-anchor='middle' font-family='Solemn Sojourn' font-weight='900' font-size='430' letter-spacing='10'%3EDECODER%3C/text%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='520' viewBox='0 0 1600 520'%3E%3Ctext x='800' y='500' text-anchor='middle' font-family='Solemn Sojourn' font-weight='900' font-size='430' letter-spacing='-10'%3EDECODER%3C/text%3E%3C/svg%3E");
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-size: contain;
@@ -133,7 +150,6 @@
 .decoder-stroke-text {
   display: none;
 }
-
 
 /* 마스크 내부 영상 */
 .decoder-videoBox {
@@ -154,20 +170,18 @@
   position: absolute;
   inset: 0;
   z-index: 50;
-  background: transparent;
-  /* 카드면 검정 배경 없어도 됨 */
+  background: transparent; /* 카드면 검정 배경 없어도 됨 */
   display: flex;
   align-items: center;
   justify-content: center;
-
   /* ✅ 이 줄 삭제/제거해야 GSAP이 transform을 통제함 */
   /* transform: translateY(100%); */
   will-change: transform, opacity;
 }
 
 .full-video {
-  width: min(92vw, 1200px);
-  height: min(65vh, 720px);
+  width: 60%;
+  height: 55%;
   object-fit: cover;
   border-radius: 40px;
 }
@@ -178,16 +192,74 @@
 }
 
 .video-text {
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 500;
   color: white;
   transform: translateY(10px);
+  letter-spacing: -2px;
 }
 
 /* =========================
-   Responsive: <= 1024px
-   ========================= */
+ Responsive: <= 1024px
+ ========================= */
+@media (max-width: 1600px) {
+  .video-text {
+    font-size: 30px;
+  }
+}
+@media (max-width: 1400px) {
+  .full-video {
+    height: 48%;
+  }
+  .hero-name {
+    font-size: 28px;
+  }
+}
 @media (max-width: 1024px) {
+  .hamburger {
+    display: flex;
+  }
+  .hero-name {
+    font-size: 26px;
+  }
+  /* 메뉴를 화면 밖으로 숨김 */
+  .hero-nav {
+    position: fixed;
+    top: 0;
+    right: -100%; /* 오른쪽으로 숨김 */
+    width: 40%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95); /* 어두운 배경 */
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 1000;
+  }
+
+  /* 메뉴 활성화 상태 */
+  .hero-nav.active {
+    right: 0;
+  }
+
+  /* 햄버거 애니메이션 (X자로 변신) */
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
+  .hamburger.active span {
+    background: white;
+  }
+
   .header {
     width: 92%;
     padding: 30px 0 22px;
@@ -198,8 +270,9 @@
   }
 
   .hero-nav a {
-    font-size: 14px;
+    font-size: 25px;
     padding: 4px 8px;
+    color: #fff;
   }
 
   .hero-center {
@@ -224,8 +297,8 @@
 
   /* 마스크 텍스트 스케일 다운 + 자간 조정 */
   .decoder-mask-container {
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='520' viewBox='0 0 1600 520'%3E%3Ctext x='800' y='500' text-anchor='middle' font-family='Solemn Sojourn' font-weight='900' font-size='360' letter-spacing='-40'%3EDECODER%3C/text%3E%3C/svg%3E");
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='520' viewBox='0 0 1600 520'%3E%3Ctext x='800' y='500' text-anchor='middle' font-family='Solemn Sojourn' font-weight='900' font-size='360' letter-spacing='-40'%3EDECODER%3C/text%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='520' viewBox='0 0 1600 520'%3E%3Ctext x='800' y='500' text-anchor='middle' font-family='Solemn Sojourn' font-weight='900' font-size='480' letter-spacing='-40'%3EDECODER%3C/text%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='520' viewBox='0 0 1600 520'%3E%3Ctext x='800' y='500' text-anchor='middle' font-family='Solemn Sojourn' font-weight='900' font-size='480' letter-spacing='-40'%3EDECODER%3C/text%3E%3C/svg%3E");
     -webkit-mask-position: 50% bottom;
     mask-position: 50% bottom;
   }
@@ -235,15 +308,8 @@
     height: min(64vh, 400px);
     border-radius: 32px;
   }
-
-  .video-text {
-    font-size: 42px;
-  }
 }
 
-/* =========================
-   Responsive: <= 768px
-   ========================= */
 @media (max-width: 768px) {
   .header {
     width: 90%;
@@ -255,14 +321,8 @@
     letter-spacing: -0.6px;
   }
 
-  /* 네비가 길어서 줄바꿈/넘침 방지 */
   .hero-nav {
-    padding: 6px 10px;
-    gap: 2px;
-  }
-  .hero-nav a {
-    font-size: 13px;
-    padding: 4px 7px;
+    gap: 20px;
   }
 
   .hero-bottomBox {
@@ -286,27 +346,37 @@
     height: 340px;
   }
 
-  .decoder-mask-container {
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='520' viewBox='0 0 1600 520'%3E%3Ctext x='800' y='500' text-anchor='middle' font-family='Solemn Sojourn' font-weight='900' font-size='300' letter-spacing='-32'%3EDECODER%3C/text%3E%3C/svg%3E");
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='520' viewBox='0 0 1600 520'%3E%3Ctext x='800' y='500' text-anchor='middle' font-family='Solemn Sojourn' font-weight='900' font-size='300' letter-spacing='-32'%3EDECODER%3C/text%3E%3C/svg%3E");
-    -webkit-mask-position: 50% bottom;
-    mask-position: 50% bottom;
-  }
-
   .full-video {
     height: 35vh;
-    border-radius: 26px;
+    border-radius: 15px;
   }
-
   .video-text {
-    font-size: 36px;
+    font-size: 25px;
   }
 }
 
-/* =========================
-   Responsive: <= 430px
-   ========================= */
-@media (max-width: 430px) {
+@media (max-width: 630px) {
+  .hero-bottom-content {
+    font-size: 12px;
+  }
+  .video-text {
+    font-size: 20px;
+  }
+  .full-video {
+    border-radius: 15px;
+  }
+  .hero-nav {
+    width: 58%;
+  }
+}
+
+@media (max-width: 550px) {
+  .hero-bottom-content {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
   .header {
     width: 92%;
     padding: 18px 0 14px;
@@ -316,7 +386,6 @@
     font-size: 18px;
   }
 
-  /* 네비는 가로폭이 부족하니 스크롤형으로 */
   .hero-nav {
     max-width: 68vw;
     overflow-x: auto;
@@ -327,9 +396,7 @@
     display: none;
   }
   .hero-nav a {
-    white-space: nowrap;
-    font-size: 12px;
-    padding: 4px 6px;
+    font-size: 18px;
   }
 
   .hero-bottomBox {
@@ -345,28 +412,19 @@
     gap: 10px;
     font-size: 12px;
   }
-  .hero-bottom.right {
-    text-align: left;
-  }
 
   .decoder-wrap {
     height: 250px;
   }
 
-  .decoder-mask-container {
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='520' viewBox='0 0 1600 520'%3E%3Ctext x='800' y='500' text-anchor='middle' font-family='Solemn Sojourn' font-weight='900' font-size='220' letter-spacing='-24'%3EDECODER%3C/text%3E%3C/svg%3E");
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='520' viewBox='0 0 1600 520'%3E%3Ctext x='800' y='500' text-anchor='middle' font-family='Solemn Sojourn' font-weight='900' font-size='220' letter-spacing='-24'%3EDECODER%3C/text%3E%3C/svg%3E");
-    -webkit-mask-position: 50% bottom;
-    mask-position: 50% bottom;
-  }
-
-  .full-video {
-    width: 92vw;
-    height: 52vh;
-    border-radius: 20px;
-  }
-
   .video-text {
-    font-size: 28px;
+    font-size: 15px;
+  }
+  .hamburger {
+    width: 22px;
+    height: 16px;
+  }
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(5px) rotate(45deg);
   }
 }

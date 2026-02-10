@@ -7,10 +7,8 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  padding: 0 129px;
+  padding: 0 6vw;
   box-sizing: border-box;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
 }
 
 .down_arrow {
@@ -31,7 +29,7 @@
   left: 50%;
   top: 0;
   height: 100%;
-  background-color: white;
+  background-color: black;
   width: 30px;
   transform: translateX(-50%);
   -webkit-animation: down 2.3s ease-out infinite forwards;
@@ -66,13 +64,12 @@
 }
 
 .text-area {
-  padding: 100px 0;
+  padding: 7vh 0;
 }
 .project-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  white-space: pre-line;
   width: 100%;
   gap: 56px;
 }
@@ -127,8 +124,7 @@ strong {
 }
 
 .project img {
-  width: min(570px, 38vw);
-  height: auto;
+  width: 30vw;
   display: block;
 }
 
@@ -159,6 +155,7 @@ strong {
 /* sticky가 동작하려면 상위에 overflow가 막히면 안 됨 */
 .project-page {
   width: 100%;
+  background-color: black;
 }
 
 /* 스택 영역: 카드들이 겹겹이 나오게 충분한 스크롤 길이 확보 */
@@ -168,12 +165,85 @@ strong {
 
 .project-sticky-item {
   position: sticky;
-  margin: 0 auto 60px;
+  margin: 0 4vw 60px;
   border-radius: 20px;
-  background: white;
-  width: min(1780px, 92vw);
+  overflow: hidden;
 }
 
 .project .title-container {
   margin-bottom: 68px;
+}
+
+@media (max-width: 1600px) {
+  .role-text {
+    font-size: 18px;
+  }
+  .detail-text {
+    font-size: 17px;
+  }
+}
+@media (max-width: 1400px) {
+  .main-button {
+    padding: 12px 20px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .project-sticky-item {
+    position: relative !important; /* sticky 해제 */
+    top: 0 !important; /* 설정된 80px 무시 */
+    margin-bottom: 50px; /* 카드 사이 간격 추가 (선택사항) */
+    z-index: auto !important; /* 쌓임 순서 초기화 */
+  }
+
+  .project-sticky-stack {
+    height: auto !important; /* 부모 높이 제한 해제 */
+    display: flex;
+    flex-direction: column; /* 위아래로 차곡차곡 */
+  }
+  .project-content {
+    flex-direction: column-reverse;
+  }
+  .project {
+    padding-top: 12vw;
+  }
+  .project img {
+    width: 72vw;
+  }
+  .text-area {
+    padding: 0 0 100px 0;
+  }
+}
+@media (max-width: 768px) {
+  .project .sub-title {
+    font-size: 16px;
+    margin-bottom: 2px;
+  }
+  strong {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 570px) {
+  strong {
+    font-size: 18px;
+  }
+  .duration-text {
+    font-size: 16px;
+  }
+  .role-text {
+    font-size: 16px;
+  }
+  .detail-text {
+    font-size: 15px;
+  }
+  .contrib-label {
+    font-size: 16px;
+  }
+  .contrib-value {
+    font-size: 16px;
+  }
+  .project .title-container {
+    margin-bottom: 45px;
+  }
 }

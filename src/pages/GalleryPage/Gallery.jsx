@@ -19,7 +19,7 @@ const Gallery = () => {
       const bottom = el.querySelector(".bottom-description");
 
       // 초기 상태 설정
-      gsap.set(bg, { scale: 1 }); // 초기엔 흑백
+      gsap.set(bg, { scale: 1, filter: "grayscale(100%)" }); // 초기엔 흑백
       gsap.set(textWrap, { scale: 1 });
       gsap.set(mainTitle, { color: "#fff" }); // 초기엔 흰색
 
@@ -38,16 +38,17 @@ const Gallery = () => {
       tl.to(
         bg,
         {
-          scale: 0.25,
+          scale: 0.5,
           filter: "grayscale(0%)",
           ease: "none",
+          borderRadius: "20px",
         },
         0,
       )
         .to(
           textWrap,
           {
-            scale: 2.2, // 🔼 텍스트 커짐
+            scale: 1.5, // 🔼 텍스트 커짐
             ease: "none",
           },
           0,
@@ -55,7 +56,7 @@ const Gallery = () => {
         .to(
           mainTitle,
           {
-            color: "#000000", // 🔼 텍스트 검정색으로 변경
+            color: "#BBFF52", // 🔼 텍스트 검정색으로 변경
             ease: "none",
           },
           0,

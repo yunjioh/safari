@@ -30,25 +30,45 @@ const Think = () => {
   const cardsRef = useRef([]);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        cardsRef.current,
-        { x: 0, opacity: 0, scale: 0.5 },
-        {
-          x: (i) => (i - 1.5) * 320,
-          opacity: 1,
-          scale: 1,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: "+=500",
-            scrub: 1.5,
-          },
-        },
-      );
-    }, sectionRef);
+    let mm = gsap.matchMedia();
 
-    return () => ctx.revert();
+    mm.add(
+      {
+        // PC: 1201px 이상 (가로 한 줄 배치)
+        isDesktop: "(min-width: 1201px)",
+        // 반응형: 1200px 이하 (2x2 그리드 배치)
+        isResponsive: "(max-width: 1200px)",
+      },
+      (context) => {
+        let { isDesktop } = context.conditions;
+
+        gsap.fromTo(
+          cardsRef.current,
+          {
+            opacity: 0,
+            scale: 0.5,
+            // PC일 때는 중앙(0)에서 시작, 모바일은 제자리에서 약간 아래(y)에서 시작
+            x: isDesktop ? 0 : 0,
+            y: isDesktop ? 0 : 50,
+          },
+          {
+            x: isDesktop ? (i) => (i - 1.5) * 320 : 0,
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: isDesktop ? "top top" : "top 80%", // 모바일은 핀 고정 없이 트리거
+              end: isDesktop ? "+=500" : "bottom 20%",
+              scrub: 1.5,
+              pin: isDesktop, // PC에서만 화면 고정(Pin) 사용
+            },
+          },
+        );
+      },
+    );
+
+    return () => mm.revert();
   }, []);
 
   return (
@@ -72,13 +92,10 @@ const Think = () => {
             ref={(el) => (cardsRef.current[i] = el)}
           >
             <div className="think-card-inner">
-              {/* 앞면: 질문 */}
               <div className="think-card front">
                 <span className="think-q-label">QUESTION 0{item.id}</span>
                 <p className="think-q-text">{item.q}</p>
               </div>
-
-              {/* 뒷면: 답변 */}
               <div className="think-card back">
                 <p className="think-a-text">{item.a}</p>
               </div>

@@ -2,6 +2,7 @@
   height: 110vh;
   justify-content: center;
   padding: 150px 0;
+  background: #000;
   color: white;
   display: flex;
   flex-direction: column;
@@ -42,6 +43,7 @@
 }
 
 .main-display-title {
+  font-family: "PP Editorial New", serif;
   font-size: 156px;
   font-weight: 500;
   line-height: 0.95;
@@ -52,4 +54,13 @@
   font-size: 20px;
   line-height: 1.6;
   letter-spacing: -1px;
+}
+
+@media (max-width: 1600px) {
+  .top-label {
+    font-size: 18px;
+  }
+  .bottom-description {
+    font-size: 18px;
+  }
 }

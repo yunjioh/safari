@@ -47,23 +47,20 @@ const codingProjects = [
     link: "https://yunjioh.github.io/Musign/",
   },
 ];
-
 const Coding = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const visualRef = useRef(null); // 스와이퍼 영역 참조용
+  const visualRef = useRef(null);
   const projects = useMemo(() => codingProjects, []);
   const total = projects.length;
 
   useEffect(() => {
     const el = visualRef.current;
-
     gsap.fromTo(
       el,
-      {
-        x: 200,
-      },
+      { x: 200, opacity: 0 },
       {
         x: 0,
+        opacity: 1,
         duration: 1.4,
         ease: "power4.out",
         scrollTrigger: {
@@ -76,6 +73,7 @@ const Coding = () => {
   }, []);
 
   const move = (dir) => {
+    // 일반 슬라이더이므로 끝에 도달하면 멈추거나 처음으로 돌아가게 설정
     setCurrentIndex((prev) => (prev + dir + total) % total);
   };
 
@@ -125,64 +123,50 @@ const Coding = () => {
 
         <div className="coding-visual" ref={visualRef}>
           <div className="swiper-wrap is-visible">
-            {/* <div className="tech-tabs">
-              <div className="tech-tab orange">HTML</div>
-              <div className="tech-tab neon">CSS</div>
-              <div className="tech-tab blue">JAVASCRIPT</div>
-            </div> */}
-
             <div className="swiper-container">
-              <div className="swiper-track-centered">
-                {projects.map((p, idx) => {
-                  let offset = idx - currentIndex;
-                  if (offset > total / 2) offset -= total;
-                  if (offset < -total / 2) offset += total;
-
-                  const isCenter = offset === 0;
-                  const xPosition = offset * 550;
-
-                  return (
-                    <a
-                      key={p.id}
-                      className={`slide ${isCenter ? "active" : ""}`}
-                      href={p.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onMouseMove={handleMouseMove}
-                      style={{
-                        zIndex: isCenter ? 20 : 10 - Math.abs(offset),
-                        transform: `translate3d(calc(-50% + ${xPosition}px), -50%, 0) scale(${isCenter ? 1 : 0.8})`,
-                        opacity: Math.abs(offset) > 2 ? 0 : 1,
-                        visibility: Math.abs(offset) > 2 ? "hidden" : "visible",
-                      }}
-                    >
-                      <div className="slide-inner">
-                        <img src={p.img} alt={p.name} />
-                        <div className="cursor">
-                          <svg
-                            className="cursor-text"
-                            width="120"
-                            height="120"
-                            viewBox="0 0 120 120"
-                          >
-                            <defs>
-                              <path
-                                id="circlePath"
-                                d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"
-                              />
-                            </defs>
-                            <text>
-                              <textPath href="#circlePath">
-                                VIEW PROJECT • VIEW PROJECT • VIEW PROJECT
-                              </textPath>
-                            </text>
-                          </svg>
-                          <div className="cursor-arrow">→</div>
-                        </div>
+              {/* ✅ 트랙 자체를 움직이는 방식으로 변경 */}
+              <div
+                className="swiper-track-horizontal"
+                style={{
+                  transform: `translateX(-${currentIndex * (100 / 1)}%)`, // 1개씩 보일 때 기준
+                  transition: "transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)",
+                }}
+              >
+                {projects.map((p, idx) => (
+                  <a
+                    key={p.id}
+                    className={`slide ${currentIndex === idx ? "active" : ""}`}
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onMouseMove={handleMouseMove}
+                  >
+                    <div className="slide-inner">
+                      <img src={p.img} alt={p.name} />
+                      <div className="cursor">
+                        <svg
+                          className="cursor-text"
+                          width="120"
+                          height="120"
+                          viewBox="0 0 120 120"
+                        >
+                          <defs>
+                            <path
+                              id="circlePath"
+                              d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"
+                            />
+                          </defs>
+                          <text>
+                            <textPath href="#circlePath">
+                              VIEW PROJECT • VIEW PROJECT • VIEW PROJECT
+                            </textPath>
+                          </text>
+                        </svg>
+                        <div className="cursor-arrow">→</div>
                       </div>
-                    </a>
-                  );
-                })}
+                    </div>
+                  </a>
+                ))}
               </div>
             </div>
 

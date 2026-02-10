@@ -19,8 +19,9 @@ const projectData = [
 총 4차례의 피드백 과정을 거쳐 스토리보드와 인터랙션이 포함된 고도화된 프로토타입을 제작하며, 
 기획부터 최종 전달(Deliver)까지의 프로젝트 사이클을 완수했습니다.`,
     image: "/img/project1.svg",
+    imageMobile: "/img/project1_mo.svg",
     pointColor: "var(--blue)",
-    bgGradient: "black",
+    bgGradient: "white",
     contribution: [
       { label: "기획", value: 90 },
       { label: "디자인", value: 90 },
@@ -39,8 +40,9 @@ const projectData = [
 정교하게 구현했습니다. 최종적으로 인터랙션 안정화와 QA를 거쳐, 설계한 디자인 시스템이 배포 환경까지 완성도 높게 
 유지되도록 기여했습니다.`,
     image: "/img/project2.svg",
+    imageMobile: "/img/project2_mo.svg",
     pointColor: "var(--orange)",
-    bgGradient: "black",
+    bgGradient: "white",
     contribution: [
       { label: "기획", value: 90 },
       { label: "디자인", value: 90 },
@@ -57,8 +59,9 @@ const projectData = [
 직접 설계한 화면을 React 기반의 컴포넌트 단위로 구현하여 디자인 의도가 반영되도록 하였습니다. 
 이후 배너와 포스터 등 제작은 물론, Vercel 배포와 최종 QA를 도맡아 하며 실제 서비스로 완성되는 전 과정을 책임졌습니다.`,
     image: "/img/project3.svg",
+    imageMobile: "/img/project3_mo.svg",
     pointColor: "var(--purple)",
-    bgGradient: "black",
+    bgGradient: "white",
     contribution: [
       { label: "기획", value: 90 },
       { label: "디자인", value: 90 },

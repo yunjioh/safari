@@ -8,18 +8,65 @@
 }
 
 .sub-phrase {
-  font-size: 4vw;
+  font-family: "PP Editorial New", serif;
+  font-size: 55px;
   letter-spacing: -3px;
-  line-height: 1.1;
+  line-height: 1;
   color: #0c0c0c;
   font-weight: normal;
   margin-bottom: 15px;
 }
 
 .sub-desc {
-  font-size: 23px;
+  font-size: 25px;
   color: #9e9e9e;
   white-space: pre-wrap;
   letter-spacing: -1px;
   line-height: 1.5;
+}
+
+@media (max-width: 1600px) {
+  .sub-phrase {
+    font-size: 45px;
+  }
+  .sub-desc {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .sub-phrase {
+    font-size: 40px;
+  }
+  .sub-desc {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .sub-phrase {
+    font-size: 35px;
+  }
+  .sub-desc {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sub-phrase {
+    font-size: 30px;
+    letter-spacing: -1px;
+  }
+  .sub-desc {
+    font-size: 16px;
+  }
+}
+@media (max-width: 570px) {
+  .sub-phrase {
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+  .sub-desc {
+    white-space: inherit;
+  }
 }

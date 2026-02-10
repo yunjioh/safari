@@ -6,9 +6,9 @@ const Badge = ({ text, color, rotate, position, style: extraStyle }) => {
     position: "absolute",
     ...position,
 
-    padding: "10px 30px",
+    padding: "8px 25px",
     borderRadius: "30px",
-    fontSize: "20px",
+    fontSize: "18px",
 
     ...extraStyle,
   };
