@@ -1,76 +1,62 @@
-/* =============================
- ProjectCard 내부 레이아웃
-============================= */
+/* 섹션 자체가 한 화면에서 pin 되며 내부 내용만 바뀜 */
+.project-section {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.project-section .title {
+  color: white;
+}
+
+.project-section .sub-title {
+  color: white;
+}
+
 .project {
-  width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
+  padding: 0 6vw;
+  color: white;
+}
+
+/* 배경 레이어 */
+.project-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* 실제 컨텐츠 래퍼 */
+.project-inner {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  /* 가운데 정렬 */
   padding: 0 6vw;
   box-sizing: border-box;
 }
 
-.down_arrow {
-  display: flex;
-  justify-content: center;
-}
-
-.down_arrow div {
-  text-align: center;
-  position: relative;
-  display: flex;
-  position: relative;
-}
-
-.down_arrow div::before {
-  content: "";
+/* 각 프로젝트 패널은 겹쳐 놓고 교체 */
+.project-panel {
   position: absolute;
-  left: 50%;
-  top: 0;
+  width: 100%;
   height: 100%;
-  background-color: black;
-  width: 30px;
-  transform: translateX(-50%);
-  -webkit-animation: down 2.3s ease-out infinite forwards;
-  animation: down 2.3s ease-out infinite forwards;
+  overflow: hidden;
 }
 
-@keyframes down {
-  0%,
-  100% {
-    -webkit-clip-path: inset(0 0 0 0);
-    clip-path: inset(0 0 0 0);
-  }
-  25% {
-    -webkit-clip-path: inset(100% 0 0 0);
-    clip-path: inset(100% 0 0 0);
-  }
-  50% {
-    -webkit-clip-path: inset(0 0 100% 0);
-    clip-path: inset(0 0 100% 0);
-  }
-}
-
-.project .title {
-  font-size: clamp(44px, 5vw, 96px);
-  white-space: pre-line;
-  text-transform: uppercase;
-  line-height: 0.95;
-}
-
-.project .sub-title {
-  font-size: 20px;
-}
 
 .text-area {
   padding: 7vh 0;
 }
+
 .project-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  height: 100%;
   gap: 56px;
 }
 
@@ -79,30 +65,33 @@
 }
 
 strong {
-  font-size: 22px; /* 섹션 라벨 느낌 */
-  font-weight: 700;
+  font-size: 22px;
+  /* 섹션 라벨 느낌 */
+  font-weight: 600;
   display: block;
   margin-bottom: 10px;
   letter-spacing: 0.4px;
   line-height: 1.7;
+  opacity: 0.85;
 }
 
 .duration-text {
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 200;
   margin-bottom: 32px;
   opacity: 0.85;
 }
 
 .role-text {
   margin-top: 10px;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .detail-text {
   margin-top: 10px;
   font-size: 18px;
+  font-weight: 200;
   line-height: 1.6;
   letter-spacing: -1px;
 }
@@ -115,7 +104,7 @@ strong {
 }
 
 .project .main-button {
-  background-color: #333;
+  background: transparent;
   color: white;
   font-size: 12px;
   font-family: "Pretendard", sans-serif;
@@ -166,7 +155,6 @@ strong {
 .project-sticky-item {
   position: sticky;
   margin: 0 4vw 60px;
-  border-radius: 20px;
   overflow: hidden;
 }
 
@@ -174,76 +162,51 @@ strong {
   margin-bottom: 68px;
 }
 
-@media (max-width: 1600px) {
-  .role-text {
-    font-size: 18px;
-  }
-  .detail-text {
-    font-size: 17px;
-  }
-}
-@media (max-width: 1400px) {
-  .main-button {
-    padding: 12px 20px;
-  }
-}
 
-@media (max-width: 1200px) {
-  .project-sticky-item {
-    position: relative !important; /* sticky 해제 */
-    top: 0 !important; /* 설정된 80px 무시 */
-    margin-bottom: 50px; /* 카드 사이 간격 추가 (선택사항) */
-    z-index: auto !important; /* 쌓임 순서 초기화 */
+@media (max-width: 768px) {
+  .project-section {
+    height: auto;
+    overflow: visible;
   }
 
-  .project-sticky-stack {
-    height: auto !important; /* 부모 높이 제한 해제 */
-    display: flex;
-    flex-direction: column; /* 위아래로 차곡차곡 */
+  .project {
+    padding: 12vh 6vw;
   }
+
+  .project-bg {
+    display: none;
+  }
+
   .project-content {
     flex-direction: column-reverse;
   }
-  .project {
-    padding-top: 12vw;
-  }
-  .project img {
-    width: 72vw;
-  }
+
   .text-area {
-    padding: 0 0 100px 0;
+    padding: 0;
   }
-}
-@media (max-width: 768px) {
-  .project .sub-title {
-    font-size: 16px;
-    margin-bottom: 2px;
+
+  .project-inner {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
   }
-  strong {
-    font-size: 20px;
+
+  .project-panel {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: unset;
   }
 }
 
-@media (max-width: 570px) {
+@media (max-width: 768px) {
   strong {
-    font-size: 18px;
+    font-size: 20px;
   }
-  .duration-text {
+  .detail-text {
     font-size: 16px;
   }
   .role-text {
     font-size: 16px;
-  }
-  .detail-text {
-    font-size: 15px;
-  }
-  .contrib-label {
-    font-size: 16px;
-  }
-  .contrib-value {
-    font-size: 16px;
-  }
-  .project .title-container {
-    margin-bottom: 45px;
   }
 }

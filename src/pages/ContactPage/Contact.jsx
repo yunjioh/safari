@@ -11,43 +11,52 @@ const Contact = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 40%", // 섹션이 화면 하단 80% 지점에 도달하면 시작
-          end: "40% 55%",
-          scrub: 1,
-        },
+      // ✅ 초기 상태 (배경 라인이 안 보이게)
+      gsap.set(bgRef.current, {
+        transformOrigin: "50% 100%",
+        scaleY: 0,
       });
 
-      // 1. 0이었던 scaleY를 1로 만들어 100vh를 꽉 채움
+      // ✅ 텍스트도 초기 숨김
+      gsap.set(".contact-container", { y: 50, opacity: 0 });
+      gsap.set(".reveal-text", { y: 30, opacity: 0 });
+
+      const tl = gsap.timeline({ paused: true });
+
       tl.to(bgRef.current, {
         scaleY: 1,
-        duration: 2,
+        duration: 0.9,
         ease: "power2.inOut",
       })
-        // 2. 배경이 다 찬 후 내부 텍스트 등장
-        .from(
+        .to(
           ".contact-container",
           {
-            y: 50,
-            opacity: 0,
-            duration: 1,
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
             ease: "power3.out",
           },
-          "-=0.5",
+          "-=0.35"
         )
-        .from(
+        .to(
           ".reveal-text",
           {
-            y: 30,
-            opacity: 0,
-            stagger: 0.2,
-            duration: 1,
+            y: 0,
+            opacity: 1,
+            stagger: 0.12,
+            duration: 0.6,
             ease: "power3.out",
           },
-          "-=0.5",
+          "-=0.45"
         );
+
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top 75%",
+        once: false, 
+        onEnter: () => tl.play(0),
+        // markers: true,
+      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -55,9 +64,7 @@ const Contact = () => {
 
   return (
     <section className="contact" ref={sectionRef} id="contact">
-      {/* 배경색 #BBFF52 적용 및 100vh 높이 유지 */}
       <div className="contact-bg-line" ref={bgRef}></div>
-
       <div className="contact-bg-text">CONTACT</div>
 
       <div className="contact-container">

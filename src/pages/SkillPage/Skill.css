@@ -16,8 +16,9 @@
 }
 
 .skill .title {
-  width: 60%;
+  width: 80%;
 }
+
 /* 마키 애니메이션 정의 */
 .marquee-wrapper {
   width: 100%;
@@ -38,6 +39,7 @@
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -100,48 +102,75 @@
   text-align: center;
   font-size: 15px;
 }
+
 @media (max-width: 1100px) {
   .skill .title {
     width: 100%;
   }
 }
+
 @media (max-width: 955px) {
   .skill-header {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .marquee-wrapper {
-    margin-bottom: 50px;
-    padding: 0 6vw;
-  }
-
   .marquee-content {
-    animation: none; /* 애니메이션 중단 */
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3열 그리드 */
-    gap: 20px;
-    width: 100%;
     height: auto;
-    align-items: center;
   }
 
   .skill-card {
-    width: 100% !important; /* 가로 고정 해제 */
-    height: 180px !important; /* 높이 고정 (모바일 가시성) */
+    background-color: lightgray !important;
+    width: 100px;
+    height: 100px;
   }
 
-  /* 그리드 모드에서는 호버 시 커지는 효과 제거 (터치 환경 고려) */
+  /* ✅ 마키 hover(멈춤)는 유지하고, 카드 hover만 제거 */
   .skill-card:hover {
+    width: 180px;
+    height: 180px;
+    background-color: inherit !important;
+  }
+
+  .skill-card:hover .icon-box {
     transform: none;
-    height: 180px !important;
-    width: 100% !important;
+  }
+
+  .skill-card:hover .skill-hover-desc {
+    opacity: 0;
+    bottom: auto;
+    transform: none;
+    padding: 0;
+  }
+
+  .marquee-wrapper {
+    margin-top: 10vh;
+  }
+
+  .icon-box {
+    font-size: 25px;
+  }
+
+  .skill-name {
+    font-size: 16px;
   }
 }
 
-/* 모바일 (600px 이하 2열) */
-@media (max-width: 600px) {
-  .marquee-content {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 630px) {
+  .marquee-wrapper {
+    margin-top: 2vh;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 530px) {
+  .skill-card {
+    border-radius: 8px;
+    width: 80px;
+    height: 80px;
+  }
+
+  .skill-name {
+    font-size: 14px;
   }
 }

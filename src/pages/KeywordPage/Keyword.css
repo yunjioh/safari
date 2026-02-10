@@ -32,28 +32,27 @@
 /* 텍스트 롤링 슬롯 영역 (중앙 2~3개 노출) */
 .keyword-text-wrapper {
   width: 100%;
-  height: 360px; /* 120px * 3개 */
+  height: 360px;
+  /* 120px * 3개 */
   overflow: hidden;
   position: relative;
-  z-index: 10; /* 위아래 페이드 효과 */
-  mask-image: linear-gradient(
-    to bottom,
-    transparent,
-    black 30%,
-    black 70%,
-    transparent
-  );
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent,
-    black 30%,
-    black 70%,
-    transparent
-  );
+  z-index: 10;
+  /* 위아래 페이드 효과 */
+  mask-image: linear-gradient(to bottom,
+      transparent,
+      black 30%,
+      black 70%,
+      transparent);
+  -webkit-mask-image: linear-gradient(to bottom,
+      transparent,
+      black 30%,
+      black 70%,
+      transparent);
 }
 
 .keyword-text-list {
-  padding-top: 120px; /* 첫 아이템을 중앙으로 오게 오프셋 */
+  padding-top: 120px;
+  /* 첫 아이템을 중앙으로 오게 오프셋 */
   transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
   display: flex;
   flex-direction: column;
@@ -82,7 +81,7 @@
 .photo-box {
   position: absolute;
   width: 320px;
-  opacity: 0;
+  opacity: 0.03;
   filter: grayscale(100%) blur(2px);
   transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -102,6 +101,10 @@
   .keyword-pin {
     padding-top: 8vh;
     justify-content: center;
+  }
+
+  .photo-box {
+    width: 55vw;
   }
 
   .keyword-images {
@@ -139,5 +142,11 @@
     height: 60px;
     line-height: 60px;
     font-size: 34px;
+  }
+}
+
+@media (max-width: 530px) {
+  .photo-box {
+    width: 100%;
   }
 }

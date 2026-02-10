@@ -21,7 +21,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center; /* 중앙 정렬 추가 */
-  padding: 80px 0;
+  padding: 4vw 0;
   box-sizing: border-box;
   will-change: clip-path; /* 성능 최적화 */
 }
@@ -37,7 +37,7 @@
 
 .main-display-title {
   /* 폰트 크기가 매우 크므로 유연하게 조절되도록 clamp 사용 권장 */
-  font-size: clamp(60px, 7vw, 156px);
+  font-size: clamp(22px, 7vw, 156px);
   font-weight: 500;
   line-height: 1;
   margin-bottom: 48px;

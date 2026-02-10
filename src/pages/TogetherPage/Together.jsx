@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import "./Together.css";
-import Button from "../../components/Button";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -11,30 +10,33 @@ const Together = () => {
   const revealRef = useRef(null);
 
   useEffect(() => {
+    const section = sectionRef.current;
+    const reveal = revealRef.current;
+    if (!section || !reveal) return;
+
     const ctx = gsap.context(() => {
-      // 시작점: 중앙의 0% 크기 원
-      gsap.set(revealRef.current, {
-        clipPath: "circle(0% at 50% 50%)",
+      gsap.set(reveal, { clipPath: "circle(0% at 50% 50%)" });
+
+      const tl = gsap.timeline({ paused: true });
+      tl.to(reveal, {
+        clipPath: "circle(150% at 50% 50%)",
+        duration: 1.1,
+        ease: "power3.out",
       });
 
-      gsap.to(revealRef.current, {
-        clipPath: "circle(150% at 50% 50%)", // 모서리까지 다 덮도록 150%
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "-90% top",
-          end: "+=100%",
-          scrub: 1,
-        },
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top 65%", 
+        once: false,
+        onEnter: () => tl.play(0),
       });
-    });
+    }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
     <section className="together-wrapper" ref={sectionRef}>
-      {/* 실제 애니메이션으로 퍼져나가는 영역 */}
       <div className="together" ref={revealRef}>
         <p className="top-label">UX/UI DESIGN @2026</p>
 
@@ -43,16 +45,9 @@ const Together = () => {
             LET’S BUILD <br />
             SOMETHING TOGETHER.
           </h1>
-
-          <Button
-            text="Decode My Projects"
-            onClick={() => console.log("Navigate to Projects")}
-          />
         </div>
 
-        <p className="bottom-description">
-          해석하고 연결할 준비가 되어 있습니다.
-        </p>
+        <p className="bottom-description">해석하고 연결할 준비가 되어 있습니다.</p>
       </div>
     </section>
   );

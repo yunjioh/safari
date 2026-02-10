@@ -9,41 +9,91 @@ export default function Hero() {
   const heroRef = useRef(null);
   const videoLayerRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // 메뉴 상태 추가
+useEffect(() => {
+  const ctx = gsap.context(() => {
+    const videoLayer = videoLayerRef.current;
+    const strokeText = heroRef.current?.querySelector(".decoder-mask-container");
+    const decoderWrap = heroRef.current?.querySelector(".decoder-wrap");
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // ✅ 기존 GSAP ScrollTrigger 로직 (동일하게 유지)
-      gsap.set(".decoder-wrap", {
-        scale: 1,
-        transformOrigin: "50% 85%",
+    // ✅ 초기 상태
+    gsap.set(videoLayer, {
+      opacity: 0,          // 처음엔 안 보임
+      scale: 1.55,         // 처음엔 크게
+      yPercent: 0,
+      transformOrigin: "50% 50%",
+      borderRadius: 0,
+    });
+
+    gsap.set(strokeText, {
+      opacity: 1,
+      scale: 1,
+      filter: "blur(0px)",
+      transformOrigin: "50% 50%",
+      willChange: "transform, filter, opacity",
+    });
+
+    gsap.set(decoderWrap, { opacity: 1 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: "top top",
+        end: "+=260%",
+        scrub: 1,
+        pin: true,
+      },
+    });
+
+    // 1) 텍스트 커지면서 흐려지고 사라짐
+    tl.to(
+      strokeText,
+      {
+        scale: 3,
+        filter: "blur(14px)",
+        opacity: 0,
+        ease: "power2.out",
+      },
+      0
+    );
+
+    // 2) 텍스트가 흐려질 때 영상이 보이기 시작
+    tl.to(
+      videoLayer,
+      {
         opacity: 1,
-      });
-      gsap.set(videoLayerRef.current, {
-        y: "190%",
-        scale: 1.5,
-        transformOrigin: "50% 50%",
-      });
+        ease: "power2.out",
+      },
+      0.12
+    );
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "+=300%",
-          scrub: 1,
-          pin: true,
-        },
-      });
+    // 3) 영상은 크게 보였다가 점점 작아짐 (+ 카드 느낌 옵션)
+    tl.to(
+      videoLayer,
+      {
+        scale: 0.8,
+        borderRadius: 20,
+        ease: "power3.out",
+      },
+      0.12
+    );
 
-      tl.to(".decoder-wrap", { opacity: 0, scale: 2, ease: "power2.inOut" }, 0);
-      tl.to(
-        videoLayerRef.current,
-        { y: "0%", opacity: 1, ease: "power2.out", duration: 1.0 },
-        0.25,
-      );
-    }, heroRef);
+    // (선택) 살짝 정돈되며 내려오는 느낌
+    tl.to(
+      videoLayer,
+      {
+        yPercent: 6,
+        ease: "power3.out",
+      },
+      0.12
+    );
 
-    return () => ctx.revert();
-  }, []);
+    // decoder-wrap 자체는 완전히 정리 (원하면)
+    tl.to(decoderWrap, { opacity: 0, ease: "none" }, 0.2);
+  }, heroRef);
+
+  return () => ctx.revert();
+}, []);
+
 
   return (
     <section className="hero" ref={heroRef} id="home">
@@ -111,7 +161,6 @@ export default function Hero() {
               playsInline
             />
           </div>
-          <div className="decoder-stroke-text">DECODER</div>
         </div>
       </div>
 

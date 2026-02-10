@@ -7,7 +7,7 @@ const ProjectCard = ({ project }) => {
   return (
     <section
       className="project"
-      style={{ backgroundColor: project.bgGradient }}
+      style={{ backgroundColor: project.bg }}
     >
       <div className="project-content">
         <div className="text-area">
@@ -44,7 +44,7 @@ const ProjectCard = ({ project }) => {
               )}
 
             <div className="button-group">
-              <Button text="WEBSITE  →" />
+              <Button text="WEBSITE  →"/>
               <Button text="PROPOSAL  →" />
             </div>
           </div>
@@ -54,13 +54,6 @@ const ProjectCard = ({ project }) => {
           {project.image && (
             <div className="image-wrapper">
               <picture>
-                {project.imageMobile && (
-                  <source
-                    media="(max-width: 1200px)"
-                    srcSet={project.imageMobile}
-                  />
-                )}
-
                 <img src={project.image} alt={`${project.mainTitle} preview`} />
               </picture>
             </div>

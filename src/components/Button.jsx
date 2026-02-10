@@ -1,7 +1,7 @@
 import React from "react";
 import "./Button.css";
 
-const Button = ({ text, onClick, bgColor }) => {
+const Button = ({ text, onClick, bgColor, stroke }) => {
   return (
     <button
       className="main-button"

@@ -1,20 +1,18 @@
 .think {
   margin: 0 auto;
   padding: 10vw 6vw;
-  min-height: 100vh;
-  background: #000;
+  min-height: 160vh;
+  background: #021526;
 }
 
-.think .title {
-  color: white;
-}
+.think .title,
 .think .sub-title {
   color: white;
 }
+
 .think-container {
   position: relative;
   width: 100%;
-  /* PC 기본: 가로 4열 배치 */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,29 +20,11 @@
   margin-top: 50px;
 }
 
-/* 1200px 이하에서 2x2 그리드로 전환 */
-@media (max-width: 1200px) {
-  .think-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    justify-items: center; /* 그리드 내 카드 중앙 정렬 */
-    height: auto; /* 높이 제한 해제 */
-  }
-
-  .think-card-wrapper {
-    position: relative !important; /* PC의 absolute 해제 */
-    top: auto !important;
-    left: auto !important;
-    transform: none !important; /* GSAP x축 이동 초기화 */
-  }
-}
-
-/* 카드 크기 및 스타일 */
+/* PC: absolute로 겹쳐두고 GSAP로 퍼트림 */
 .think-card-wrapper {
-  position: absolute; /* PC: 중앙 겹침 상태에서 GSAP로 퍼트림 */
-  width: 280px;
-  height: 400px;
+  position: absolute;
+  width: 300px;
+  height: 450px;
   cursor: pointer;
 }
 
@@ -70,42 +50,87 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  border: 1px solid #eee;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .front {
-  background: #fbfbfb;
+  background: var(--card-bg, #fbfbfb);
   z-index: 2;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 
+
 .back {
-  background: #bbff52;
+  background: var(--card-bg, #fbfbfb);
   transform: rotateY(180deg);
   justify-content: center;
   align-items: center;
   text-align: center;
-  border-color: #bbff52;
 }
 
 .think-q-label {
   font-size: 13px;
-  font-weight: 800;
-  color: #aaa;
+  font-weight: normal;
+  color: white;
   margin-bottom: 20px;
 }
+
 .think-q-text {
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 25px;
+  font-weight: 500;
   line-height: 1.4;
+  color: white;
   word-break: keep-all;
 }
+
 .think-a-text {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 200;
   line-height: 1.6;
-  color: #000;
+  color: white;
+}
+
+/* ✅ 1200px 이하: 2x2 그리드 */
+@media (max-width: 1200px) {
+  .think-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 36px;
+    /* ✅ 더 시원하게 */
+    padding-top: 60px;
+    /* ✅ grid에서는 크게 안 내려도 됨 */
+    align-items: stretch;
+  }
+
+  .think-card-wrapper {
+    position: relative !important;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2.5 / 3;
+    transform: none !important;
+  }
+}
+
+/* ✅ 768px 이하: 1열 + 100% */
+@media (max-width: 768px) {
+  .think-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 0;
+  }
+
+  .think-card-wrapper {
+    width: 100%;
+    aspect-ratio: 2.5 / 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .think-q-text {
+    font-size: 23px;
+  }
+  .think-a-text {
+    font-size: 18px;
+  }
 }

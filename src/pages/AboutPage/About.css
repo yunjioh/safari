@@ -17,7 +17,7 @@
 .quote-mark {
   font-size: 70px;
   color: black;
-  font-family: fantasy;
+  font-family: 'Basis Grotesque Arabic Pro';
   line-height: 0.5;
 }
 
@@ -33,6 +33,7 @@
   line-height: 1.6;
   font-size: 25px;
   letter-spacing: -1px;
+  white-space: pre-line;
 }
 
 .image-content {
@@ -53,20 +54,25 @@
   .intro-phrase {
     font-size: 45px;
   }
+
   .description {
     font-size: 22px;
   }
+
   .quote-mark {
     font-size: 65px;
   }
 }
+
 @media (max-width: 1400px) {
   .intro-phrase {
     font-size: 40px;
   }
+
   .description {
     font-size: 20px;
   }
+
   .quote-mark {
     font-size: 60px;
   }
@@ -76,10 +82,12 @@
   .profile-wrapper img {
     width: 38vw;
   }
+
   .content-section {
     gap: 75px;
     flex-direction: column-reverse;
   }
+
   .quote-mark {
     font-size: 50px;
   }
@@ -89,8 +97,13 @@
   .intro-phrase {
     font-size: 35px;
   }
+
   .quote-mark {
     font-size: 45px;
+  }
+
+  .about {
+    padding: 0 6vw 12vw;
   }
 }
 
@@ -98,10 +111,38 @@
   .intro-phrase {
     font-size: 30px;
   }
+
   .description {
     font-size: 18px;
+    white-space: inherit;
   }
-  .quote-mark {
-    font-size: 38px;
+
+  .profile-wrapper img {
+    width: 45vw;
   }
+}
+
+@media (max-width: 600px) {
+  .intro-phrase {
+    font-size: 25px;
+    margin-bottom: 15px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .badge-container {
+    display: none;
+  }
+}
+
+@media (max-width: 430px) {
+  .intro-phrase {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+  .description {
+        font-size: 15px;
+    }
 }

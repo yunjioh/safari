@@ -1,7 +1,8 @@
 .coding {
   min-height: 100vh;
   width: 100%;
-  overflow: hidden; /* 필수: 오른쪽 대기 시 가로 스크롤 방지 */
+  overflow: hidden;
+  /* 필수: 오른쪽 대기 시 가로 스크롤 방지 */
   position: relative;
   background-color: black;
 }
@@ -10,20 +11,25 @@
   position: relative;
   width: 100%;
   margin-bottom: 200px;
-  will-change: transform, opacity; /* 애니메이션 성능 최적화 */
+  will-change: transform, opacity;
+  /* 애니메이션 성능 최적화 */
 }
+
 .coding .title-container {
-  margin-bottom: 100px;
+  margin-bottom: 55px;
 }
+
 .coding .title {
   color: white;
 }
+
 .coding .sub-title {
   color: white;
 }
+
 .coding .subTitle {
   color: white;
-  text-align: left;
+  text-align: right;
   margin-bottom: 150px;
 }
 
@@ -57,18 +63,21 @@
   border-radius: 999px;
   font-size: 20px;
 }
+
 .tech-tab.orange {
   background: #ff8e1d;
   color: #fff;
   right: 10%;
   transform: rotate(-5deg);
 }
+
 .tech-tab.neon {
   background: #9f75ff;
   color: #fff;
   right: 20%;
   transform: rotate(5deg);
 }
+
 .tech-tab.blue {
   background: #5289ff;
   color: #fff;
@@ -95,16 +104,20 @@
   justify-content: center;
   transition: all 0.3s;
 }
+
 .nav-btn:hover {
   background: #fff;
   color: #000;
 }
+
 .nav-left {
   left: 3%;
 }
+
 .nav-right {
   right: 3%;
 }
+
 .cursor {
   position: absolute;
   top: 0;
@@ -135,7 +148,8 @@
 .cursor-text {
   width: 100%;
   height: 100%;
-  animation: spin 6s linear infinite; /* 원래 6s spin */
+  animation: spin 6s linear infinite;
+  /* 원래 6s spin */
   fill: white;
 }
 
@@ -148,7 +162,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) rotate(-45deg); /* 원래 주신 -45도 */
+  transform: translate(-50%, -50%) rotate(-45deg);
+  /* 원래 주신 -45도 */
   font-size: 40px;
   font-weight: 100;
   z-index: 2;
@@ -158,6 +173,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -165,20 +181,24 @@
 
 .swiper-container {
   width: 100%;
-  max-width: 1000px; /* 원하는 슬라이드 영역 너비 */
+  max-width: 1000px;
+  /* 원하는 슬라이드 영역 너비 */
   margin: 0 auto;
   position: relative;
 }
 
 .swiper-track-horizontal {
-  display: flex; /* 가로 나열 */
+  display: flex;
+  /* 가로 나열 */
   width: 100%;
 }
 
 .slide {
-  flex: 0 0 100%; /* 한 화면에 1개씩 보일 때 */
+  flex: 0 0 100%;
+  /* 한 화면에 1개씩 보일 때 */
   width: 100%;
-  padding: 0 10px; /* 슬라이드 간 간격 */
+  padding: 0 10px;
+  /* 슬라이드 간 간격 */
   box-sizing: border-box;
   position: relative;
   display: block;
@@ -196,4 +216,25 @@
   height: auto;
   display: block;
   transition: transform 0.5s ease;
+}
+
+@media (max-width:1400px) {
+  .coding .subTitle {
+    margin-bottom: 10vh;
+  }
+
+  .nav-btn {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 530px) {
+  .coding .subTitle {
+    margin-bottom: 5vh;
+  }
+
+  .slide-inner {
+    border-radius: 10px;
+  }
 }

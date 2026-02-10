@@ -97,6 +97,11 @@ const Gallery = () => {
         <br />
         창의성과 실용성을 담아낸 저의 디자인 역량을 확인하실 수 있습니다
       </p>
+      <div className="down_arrow">
+        <div>
+          <img src="img/arrow.png" alt="down_arrow" />
+        </div>
+      </div>
     </section>
   );
 };

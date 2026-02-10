@@ -1,7 +1,8 @@
 .hero {
   position: relative;
   height: 100vh;
-  background: #fff; /* 스크린샷처럼 화이트 */
+  background: #fff;
+  /* 스크린샷처럼 화이트 */
   color: #000;
   overflow: hidden;
   display: flex;
@@ -17,7 +18,8 @@
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 1001; /* 메뉴보다 위에 위치 */
+  z-index: 1001;
+  /* 메뉴보다 위에 위치 */
 }
 
 .hamburger span {
@@ -119,7 +121,8 @@
 
 .decoder-text,
 .decoder-stroke {
-  font-family: "Solemn Sojourn", serif; /* 너가 쓰던 폰트 유지 */
+  font-family: "Solemn Sojourn", serif;
+  /* 너가 쓰던 폰트 유지 */
   font-weight: 900;
   letter-spacing: -10px;
   font-size: 430px;
@@ -136,19 +139,14 @@
   inset: 0;
   z-index: 1;
   overflow: hidden;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='520' viewBox='0 0 1600 520'%3E%3Ctext x='800' y='500' text-anchor='middle' font-family='Solemn Sojourn' font-weight='900' font-size='430' letter-spacing='10'%3EDECODER%3C/text%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='520' viewBox='0 0 1600 520'%3E%3Ctext x='800' y='500' text-anchor='middle' font-family='Solemn Sojourn' font-weight='900' font-size='430' letter-spacing='-10'%3EDECODER%3C/text%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='520' viewBox='0 0 1600 520'%3E%3Ctext x='800' y='500' text-anchor='middle' font-family='Basis Grotesque Arabic Pro' font-weight='900' font-size='400' letter-spacing='50'%3EDECODER%3C/text%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='520' viewBox='0 0 1600 520'%3E%3Ctext x='800' y='500' text-anchor='middle' font-family='Basis Grotesque Arabic Pro' font-weight='900' font-size='400' letter-spacing='-50'%3EDECODER%3C/text%3E%3C/svg%3E");
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-size: contain;
   mask-size: contain;
   -webkit-mask-position: center bottom;
   mask-position: center bottom;
-}
-
-/* ✅ 외곽선 텍스트(기존 SVG stroke 대신) */
-.decoder-stroke-text {
-  display: none;
 }
 
 /* 마스크 내부 영상 */
@@ -170,7 +168,8 @@
   position: absolute;
   inset: 0;
   z-index: 50;
-  background: transparent; /* 카드면 검정 배경 없어도 됨 */
+  background: transparent;
+  /* 카드면 검정 배경 없어도 됨 */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -180,8 +179,8 @@
 }
 
 .full-video {
-  width: 60%;
-  height: 55%;
+  width: 70%;
+  height: 83%;
   object-fit: cover;
   border-radius: 40px;
 }
@@ -199,37 +198,46 @@
   letter-spacing: -2px;
 }
 
-/* =========================
- Responsive: <= 1024px
- ========================= */
 @media (max-width: 1600px) {
+  .full-video {
+    height: 75%;
+    border-radius: 30px;
+  }
+
   .video-text {
     font-size: 30px;
   }
 }
+
 @media (max-width: 1400px) {
-  .full-video {
-    height: 48%;
-  }
   .hero-name {
     font-size: 28px;
   }
+
+  .full-video {
+    height: 65%;
+  }
 }
+
 @media (max-width: 1024px) {
   .hamburger {
     display: flex;
   }
+
   .hero-name {
     font-size: 26px;
   }
+
   /* 메뉴를 화면 밖으로 숨김 */
   .hero-nav {
     position: fixed;
     top: 0;
-    right: -100%; /* 오른쪽으로 숨김 */
+    right: -100%;
+    /* 오른쪽으로 숨김 */
     width: 40%;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.95); /* 어두운 배경 */
+    background-color: rgba(0, 0, 0, 0.95);
+    /* 어두운 배경 */
     border-radius: 0;
     display: flex;
     flex-direction: column;
@@ -249,9 +257,11 @@
   .hamburger.active span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
   }
+
   .hamburger.active span:nth-child(2) {
     opacity: 0;
   }
+
   .hamburger.active span:nth-child(3) {
     transform: translateY(-9px) rotate(-45deg);
   }
@@ -297,15 +307,15 @@
 
   /* 마스크 텍스트 스케일 다운 + 자간 조정 */
   .decoder-mask-container {
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='520' viewBox='0 0 1600 520'%3E%3Ctext x='800' y='500' text-anchor='middle' font-family='Solemn Sojourn' font-weight='900' font-size='480' letter-spacing='-40'%3EDECODER%3C/text%3E%3C/svg%3E");
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='520' viewBox='0 0 1600 520'%3E%3Ctext x='800' y='500' text-anchor='middle' font-family='Solemn Sojourn' font-weight='900' font-size='480' letter-spacing='-40'%3EDECODER%3C/text%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='520' viewBox='0 0 1600 520'%3E%3Ctext x='800' y='500' text-anchor='middle' font-family='Basis Grotesque Arabic Pro' font-weight='900' font-size='400' letter-spacing='-50'%3EDECODER%3C/text%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='520' viewBox='0 0 1600 520'%3E%3Ctext x='800' y='500' text-anchor='middle' font-family='Basis Grotesque Arabic Pro' font-weight='900' font-size='400' letter-spacing='-50'%3EDECODER%3C/text%3E%3C/svg%3E");
     -webkit-mask-position: 50% bottom;
     mask-position: 50% bottom;
   }
 
   .full-video {
-    width: min(64vw, 980px);
-    height: min(64vh, 400px);
+    width: min(75vw, 980px);
+    height: min(78vh, 460px);
     border-radius: 32px;
   }
 }
@@ -347,9 +357,11 @@
   }
 
   .full-video {
-    height: 35vh;
+    width: 82vh;
+    height: 40vh;
     border-radius: 15px;
   }
+
   .video-text {
     font-size: 25px;
   }
@@ -359,12 +371,15 @@
   .hero-bottom-content {
     font-size: 12px;
   }
+
   .video-text {
     font-size: 20px;
   }
+
   .full-video {
     border-radius: 15px;
   }
+
   .hero-nav {
     width: 58%;
   }
@@ -373,6 +388,10 @@
 @media (max-width: 550px) {
   .hero-bottom-content {
     display: block;
+  }
+
+  .full-video {
+    height: 35vh;
   }
 }
 
@@ -392,9 +411,11 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
+
   .hero-nav::-webkit-scrollbar {
     display: none;
   }
+
   .hero-nav a {
     font-size: 18px;
   }
@@ -420,10 +441,12 @@
   .video-text {
     font-size: 15px;
   }
+
   .hamburger {
     width: 22px;
     height: 16px;
   }
+
   .hamburger.active span:nth-child(1) {
     transform: translateY(5px) rotate(45deg);
   }

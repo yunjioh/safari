@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProjectCard from "../../components/ProjectCard";
@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const projectData = [
   {
     subTitle: "영양제 복용 관리 어플",
-    mainTitle: `Dr.Pill app`,
+    mainTitle: "Dr.Pill app",
     decoTitle: "MANAGEMENT APP",
     duration: "2025.09 - 2025.10",
     role: "“이 프로젝트에서는 서비스의 UX 기획부터 최종 디자인까지 전 과정을 수행하였습니다”",
@@ -20,17 +20,11 @@ const projectData = [
 기획부터 최종 전달(Deliver)까지의 프로젝트 사이클을 완수했습니다.`,
     image: "/img/project1.svg",
     imageMobile: "/img/project1_mo.svg",
-    pointColor: "var(--blue)",
-    bgGradient: "white",
-    contribution: [
-      { label: "기획", value: 90 },
-      { label: "디자인", value: 90 },
-      { label: "개발", value: 60 },
-    ],
+    bg: "#021526",
   },
   {
     subTitle: "댄서 원밀리언 웹사이트 리뉴얼",
-    mainTitle: `1MILLION website`,
+    mainTitle: "1MILLION website",
     decoTitle: "WEBSITE RENEWAL",
     duration: "2025.11 - 2025.12",
     role: "“이 프로젝트에서는 서브 디자이너 및 프론트엔드 메인 코더로서 팀을 지원했습니다”",
@@ -41,17 +35,11 @@ const projectData = [
 유지되도록 기여했습니다.`,
     image: "/img/project2.svg",
     imageMobile: "/img/project2_mo.svg",
-    pointColor: "var(--orange)",
-    bgGradient: "white",
-    contribution: [
-      { label: "기획", value: 90 },
-      { label: "디자인", value: 90 },
-      { label: "개발", value: 60 },
-    ],
+    bg: "#FB773C",
   },
   {
     subTitle: "버츄얼 팬덤 어플",
-    mainTitle: `NOVA app`,
+    mainTitle: "NOVA app",
     decoTitle: "NOVA APP",
     duration: "2025.12 - 2026.01",
     role: "“이 프로젝트에서는 메인 페이지와 핵심 기능을 디자인하고, 이후 개발에 참여하여 배포하였습니다”",
@@ -60,45 +48,78 @@ const projectData = [
 이후 배너와 포스터 등 제작은 물론, Vercel 배포와 최종 QA를 도맡아 하며 실제 서비스로 완성되는 전 과정을 책임졌습니다.`,
     image: "/img/project3.svg",
     imageMobile: "/img/project3_mo.svg",
-    pointColor: "var(--purple)",
-    bgGradient: "white",
-    contribution: [
-      { label: "기획", value: 90 },
-      { label: "디자인", value: 90 },
-      { label: "개발", value: 60 },
-    ],
+    bg: "#0B2F9F",
   },
 ];
 
-const Project = () => {
-  const BASE_TOP = 80; // 모든 카드가 멈출 동일한 상단 위치
+export default function Project() {
+  const sectionRef = useRef(null);
+useEffect(() => {
+  const ctx = gsap.context(() => {
+    const section = sectionRef.current;
+    const bg = section.querySelector(".project-bg");
+    const panels = gsap.utils.toArray(".project-panel");
+
+    const mm = gsap.matchMedia();
+
+    /* =========================
+       PC / 태블릿
+    ========================= */
+    mm.add("(min-width: 768px)", () => {
+      gsap.set(panels, { autoAlpha: 0, y: 24 });
+      gsap.set(panels[0], { autoAlpha: 1, y: 0 });
+      gsap.set(bg, { backgroundColor: projectData[0].bg });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: `+=${projectData.length * 200}%`,
+          scrub: 1,
+          pin: true,
+        },
+      });
+
+      projectData.forEach((p, i) => {
+        if (i === 0) return;
+
+        tl.to(bg, { backgroundColor: p.bg, ease: "none" }, i);
+        tl.to(panels[i - 1], { autoAlpha: 0, y: -20 }, i);
+        tl.to(panels[i], { autoAlpha: 1, y: 0 }, i + 0.15);
+      });
+    });
+
+    /* =========================
+       모바일
+    ========================= */
+    mm.add("(max-width: 768px)", () => {
+      // 모바일에서는 모두 보이게
+      gsap.set(bg, { backgroundColor: "#fff" });
+      gsap.set(panels, {
+        clearProps: "all", // GSAP 스타일 제거
+        autoAlpha: 1,
+        position: "relative",
+        y: 0,
+      });
+    });
+
+    return () => mm.revert();
+  }, sectionRef);
+
+  return () => ctx.revert();
+}, []);
+
 
   return (
-    <main className="project-page">
-      <div className="down_arrow">
-        <div>
-          <img src="img/arrow.png" alt="down_arrow" />
-        </div>
-      </div>
-
-      {/* 컨테이너 자체가 sticky 아이템들의 부모 역할을 합니다 */}
-      <section className="project-sticky-stack">
+    <section className="project-section" ref={sectionRef} id="project">
+      <div className="project-bg" aria-hidden="true" />
+      <div className="project-inner">
         {projectData.map((project, idx) => (
-          <div
-            key={idx} // project.id가 없다면 idx 사용
-            className="project-sticky-item"
-            style={{
-              top: `${BASE_TOP}px`, // 모든 카드를 같은 높이로 고정
-              zIndex: 10 + idx /* 나중에 나오는 카드가 위로 올라옴 */,
-              "--bg-gradient": project.bgGradient,
-            }}
-          >
+          <div className="project-panel" key={idx}>
             <ProjectCard project={project} />
           </div>
         ))}
-      </section>
-    </main>
+      </div>
+    </section>
   );
-};
-
-export default Project;
+}

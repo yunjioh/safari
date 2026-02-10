@@ -121,20 +121,24 @@
 
 .hobby-thumb img {
   width: 40vw;
+  height: 35vw;
   object-fit: cover;
   transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 @media (max-width: 1630px) {
   .hobbyTit {
-    font-size: 120px;
+    font-size: 100px;
   }
+
   .hobbyTit span {
     font-size: 70px;
   }
+
   .hobby-title {
     font-size: 32px;
   }
+
   .hobby-item {
     height: 350px;
   }
@@ -144,36 +148,58 @@
   .hobby-item {
     height: 320px;
   }
+
   .hobbyTit {
     margin-bottom: 140px;
   }
 }
 
 @media (max-width: 1200px) {
-  .hobbyTit {
-    font-size: 100px;
-  }
-  .hobbyTit span {
-    font-size: 6vw;
-    letter-spacing: -3px;
-  }
   .hobby-item {
-    height: 300px;
+    height: 250px;
+  }
+
+  .hobby-title {
+    font-size: 25px;
+  }
+
+  .hobbyTit span {
+    display: none;
+  }
+
+  .hobbyTit {
+    margin-bottom: 90px;
+  }
+
+  .hobby-list {
+    margin: 15vh auto;
+  }
+
+  .subTitle {
+    margin-bottom: 12vh;
   }
 }
+
 @media (max-width: 955px) {
   .hobbyTit {
     font-size: 80px;
     margin-bottom: 100px;
   }
+
   .hobby-item {
-    height: 300px;
+    height: 235px;
   }
+
   .hobby-title {
     font-size: 23px;
   }
+
   .hobby-label {
     font-size: 12px;
+  }
+
+  .hobby-title {
+    font-size: 22px;
   }
 }
 
@@ -182,21 +208,39 @@
     font-size: 70px;
     margin-bottom: 100px;
   }
+
+  .hobby-list {
+    margin: 6vh auto;
+  }
+
   .hobby-item {
-    height: 200px;
+    height: 190px;
   }
 }
+
 @media (max-width: 630px) {
+  .hobbyTit {
+    font-size: 55px;
+  }
+
   .hobby-item {
     display: block;
-    height: 540px;
+    height: 500px;
   }
+
   .hobby-item:nth-child(even) .hobby-thumb {
     right: 0;
   }
+
+  .hobby-list {
+    margin: 2vh auto;
+  }
+
   .hobby-thumb img {
     width: 92vw;
+    height: auto;
   }
+
   .hobby-thumb {
     width: 100%;
   }
@@ -205,5 +249,11 @@
 @media (max-width: 570px) {
   .hobbyTit {
     font-size: 60px;
+  }
+}
+
+@media (max-width: 430px) {
+  .hobby-item {
+    height: 410px;
   }
 }

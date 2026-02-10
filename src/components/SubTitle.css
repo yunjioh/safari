@@ -29,6 +29,7 @@
   .sub-phrase {
     font-size: 45px;
   }
+
   .sub-desc {
     font-size: 22px;
   }
@@ -38,6 +39,7 @@
   .sub-phrase {
     font-size: 40px;
   }
+
   .sub-desc {
     font-size: 20px;
   }
@@ -47,9 +49,14 @@
   .sub-phrase {
     font-size: 35px;
   }
+
   .sub-desc {
     font-size: 18px;
+    width: 75%;
+    white-space: inherit;
+    margin-left: auto;
   }
+
 }
 
 @media (max-width: 768px) {
@@ -57,15 +64,21 @@
     font-size: 30px;
     letter-spacing: -1px;
   }
+
   .sub-desc {
     font-size: 16px;
   }
+  .subTitle {
+    margin-bottom: 0;
+  }
 }
-@media (max-width: 570px) {
+
+@media (max-width: 630px) {
   .sub-phrase {
     font-size: 25px;
     margin-bottom: 10px;
   }
+
   .sub-desc {
     white-space: inherit;
   }
