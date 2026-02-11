@@ -121,8 +121,7 @@
 
 .decoder-text,
 .decoder-stroke {
-  font-family: "Solemn Sojourn", serif;
-  /* 너가 쓰던 폰트 유지 */
+  font-family: "Basis Grotesque Arabic Pro", serif;
   font-weight: 900;
   letter-spacing: -10px;
   font-size: 430px;
