@@ -44,8 +44,8 @@ const ProjectCard = ({ project }) => {
               )}
 
             <div className="button-group">
-              <Button text="WEBSITE  →"/>
-              <Button text="PROPOSAL  →" />
+              <Button text="WEBSITE  →" href={project.site}/>
+              <Button text="PROPOSAL  →" href={project.doc}/>
             </div>
           </div>
         </div>

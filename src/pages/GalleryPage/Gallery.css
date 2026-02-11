@@ -1,39 +1,38 @@
+/* Gallery.css */
+
 .gallery {
-  height: 110vh;
-  justify-content: center;
+  height: 100vh;
   padding: 150px 0;
+  position: relative;
+  overflow: hidden;
+  /* ✅ bg scale 시 삐져나오는거 방지 */
+  background-color: #fff;
+  /* 초기 배경색 */
   color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.gallery-bg-wrap {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-
-  transform-origin: 50% 50%;
-  will-change: transform;
-}
-
+/* ✅ 배경 레이어 */
 .gallery-bg {
   position: absolute;
   inset: 0;
+  z-index: 0;
+  pointer-events: none;
 
   background-image: url("/public/img/bg.svg");
   background-size: cover;
   background-position: center;
 }
 
-.gallery-bg-image {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 60%;
-  max-width: 900px;
-  pointer-events: none;
+/* ✅ 텍스트/컨텐츠는 bg 위로 */
+.gallery-scale,
+.top-label,
+.bottom-description,
+.down_arrow {
+  position: relative;
+  z-index: 1;
 }
 
 .top-label {
@@ -55,46 +54,18 @@
   letter-spacing: -1px;
 }
 
-.down_arrow {
-  display: flex;
-  justify-content: center;
-}
-
-.down_arrow div {
-  text-align: center;
-  position: relative;
-  display: flex;
-  position: relative;
-}
-
-.down_arrow div::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  height: 100%;
-  width: 30px;
-  transform: translateX(-50%);
-  -webkit-animation: down 2.3s ease-out infinite forwards;
-  animation: down 2.3s ease-out infinite forwards;
-  background: white;
-}
-
 @keyframes down {
 
   0%,
   100% {
-    -webkit-clip-path: inset(0 0 0 0);
     clip-path: inset(0 0 0 0);
   }
 
   25% {
-    -webkit-clip-path: inset(100% 0 0 0);
     clip-path: inset(100% 0 0 0);
   }
 
   50% {
-    -webkit-clip-path: inset(0 0 100% 0);
     clip-path: inset(0 0 100% 0);
   }
 }
@@ -109,7 +80,11 @@
   }
 }
 
-@media (max-width: 530px) {
+@media (max-width: 560px) {
+  .top-label {
+    font-size: 14px;
+  }
+
   .bottom-description {
     font-size: 14px;
   }

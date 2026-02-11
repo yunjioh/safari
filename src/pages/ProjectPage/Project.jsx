@@ -21,6 +21,13 @@ const projectData = [
     image: "/img/project1.svg",
     imageMobile: "/img/project1_mo.svg",
     bg: "#021526",
+    contribution: [
+      { label: "기획", value: 90 },
+      { label: "디자인", value: 90 },
+      { label: "개발", value: 60 },
+    ],
+    site: "https://yunjioh.github.io/1million/",
+    doc: "https://yunjioh.github.io/1million/"
   },
   {
     subTitle: "댄서 원밀리언 웹사이트 리뉴얼",
@@ -36,6 +43,13 @@ const projectData = [
     image: "/img/project2.svg",
     imageMobile: "/img/project2_mo.svg",
     bg: "#FB773C",
+    contribution: [
+      { label: "기획", value: 90 },
+      { label: "디자인", value: 90 },
+      { label: "개발", value: 60 },
+    ],
+    site: "https://yunjioh.github.io/1million/",
+    doc: "https://yunjioh.github.io/1million/"
   },
   {
     subTitle: "버츄얼 팬덤 어플",
@@ -49,65 +63,72 @@ const projectData = [
     image: "/img/project3.svg",
     imageMobile: "/img/project3_mo.svg",
     bg: "#0B2F9F",
+    contribution: [
+      { label: "기획", value: 90 },
+      { label: "디자인", value: 90 },
+      { label: "개발", value: 60 },
+    ],
+    site: "https://tubi-team-project.vercel.app/",
+    doc: "https://tubi-team-project.vercel.app/"
   },
 ];
 
 export default function Project() {
   const sectionRef = useRef(null);
-useEffect(() => {
-  const ctx = gsap.context(() => {
-    const section = sectionRef.current;
-    const bg = section.querySelector(".project-bg");
-    const panels = gsap.utils.toArray(".project-panel");
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const section = sectionRef.current;
+      const bg = section.querySelector(".project-bg");
+      const panels = gsap.utils.toArray(".project-panel");
 
-    const mm = gsap.matchMedia();
+      const mm = gsap.matchMedia();
 
-    /* =========================
-       PC / 태블릿
-    ========================= */
-    mm.add("(min-width: 768px)", () => {
-      gsap.set(panels, { autoAlpha: 0, y: 24 });
-      gsap.set(panels[0], { autoAlpha: 1, y: 0 });
-      gsap.set(bg, { backgroundColor: projectData[0].bg });
+      /* =========================
+         PC / 태블릿
+      ========================= */
+      mm.add("(min-width: 768px)", () => {
+        gsap.set(panels, { autoAlpha: 0, y: 24 });
+        gsap.set(panels[0], { autoAlpha: 1, y: 0 });
+        gsap.set(bg, { backgroundColor: projectData[0].bg });
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: `+=${projectData.length * 200}%`,
-          scrub: 1,
-          pin: true,
-        },
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: `+=${projectData.length * 200}%`,
+            scrub: 1,
+            pin: true,
+          },
+        });
+
+        projectData.forEach((p, i) => {
+          if (i === 0) return;
+
+          tl.to(bg, { backgroundColor: p.bg, ease: "none" }, i);
+          tl.to(panels[i - 1], { autoAlpha: 0, y: -20 }, i);
+          tl.to(panels[i], { autoAlpha: 1, y: 0 }, i + 0.15);
+        });
       });
 
-      projectData.forEach((p, i) => {
-        if (i === 0) return;
-
-        tl.to(bg, { backgroundColor: p.bg, ease: "none" }, i);
-        tl.to(panels[i - 1], { autoAlpha: 0, y: -20 }, i);
-        tl.to(panels[i], { autoAlpha: 1, y: 0 }, i + 0.15);
+      /* =========================
+         모바일
+      ========================= */
+      mm.add("(max-width: 768px)", () => {
+        // 모바일에서는 모두 보이게
+        gsap.set(bg, { backgroundColor: "#fff" });
+        gsap.set(panels, {
+          clearProps: "all", // GSAP 스타일 제거
+          autoAlpha: 1,
+          position: "relative",
+          y: 0,
+        });
       });
-    });
 
-    /* =========================
-       모바일
-    ========================= */
-    mm.add("(max-width: 768px)", () => {
-      // 모바일에서는 모두 보이게
-      gsap.set(bg, { backgroundColor: "#fff" });
-      gsap.set(panels, {
-        clearProps: "all", // GSAP 스타일 제거
-        autoAlpha: 1,
-        position: "relative",
-        y: 0,
-      });
-    });
+      return () => mm.revert();
+    }, sectionRef);
 
-    return () => mm.revert();
-  }, sectionRef);
-
-  return () => ctx.revert();
-}, []);
+    return () => ctx.revert();
+  }, []);
 
 
   return (

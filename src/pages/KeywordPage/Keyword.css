@@ -21,7 +21,7 @@
 
 .section-label {
   position: absolute;
-  top: 0;
+  top: 7%;
   left: 50%;
   font-size: 14px;
   color: #999;
@@ -103,10 +103,6 @@
     justify-content: center;
   }
 
-  .photo-box {
-    width: 55vw;
-  }
-
   .keyword-images {
     position: relative;
     top: 0 !important;
@@ -119,16 +115,31 @@
     justify-content: center;
   }
 
+  .badge-container {
+    display: none;
+  }
+
+  .keyword-images {
+    height: 300px;
+  }
+
   .photo-box {
+    width: 55vw;
     left: 50% !important;
     width: 100%;
     transform: translateX(-50%) scale(0.8) !important;
     opacity: 0;
   }
 
+  .photo-box img {
+    width: 70%;
+  }
+
   .photo-box.is-active {
     opacity: 1 !important;
     transform: translateX(-50%) scale(1) !important;
+    position: relative;
+    z-index: 15;
   }
 
   .keyword-text-wrapper {
@@ -136,7 +147,7 @@
   }
 
   .keyword-text-list {
-    padding-top: 28vh;
+    padding-top: 30vh;
   }
 
   .kw-item {

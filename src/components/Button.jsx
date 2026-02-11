@@ -1,15 +1,16 @@
 import React from "react";
 import "./Button.css";
 
-const Button = ({ text, onClick, bgColor, stroke }) => {
+const Button = ({ text, onClick, bgColor, href }) => {
   return (
-    <button
+    <a
+      href={href}
       className="main-button"
       onClick={onClick}
       style={{ backgroundColor: bgColor }}
     >
       {text}
-    </button>
+    </a>
   );
 };
 

@@ -7,27 +7,35 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Gallery = () => {
   const sectionRef = useRef(null);
+
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
 
     const ctx = gsap.context(() => {
+      // ✅ el 자체가 .gallery 섹션이므로 querySelector로 다시 찾지 말기
+      const gallery = el;
+
       const bg = el.querySelector(".gallery-bg");
       const textWrap = el.querySelector(".gallery-scale");
-      const mainTitle = el.querySelector(".main-display-title"); // 제목 직접 선택
+      const mainTitle = el.querySelector(".main-display-title");
       const top = el.querySelector(".top-label");
       const bottom = el.querySelector(".bottom-description");
 
-      // 초기 상태 설정
-      gsap.set(bg, { scale: 1, filter: "grayscale(100%)" }); // 초기엔 흑백
+      // 안전장치 (없으면 애니메이션 적용 안 됨)
+      if (!bg || !textWrap || !mainTitle || !top || !bottom) return;
+
+      // 초기 상태
+      gsap.set(gallery, { backgroundColor: "#fff" });
+      gsap.set(bg, { scale: 1, filter: "grayscale(100%)", opacity: 1 });
       gsap.set(textWrap, { scale: 1 });
-      gsap.set(mainTitle, { color: "#fff" }); // 초기엔 흰색
+      gsap.set(mainTitle, { color: "#fff" });
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: el,
           start: "top top",
-          end: "+=150%", // 부드러운 전환을 위해 조금 더 늘림
+          end: "+=150%",
           pin: true,
           scrub: 1,
           anticipatePin: 1,
@@ -40,40 +48,48 @@ const Gallery = () => {
         {
           scale: 0.5,
           filter: "grayscale(0%)",
-          ease: "none",
           borderRadius: "20px",
+          ease: "none",
         },
-        0,
+        0
       )
         .to(
           textWrap,
           {
-            scale: 1.5, // 🔼 텍스트 커짐
+            scale: 1.5,
             ease: "none",
           },
-          0,
+          0
+        )
+        .to(
+          gallery,
+          {
+            backgroundColor: "#021526",
+            ease: "none",
+          },
+          0
         )
         .to(
           mainTitle,
           {
-            color: "#BBFF52", // 🔼 텍스트 검정색으로 변경
+            color: "#BBFF52",
             ease: "none",
           },
-          0,
+          0
         )
         .to(
           [top, bottom],
           {
-            opacity: 0,
             y: -20,
             ease: "none",
           },
-          0.1,
-        ); // 살짝 늦게 사라지도록 조절
+          0.1
+        );
     }, el);
 
     return () => ctx.revert();
   }, []);
+
   return (
     <section className="gallery" ref={sectionRef}>
       {/* 🔹 이미지 배경 */}
@@ -97,11 +113,6 @@ const Gallery = () => {
         <br />
         창의성과 실용성을 담아낸 저의 디자인 역량을 확인하실 수 있습니다
       </p>
-      <div className="down_arrow">
-        <div>
-          <img src="img/arrow.png" alt="down_arrow" />
-        </div>
-      </div>
     </section>
   );
 };

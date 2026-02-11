@@ -133,4 +133,8 @@
   .title {
     font-size: 48px;
   }
+
+  .title-container {
+    margin-bottom: 70px;
+  }
 }

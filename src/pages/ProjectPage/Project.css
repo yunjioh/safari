@@ -15,7 +15,7 @@
 
 .project {
   height: 100%;
-  padding: 0 6vw;
+  padding: 0 0 0 6vw;
   color: white;
 }
 
@@ -48,7 +48,11 @@
 
 
 .text-area {
-  padding: 7vh 0;
+  display: flex;
+  padding: 12vh 0;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .project-content {
@@ -90,6 +94,7 @@ strong {
 
 .detail-text {
   margin-top: 10px;
+  width: 48%;
   font-size: 18px;
   font-weight: 200;
   line-height: 1.6;
@@ -113,8 +118,18 @@ strong {
 }
 
 .project img {
-  width: 30vw;
-  display: block;
+  width: 35vw;
+}
+
+.image-display-area {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.project-panel:nth-child(2) .image-display-area {
+  top: 65%;
 }
 
 /* 기여도 라인 */
@@ -162,6 +177,39 @@ strong {
   margin-bottom: 68px;
 }
 
+@media (max-width: 1400px) {
+  .project-section .title {
+    width: 75%;
+  }
+
+  .detail-text {
+    width: 100%;
+  }
+
+  .image-display-area {
+    top: 10%;
+    transform: none;
+  }
+
+  .project-panel:nth-child(2) .image-display-area {
+    top: 15%;
+    transform: none;
+  }
+
+  .project {
+    padding: 0 6vw;
+  }
+
+  .project img {
+    width: 40vw;
+  }
+}
+
+@media (max-width: 1024px) {
+  .project img {
+    width: 45vw;
+  }
+}
 
 @media (max-width: 768px) {
   .project .title {
@@ -174,7 +222,11 @@ strong {
   }
 
   .project {
-    padding: 5vh 4vw;
+    padding: 20vh 4vw 5vh;
+  }
+
+  .project-section .title {
+    width: 55%;
   }
 
   .project-bg {
@@ -230,10 +282,46 @@ strong {
   .role-text {
     font-size: 16px;
   }
+   .contrib-label {
+    font-size: 16px;
+  }
+
+  .contrib-value {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 560px) {
   .project .title {
     font-size: 40px;
   }
+
+  .project img {
+    width: 50vw;
+  }
+
+  .project {
+    padding: 18vh 4vw 5vh;
+  }
+
+  .project-panel:nth-child(2) .image-display-area {
+    top: 20%;
+  }
+
+  strong {
+    font-size: 16px;
+  }
+
+  .duration-text {
+    font-size: 15px;
+  }
+
+  .detail-text {
+    font-size: 14px;
+  }
+
+  .role-text {
+    font-size: 15px;
+  }
+
 }

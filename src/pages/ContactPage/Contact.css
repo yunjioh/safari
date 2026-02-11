@@ -114,6 +114,10 @@
   .contact {
     height: 45vh;
   }
+
+  .contact-email {
+    margin-bottom: 30px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -135,5 +139,27 @@
 @media (max-width: 560px) {
   .brand-title {
     font-size: 40px;
+  }
+}
+
+@media (max-width: 430px) {
+  .brand-title {
+    font-size: 40px;
+  }
+
+  .contact-label {
+    font-size: 20px;
+  }
+
+  .contact-email {
+    font-size: clamp(28px, 4vw, 65px);
+  }
+
+  .contact-info {
+    font-size: 16px;
+  }
+
+  .copyright {
+    font-size: 14px;
   }
 }

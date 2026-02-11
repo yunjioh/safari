@@ -5,7 +5,7 @@ export default function SubTitle({ title, description, align = "right" }) {
   return (
     <div className={`subTitle ${align}`}>
       {title && (
-        <ScrollReveal delay={0.3}>
+        <ScrollReveal delay={0.2}>
           <h3 className="sub-phrase">
             {title.split("\n").map((line, idx) => (
               <span key={idx}>
@@ -17,7 +17,7 @@ export default function SubTitle({ title, description, align = "right" }) {
         </ScrollReveal>
       )}
 
-      <ScrollReveal delay={0.5}>
+      <ScrollReveal delay={0.3}>
         <p className="sub-desc">
           {description.map((item, idx) =>
             item.highlight ? (

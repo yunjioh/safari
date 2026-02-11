@@ -90,7 +90,7 @@ const Hobby = () => {
   return (
     <section className="hobby" id="process">
       <div className="hobby-header">
-        <ScrollReveal delay={0.3}>
+        <ScrollReveal delay={0.1}>
           <h2 className="hobbyTit">
             HOBBIES:{" "}
             <span>MUSIC · EXERCISE · INSPIRATION · THEATER · TRAVEL</span>

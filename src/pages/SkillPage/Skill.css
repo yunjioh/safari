@@ -1,5 +1,4 @@
 .skill {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -127,9 +126,8 @@
 
   /* ✅ 마키 hover(멈춤)는 유지하고, 카드 hover만 제거 */
   .skill-card:hover {
-    width: 180px;
-    height: 180px;
-    background-color: inherit !important;
+    width: 100px;
+    height: 100px;
   }
 
   .skill-card:hover .icon-box {
@@ -159,13 +157,19 @@
 @media (max-width: 630px) {
   .marquee-wrapper {
     margin-top: 2vh;
-    margin-bottom: 0;
+    margin-bottom: 8vh;
   }
 }
 
 @media (max-width: 530px) {
   .skill-card {
     border-radius: 8px;
+    width: 80px;
+    height: 80px;
+  }
+
+  /* ✅ 마키 hover(멈춤)는 유지하고, 카드 hover만 제거 */
+  .skill-card:hover {
     width: 80px;
     height: 80px;
   }

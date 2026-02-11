@@ -1,5 +1,4 @@
 .coding {
-  min-height: 100vh;
   width: 100%;
   overflow: hidden;
   /* 필수: 오른쪽 대기 시 가로 스크롤 방지 */
