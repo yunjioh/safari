@@ -1,4 +1,3 @@
-import React, { useEffect, useRef } from "react";
 import "./Think.css";
 import Title from "../../components/Title";
 import gsap from "gsap";
@@ -39,12 +38,9 @@ const questions = [
 
 
 const Think = () => {
-  const sectionRef = useRef(null);
-  const containerRef = useRef(null);
-  const cardsRef = useRef([]);
 
   return (
-    <section className="think" ref={sectionRef}>
+    <section className="think">
       <div className="think-header">
         <Title
           subTitle="I THINK"
@@ -56,12 +52,11 @@ const Think = () => {
         />
       </div>
 
-      <div className="think-container" ref={containerRef}>
+      <div className="think-container">
         {questions.map((item, i) => (
           <div
             key={item.id}
             className="think-card-wrapper"
-            ref={(el) => (cardsRef.current[i] = el)}
 
           >
             <div className="think-card-inner">
