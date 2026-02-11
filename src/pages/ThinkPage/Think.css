@@ -144,7 +144,7 @@
   }
 
   .think-card-wrapper {
-    aspect-ratio: 2.5 / 2;
+    aspect-ratio: 1.5 / 2;
   }
 
   .think-q-text {
@@ -154,4 +154,12 @@
   .think-a-text {
     font-size: 18px;
   }
+}
+@media (max-width: 768px) {
+    .top-label {
+        font-size: 16px;
+    }
+    .bottom-description {
+        font-size: 16px;
+    }
 }

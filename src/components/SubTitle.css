@@ -57,6 +57,10 @@
     margin-left: auto;
   }
 
+  .subTitle {
+    margin-bottom: 0;
+  }
+
 }
 
 @media (max-width: 768px) {
@@ -67,9 +71,6 @@
 
   .sub-desc {
     font-size: 16px;
-  }
-  .subTitle {
-    margin-bottom: 0;
   }
 }
 

@@ -118,7 +118,11 @@
   }
 
   .profile-wrapper img {
-    width: 45vw;
+    width: 60vw;
+  }
+
+  .about {
+    padding: 10vh 6vw 12vw;
   }
 }
 
@@ -142,7 +146,8 @@
     font-size: 22px;
     margin-bottom: 15px;
   }
+
   .description {
-        font-size: 15px;
-    }
+    font-size: 15px;
+  }
 }

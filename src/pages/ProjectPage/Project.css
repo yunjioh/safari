@@ -164,13 +164,17 @@ strong {
 
 
 @media (max-width: 768px) {
+  .project .title {
+    font-size: 50px;
+  }
+
   .project-section {
     height: auto;
     overflow: visible;
   }
 
   .project {
-    padding: 12vh 6vw;
+    padding: 5vh 4vw;
   }
 
   .project-bg {
@@ -185,6 +189,14 @@ strong {
     padding: 0;
   }
 
+  .project .title-container {
+    margin-bottom: 45px;
+  }
+
+  .duration-text {
+    margin-bottom: 20px;
+  }
+
   .project-inner {
     display: flex;
     flex-direction: column;
@@ -197,16 +209,31 @@ strong {
     height: auto;
     min-height: unset;
   }
-}
 
-@media (max-width: 768px) {
   strong {
-    font-size: 20px;
+    font-size: 18px;
+    margin-bottom: 0;
   }
+
+  .sub-title {
+    font-size: 14px;
+  }
+
+  .project .main-button {
+    padding: 12px 20px;
+  }
+
   .detail-text {
     font-size: 16px;
   }
+
   .role-text {
     font-size: 16px;
+  }
+}
+
+@media (max-width: 560px) {
+  .project .title {
+    font-size: 40px;
   }
 }

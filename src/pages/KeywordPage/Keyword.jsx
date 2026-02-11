@@ -29,7 +29,7 @@ const Keyword = () => {
         rotate: -12,
         position: { top: "40px", left: "-30px" },
       },
-      pos: { top: "16%", left: "75%", rotate: "8deg" },
+      pos: { top: "16%", right: "8%", rotate: "8deg" },
     },
     {
       src: "img/key2.svg",
@@ -49,7 +49,7 @@ const Keyword = () => {
         rotate: -10,
         position: { top: "40px", left: "-30px" },
       },
-      pos: { top: "31%", left: "75%", rotate: "3deg" },
+      pos: { top: "31%", right: "5%", rotate: "3deg" },
     },
     {
       src: "img/key4.svg",
@@ -69,7 +69,7 @@ const Keyword = () => {
         rotate: -10,
         position: { top: "40px", left: "-30px" },
       },
-      pos: { top: "57%", left: "68%", rotate: "6deg" },
+      pos: { top: "57%", right: "8%", rotate: "6deg" },
     },
     {
       src: "img/key6.svg",
@@ -121,12 +121,19 @@ const Keyword = () => {
               className={`photo-box ${activeIndex === i ? "is-active" : ""}`}
               style={{
                 top: !isMobile ? p.pos.top : "0",
-                left: !isMobile ? p.pos.left : "50%",
+
+                // ✅ left / right 조건 분기
+                ...(!isMobile && p.pos.right
+                  ? { right: p.pos.right, left: "auto" }
+                  : !isMobile && p.pos.left
+                    ? { left: p.pos.left, right: "auto" }
+                    : {}),
+
                 transform: !isMobile
                   ? activeIndex === i
                     ? `rotate(${p.pos.rotate}) scale(1)`
                     : `rotate(0deg) scale(0.9) translateY(40px)`
-                  : undefined, // 모바일은 CSS에서 제어
+                  : undefined,
               }}
             >
               <div className="badge-container">

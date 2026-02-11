@@ -196,6 +196,64 @@
   transform: translateY(10px);
   letter-spacing: -2px;
 }
+/* ✅ 마키 기본 */
+.hero-marquee{
+  width: 100%;
+  overflow: hidden;
+  border-top: 1px solid rgba(0,0,0,0.25);
+  padding: 14px 0;
+}
+
+.marquee-track{
+  display: inline-flex;
+  gap: 24px;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 14s linear infinite;
+}
+
+.marquee-track span{
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+@keyframes marquee{
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ✅ 430px 이하에서: 영상은 그냥 보이게 + 핀/센터 구조 무리 없게 */
+@media (max-width: 560px){
+  .hero{
+    height: auto;           /* 핀 안 쓰니까 고정 높이 풀기 */
+    overflow: visible;
+  }
+
+  .hero-center{
+    display: none;          /* DECODER 마스크 영역 숨기고 싶으면 */
+  }
+
+  .full-video-layer{
+    position: relative;     /* absolute 대신 문서 흐름에 */
+    inset: auto;
+    margin-top: 16px;
+    z-index: 1;
+  }
+
+  .full-video{
+    width: 92%;
+    height: 46vh;
+    margin: 0 auto;
+    display: block;
+    border-radius: 16px;
+  }
+
+  .video-text{
+    font-size: 18px;
+  }
+}
+
 
 @media (max-width: 1600px) {
   .full-video {
