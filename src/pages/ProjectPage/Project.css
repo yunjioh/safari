@@ -128,7 +128,7 @@ strong {
 }
 
 .project-panel:nth-child(2) .image-display-area {
-  top: 65%;
+  top: 56%;
 }
 
 /* 기여도 라인 */
@@ -178,7 +178,7 @@ strong {
 
 @media (max-width: 1400px) {
   .project-section .title {
-    width: 70%;
+    width: 50%;
   }
 
   .detail-text {
