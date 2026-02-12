@@ -129,6 +129,14 @@
     aspect-ratio: 2.5 / 3; /* ✅ 비율로 높이만 자연스럽게 */
     height: auto;
   }
+  .think-card-inner img {
+    max-width: 65%;
+    height: auto;
+  }
+
+  .think-card-wrapper:first-child img {
+    max-width: 60%;
+  }
 }
 
 /* ✅ 768px 이하: 1열 */
