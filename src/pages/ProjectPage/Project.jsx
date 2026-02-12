@@ -26,8 +26,8 @@ const projectData = [
       { label: "디자인", value: 100 },
       { label: "개발", value: 100 },
     ],
-    site: "https://yunjioh.github.io/1million/",
-    doc: "https://yunjioh.github.io/1million/",
+    site: "https://www.figma.com/proto/aXpojpcM780EqJOBHuUMLw/14.%EC%98%A4%EC%9C%A4%EC%A7%80?page-id=0%3A1&node-id=2083-3349&viewport=21%2C360%2C0.02&t=3oT8W2yLEDRBZ5bQ-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1757%3A2363",
+    doc: "https://www.figma.com/proto/aXpojpcM780EqJOBHuUMLw/14.%EC%98%A4%EC%9C%A4%EC%A7%80?page-id=0%3A1&node-id=2083-3349&viewport=21%2C360%2C0.02&t=3oT8W2yLEDRBZ5bQ-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1757%3A2363",
   },
   {
     subTitle: "댄서 원밀리언 웹사이트 리뉴얼",
@@ -49,7 +49,7 @@ const projectData = [
       { label: "개발", value: 90 },
     ],
     site: "https://yunjioh.github.io/1million/",
-    doc: "https://yunjioh.github.io/1million/",
+    doc: "https://www.figma.com/proto/aXpojpcM780EqJOBHuUMLw/14.%EC%98%A4%EC%9C%A4%EC%A7%80?page-id=1730%3A2501&node-id=2166-7882&viewport=518%2C307%2C0.02&t=e1lP80PZXa264VIY-1&scaling=min-zoom&content-scaling=fixed",
   },
   {
     subTitle: "버츄얼 팬덤 어플",
@@ -69,7 +69,7 @@ const projectData = [
       { label: "개발", value: 90 },
     ],
     site: "https://tubi-team-project.vercel.app/",
-    doc: "https://tubi-team-project.vercel.app/",
+    doc: "https://www.figma.com/proto/aXpojpcM780EqJOBHuUMLw/14.%EC%98%A4%EC%9C%A4%EC%A7%80?page-id=1730%3A2501&node-id=2166-6413&viewport=518%2C307%2C0.02&t=e1lP80PZXa264VIY-1&scaling=min-zoom&content-scaling=fixed",
   },
 ];
 
