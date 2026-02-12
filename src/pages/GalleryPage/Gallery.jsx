@@ -51,7 +51,7 @@ const Gallery = () => {
           borderRadius: "20px",
           ease: "none",
         },
-        0
+        0,
       )
         .to(
           textWrap,
@@ -59,7 +59,7 @@ const Gallery = () => {
             scale: 1.5,
             ease: "none",
           },
-          0
+          0,
         )
         .to(
           gallery,
@@ -67,7 +67,7 @@ const Gallery = () => {
             backgroundColor: "#021526",
             ease: "none",
           },
-          0
+          0,
         )
         .to(
           mainTitle,
@@ -75,7 +75,7 @@ const Gallery = () => {
             color: "#BBFF52",
             ease: "none",
           },
-          0
+          0,
         )
         .to(
           [top, bottom],
@@ -83,7 +83,7 @@ const Gallery = () => {
             y: -20,
             ease: "none",
           },
-          0.1
+          0.1,
         );
     }, el);
 
@@ -94,25 +94,26 @@ const Gallery = () => {
     <section className="gallery" ref={sectionRef}>
       {/* 🔹 이미지 배경 */}
       <div className="gallery-bg" aria-hidden="true" />
+      <div className="text">
+        <p className="top-label">UX/UI DESIGN @2026</p>
 
-      <p className="top-label">UX/UI DESIGN @2026</p>
-
-      {/* 🔹 텍스트 스케일 영역 */}
-      <div className="gallery-scale">
-        <div className="center">
-          <h1 className="main-display-title">
-            MY WORK PAGE
-            <br />
-            GALLERY
-          </h1>
+        {/* 🔹 텍스트 스케일 영역 */}
+        <div className="gallery-scale">
+          <div className="center">
+            <h1 className="main-display-title">
+              MY WORK PAGE
+              <br />
+              GALLERY
+            </h1>
+          </div>
         </div>
-      </div>
 
-      <p className="bottom-description">
-        UI/UX 프로젝트, 클론 코딩, 디자인 작업물로
-        <br />
-        창의성과 실용성을 담아낸 저의 디자인 역량을 확인하실 수 있습니다
-      </p>
+        <p className="bottom-description">
+          UI/UX 프로젝트, 클론 코딩, 디자인 작업물로
+          <br />
+          창의성과 실용성을 담아낸 저의 디자인 역량을 확인하실 수 있습니다
+        </p>
+      </div>
     </section>
   );
 };
