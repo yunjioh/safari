@@ -17,8 +17,7 @@
   perspective: 1200px;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 36px;
-  /* ✅ 카드 높이를 "카드가 아니라 컨테이너"가 결정 (원하는 값으로) */
+  gap: 36px; /* ✅ 카드 높이를 "카드가 아니라 컨테이너"가 결정 (원하는 값으로) */
   height: min(60vh, 760px);
   align-items: stretch;
 }
@@ -112,7 +111,14 @@
 
 @media (max-width: 1400px) {
   .think-q-text {
-    font-size: 23px;
+    font-size: 20px;
+  }
+  .think-card {
+    padding: 40px 18px;
+  }
+
+  .think-a-text {
+    font-size: 18px;
   }
 }
 
@@ -156,21 +162,5 @@
 
   .think-card-wrapper:first-child img {
     max-width: 55%;
-  }
-
-  .think-q-text {
-    font-size: 20px;
-  }
-
-  .think-a-text {
-    font-size: 18px;
-  }
-}
-@media (max-width: 768px) {
-  .top-label {
-    font-size: 16px;
-  }
-  .bottom-description {
-    font-size: 16px;
   }
 }
