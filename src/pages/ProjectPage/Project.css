@@ -208,9 +208,6 @@ strong {
   .project img {
     width: 45vw;
   }
-  .project-section .title {
-    width: 65%;
-  }
 }
 
 @media (max-width: 768px) {
