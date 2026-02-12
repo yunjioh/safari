@@ -98,13 +98,13 @@ const Hobby = () => {
         </ScrollReveal>
         <SubTitle
           align="right"
-          title={`Possesses solid coding skills\nand is proficient in design tools.`}
+          title={`Curious about experiences, \ninspired by moments.`}
           description={[
-            { text: "탄탄한 ", highlight: false },
-            { text: "코딩 스킬", highlight: true, color: "purple" },
-            { text: "을 겸비하고 있으며, ", highlight: false },
-            { text: "디자인 툴", highlight: true, color: "yellow" },
-            { text: "과 AI 도구를 능숙하게 다룹니다.", highlight: false },
+            { text: "다양한 경험에서 ", highlight: false },
+            { text: " 영감", highlight: true, color: "purple" },
+            { text: "을 얻고, 일상의 순간을 ", highlight: false },
+            { text: "관찰", highlight: true, color: "yellow" },
+            { text: "합니다.", highlight: false },
           ]}
         />
       </div>
