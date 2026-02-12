@@ -38,16 +38,20 @@
   position: relative;
   z-index: 10;
   /* 위아래 페이드 효과 */
-  mask-image: linear-gradient(to bottom,
-      transparent,
-      black 30%,
-      black 70%,
-      transparent);
-  -webkit-mask-image: linear-gradient(to bottom,
-      transparent,
-      black 30%,
-      black 70%,
-      transparent);
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 30%,
+    black 70%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 30%,
+    black 70%,
+    transparent
+  );
 }
 
 .keyword-text-list {
@@ -99,7 +103,7 @@
 
 @media (max-width: 768px) {
   .keyword-pin {
-    padding-top: 8vh;
+    padding-top: 10vh;
     justify-content: center;
   }
 

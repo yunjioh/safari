@@ -46,7 +46,6 @@
   overflow: hidden;
 }
 
-
 .text-area {
   display: flex;
   padding: 12vh 0;
@@ -282,7 +281,7 @@ strong {
   .role-text {
     font-size: 16px;
   }
-   .contrib-label {
+  .contrib-label {
     font-size: 16px;
   }
 
@@ -301,7 +300,7 @@ strong {
   }
 
   .project {
-    padding: 18vh 4vw 5vh;
+    padding: 12vh 4vw 5vh;
   }
 
   .project-panel:nth-child(2) .image-display-area {
@@ -323,5 +322,4 @@ strong {
   .role-text {
     font-size: 15px;
   }
-
 }

@@ -15,11 +15,9 @@
   width: 100%;
   margin-top: 50px;
   perspective: 1200px;
-
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 36px;
-
   /* ✅ 카드 높이를 "카드가 아니라 컨테이너"가 결정 (원하는 값으로) */
   height: min(60vh, 760px);
   align-items: stretch;
@@ -47,8 +45,7 @@
 
 .think-card {
   position: absolute;
-  inset: 0;
-  /* ✅ width/height 대신 inset으로 꽉 채우기 */
+  inset: 0; /* ✅ width/height 대신 inset으로 꽉 채우기 */
   backface-visibility: hidden;
   border-radius: 24px;
   padding: 40px 30px;
@@ -122,16 +119,14 @@
 /* ✅ 1200px 이하: 그대로 2x2 유지하되, 높이는 컨텐츠 기반으로 바꿔도 됨 */
 @media (max-width: 1200px) {
   .think-container {
-    height: auto;
-    /* ✅ 모바일/태블릿은 내용만큼 */
+    height: auto; /* ✅ 모바일/태블릿은 내용만큼 */
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
     padding-top: 20px;
   }
 
   .think-card-wrapper {
-    aspect-ratio: 2.5 / 3;
-    /* ✅ 비율로 높이만 자연스럽게 */
+    aspect-ratio: 2.5 / 3; /* ✅ 비율로 높이만 자연스럽게 */
     height: auto;
   }
 }
@@ -144,7 +139,15 @@
   }
 
   .think-card-wrapper {
-    aspect-ratio: 1.5 / 2;
+    aspect-ratio: 2 / 2;
+  }
+  .think-card-inner img {
+    max-width: 60%;
+    height: auto;
+  }
+
+  .think-card-wrapper:first-child img {
+    max-width: 55%;
   }
 
   .think-q-text {
@@ -156,10 +159,10 @@
   }
 }
 @media (max-width: 768px) {
-    .top-label {
-        font-size: 16px;
-    }
-    .bottom-description {
-        font-size: 16px;
-    }
+  .top-label {
+    font-size: 16px;
+  }
+  .bottom-description {
+    font-size: 16px;
+  }
 }
