@@ -178,7 +178,7 @@ strong {
 
 @media (max-width: 1400px) {
   .project-section .title {
-    width: 75%;
+    width: 70%;
   }
 
   .detail-text {
@@ -186,12 +186,12 @@ strong {
   }
 
   .image-display-area {
-    top: 10%;
+    top: 8%;
     transform: none;
   }
 
   .project-panel:nth-child(2) .image-display-area {
-    top: 15%;
+    top: 12%;
     transform: none;
   }
 
@@ -207,6 +207,9 @@ strong {
 @media (max-width: 1024px) {
   .project img {
     width: 45vw;
+  }
+  .project-section .title {
+    width: 65%;
   }
 }
 

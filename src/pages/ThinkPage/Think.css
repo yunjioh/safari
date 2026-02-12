@@ -143,6 +143,9 @@
   .think-card-wrapper:first-child img {
     max-width: 60%;
   }
+  .think-q-text {
+    margin-bottom: 7vh;
+  }
 }
 
 /* ✅ 768px 이하: 1열 */
@@ -150,6 +153,9 @@
   .think-container {
     grid-template-columns: 1fr;
     gap: 18px;
+  }
+  .think-q-text {
+    margin-bottom: 5vh;
   }
 
   .think-card-wrapper {

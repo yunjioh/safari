@@ -22,12 +22,12 @@ const projectData = [
     imageMobile: "/img/project1_mo.svg",
     bg: "#021526",
     contribution: [
-      { label: "기획", value: 90 },
-      { label: "디자인", value: 90 },
-      { label: "개발", value: 60 },
+      { label: "기획", value: 100 },
+      { label: "디자인", value: 100 },
+      { label: "개발", value: 100 },
     ],
     site: "https://yunjioh.github.io/1million/",
-    doc: "https://yunjioh.github.io/1million/"
+    doc: "https://yunjioh.github.io/1million/",
   },
   {
     subTitle: "댄서 원밀리언 웹사이트 리뉴얼",
@@ -44,12 +44,12 @@ const projectData = [
     imageMobile: "/img/project2_mo.svg",
     bg: "#FB773C",
     contribution: [
-      { label: "기획", value: 90 },
-      { label: "디자인", value: 90 },
-      { label: "개발", value: 60 },
+      { label: "기획", value: 80 },
+      { label: "디자인", value: 70 },
+      { label: "개발", value: 90 },
     ],
     site: "https://yunjioh.github.io/1million/",
-    doc: "https://yunjioh.github.io/1million/"
+    doc: "https://yunjioh.github.io/1million/",
   },
   {
     subTitle: "버츄얼 팬덤 어플",
@@ -64,12 +64,12 @@ const projectData = [
     imageMobile: "/img/project3_mo.svg",
     bg: "#0B2F9F",
     contribution: [
-      { label: "기획", value: 90 },
-      { label: "디자인", value: 90 },
-      { label: "개발", value: 60 },
+      { label: "기획", value: 80 },
+      { label: "디자인", value: 80 },
+      { label: "개발", value: 90 },
     ],
     site: "https://tubi-team-project.vercel.app/",
-    doc: "https://tubi-team-project.vercel.app/"
+    doc: "https://tubi-team-project.vercel.app/",
   },
 ];
 
@@ -129,7 +129,6 @@ export default function Project() {
 
     return () => ctx.revert();
   }, []);
-
 
   return (
     <section className="project-section" ref={sectionRef} id="project">
