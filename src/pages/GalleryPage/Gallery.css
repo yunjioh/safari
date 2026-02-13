@@ -21,7 +21,7 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: url("/public/img/bg.svg");
+  background-image: url("/public/img/bg.png");
   background-size: cover;
   background-position: center;
 }

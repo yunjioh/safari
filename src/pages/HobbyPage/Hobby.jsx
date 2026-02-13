@@ -9,22 +9,22 @@ gsap.registerPlugin(ScrollTrigger);
 
 const hobbyList = [
   { id: 1, title: "HEALING", img: "/img/hobby1.svg", label: "Mind" },
-  { id: 2, title: "THEATER", img: "/img/hobby2.svg", label: "Culture" },
+  { id: 2, title: "TAKE\nPHOTO", img: "/img/hobby2.svg", label: "Culture" },
   {
     id: 3,
     title: "VISIT\nEXHIBITION",
     img: "/img/hobby3.svg",
     label: "Inspiration",
   },
-  { id: 4, title: "VISIT\nMUSEUM", img: "/img/hobby4.svg", label: "History" },
+  { id: 4, title: "World\nTravel", img: "/img/hobby4.svg", label: "History" },
   {
     id: 5,
     title: "MAKING\nPERFUME",
-    img: "/img/hobby5.svg",
+    img: "/img/hobby7.svg",
     label: "Experience",
   },
   { id: 6, title: "Daily\nActivity", img: "/img/hobby6.svg", label: "Energy" },
-  { id: 7, title: "World\nTravel", img: "/img/hobby7.svg", label: "Discovery" },
+  { id: 7, title: "VISIT\nMUSEUM", img: "/img/hobby5.svg", label: "Discovery" },
 ];
 
 const Hobby = () => {
@@ -103,7 +103,7 @@ const Hobby = () => {
             { text: "다양한 경험에서 ", highlight: false },
             { text: " 영감", highlight: true, color: "purple" },
             { text: "을 얻고, 일상의 순간을 ", highlight: false },
-            { text: "관찰", highlight: true, color: "yellow" },
+            { text: "관찰", highlight: true, color: "orange" },
             { text: "합니다.", highlight: false },
           ]}
         />

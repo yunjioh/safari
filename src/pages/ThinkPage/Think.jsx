@@ -1,5 +1,6 @@
 import "./Think.css";
 import Title from "../../components/Title";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -16,14 +17,14 @@ const questions = [
   {
     id: 2,
     q: "디자인할 때 가장 중요하게 생각하는 것은 무엇인가요?",
-    a: "가장 중요하게 생각하는 것은 사용자가 판단하기 쉬운 구조입니다. 디자인은 예쁘게 보이는 것보다, 사용자가 이해 → 비교 → 결정 → 행동까지 자연스럽게 이어질 수 있도록 돕는 역할이라고 생각합니다.",
+    a: "가장 중요하게 생각하는 것은 사용자가 판단하기 쉬운 구조입니다. 디자인은 예쁜 것도 중요하지만, 사용자가 이해 → 비교 → 결정 → 행동까지 자연스럽게 이어질 수 있도록 돕는 역할이라고 생각합니다.",
     color: "#F3A4FF",
     bg: "/img/think3.svg"
   },
   {
     id: 3,
     q: "디자인과 개발의 협업에서 본인만의 강점은 무엇인가요?",
-    a: "개발 언어를 이해하는 디자인 언어입니다. 개발자와 소통할 때 성능을 고려해 이런 구조로 설계했다고 제안할 수 있어 협업 비용을 획기적으로 낮추고 프로젝트의 퀄리티를 높이는 저만의 핵심 경쟁력입니다.",
+    a: "개발 언어를 이해하는 디자이너입니다. 개발자와 소통할 때 성능을 고려해 이런 구조로 설계했다고 제안할 수 있어 협업 비용을 획기적으로 낮추고 프로젝트의 퀄리티를 높이는 저만의 핵심 경쟁력입니다.",
     color: "#BEDC39",
     bg: "/img/think2.svg"
   },
@@ -36,11 +37,37 @@ const questions = [
   },
 ];
 
-
 const Think = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray(".think-card-wrapper");
+
+      gsap.from(cards, {
+        autoAlpha: 0,
+        y: 400,              // 아래에서 위로
+        scale: 0.98,
+        duration: 0.9,
+        ease: "power3.out",
+        stagger: 0.12,
+        scrollTrigger: {
+          trigger: el,
+          start: "top 75%",
+          toggleActions: "restart none none reverse",
+        },
+      });
+    }, el);
+
+    return () => ctx.revert();
+  }, []);
+
 
   return (
-    <section className="think">
+    <section className="think" ref={sectionRef}>
       <div className="think-header">
         <Title
           subTitle="I THINK"
@@ -53,30 +80,23 @@ const Think = () => {
       </div>
 
       <div className="think-container">
-        {questions.map((item, i) => (
-          <div
-            key={item.id}
-            className="think-card-wrapper"
-
-          >
+        {questions.map((item) => (
+          <div key={item.id} className="think-card-wrapper">
             <div className="think-card-inner">
-              <div className="think-card front" style={{
-                "--card-color": item.color
-              }}>
+              <div className="think-card front" style={{ "--card-color": item.color }}>
                 <span className="think-q-label">QUESTION 0{item.id}</span>
                 <p className="think-q-text">{item.q}</p>
                 <img src={item.bg} alt="" />
               </div>
-              <div className="think-card back" style={{
-                "--card-color": item.color
-              }}>
+
+              <div className="think-card back" style={{ "--card-color": item.color }}>
                 <p className="think-a-text">{item.a}</p>
               </div>
             </div>
           </div>
         ))}
       </div>
-    </section >
+    </section>
   );
 };
 

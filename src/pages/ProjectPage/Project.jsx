@@ -26,12 +26,12 @@ const projectData = [
       { label: "디자인", value: 100 },
       { label: "개발", value: 100 },
     ],
-    site: "https://www.figma.com/proto/aXpojpcM780EqJOBHuUMLw/14.%EC%98%A4%EC%9C%A4%EC%A7%80?page-id=0%3A1&node-id=2083-3349&viewport=21%2C360%2C0.02&t=3oT8W2yLEDRBZ5bQ-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1757%3A2363",
-    doc: "https://www.figma.com/proto/aXpojpcM780EqJOBHuUMLw/14.%EC%98%A4%EC%9C%A4%EC%A7%80?page-id=0%3A1&node-id=2083-3349&viewport=21%2C360%2C0.02&t=3oT8W2yLEDRBZ5bQ-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1757%3A2363",
+    site: "https://www.figma.com/proto/aXpojpcM780EqJOBHuUMLw/14.%EC%98%A4%EC%9C%A4%EC%A7%80?page-id=1838%3A3633&node-id=1841-1083&viewport=361%2C277%2C0.2&t=JW121MXqmAnZxrrL-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1841%3A1107",
+    doc: "https://www.figma.com/proto/KzhIKNZbXJiO85fA9b1NGw/%EC%98%A4%EC%9C%A4%EC%A7%80?page-id=1%3A2343&node-id=1-3024&viewport=-1303%2C-7159%2C0.64&t=kO4sUMMgftaijTtf-1&scaling=scale-down-width&content-scaling=fixed",
   },
   {
     subTitle: "댄서 원밀리언 웹사이트 리뉴얼",
-    mainTitle: "1MILLION website",
+    mainTitle: "1MILLION web",
     decoTitle: "WEBSITE RENEWAL",
     duration: "2025.11 - 2025.12",
     role: "“이 프로젝트에서는 서브 디자이너 및 프론트엔드 메인 코더로서 팀을 지원했습니다”",
@@ -82,45 +82,86 @@ export default function Project() {
       const panels = gsap.utils.toArray(".project-panel");
 
       const mm = gsap.matchMedia();
-
-      /* =========================
-         PC / 태블릿
-      ========================= */
       mm.add("(min-width: 768px)", () => {
-        gsap.set(panels, { autoAlpha: 0, y: 24 });
-        gsap.set(panels[0], { autoAlpha: 1, y: 0 });
+        gsap.set(panels, { autoAlpha: 0 });
         gsap.set(bg, { backgroundColor: projectData[0].bg });
+
+        // 내부 요소 초기값
+        panels.forEach((panel) => {
+          const text = panel.querySelector(".text-area");
+          const image = panel.querySelector(".image-display-area");
+          if (text) gsap.set(text, { autoAlpha: 0, x: -70 });
+          if (image) gsap.set(image, { autoAlpha: 0, x: 70 });
+        });
 
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: section,
             start: "top top",
-            end: `+=${projectData.length * 200}%`,
-            scrub: 1,
+            end: `+=${projectData.length * 100}%`,
+            scrub: 1.6,
             pin: true,
+            anticipatePin: 1,
           },
         });
 
+        // ✅ 0번(첫 카드) 켜고, 첫 카드도 등장 애니메이션
+        tl.set(panels[0], { autoAlpha: 1 }, 0);
+
+        const firstText = panels[0].querySelector(".text-area");
+        const firstImg = panels[0].querySelector(".image-display-area");
+
+        tl.to(firstText, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.1);
+        tl.to(firstImg, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.18);
+
+        // ✅ 1번부터 전환 애니메이션
         projectData.forEach((p, i) => {
           if (i === 0) return;
 
+          const prev = panels[i - 1];
+          const cur = panels[i];
+
+          const prevText = prev.querySelector(".text-area");
+          const prevImg = prev.querySelector(".image-display-area");
+          const curText = cur.querySelector(".text-area");
+          const curImg = cur.querySelector(".image-display-area");
+
           tl.to(bg, { backgroundColor: p.bg, ease: "none" }, i);
-          tl.to(panels[i - 1], { autoAlpha: 0, y: -20 }, i);
-          tl.to(panels[i], { autoAlpha: 1, y: 0 }, i + 0.15);
+
+          tl.to(prevText, { autoAlpha: 0, x: -70, duration: 0.35, ease: "power2.out" }, i);
+          tl.to(prevImg, { autoAlpha: 0, x: 70, duration: 0.35, ease: "power2.out" }, i);
+
+          tl.to(prev, { autoAlpha: 0, duration: 0.2, ease: "none" }, i + 0.05);
+
+          tl.set(cur, { autoAlpha: 1 }, i + 0.1);
+
+          tl.set(curText, { autoAlpha: 0, x: -70 }, i + 0.1);
+          tl.set(curImg, { autoAlpha: 0, x: 70 }, i + 0.1);
+
+          tl.to(curText, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, i + 0.18);
+          tl.to(curImg, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, i + 0.24);
         });
+
+        return () => ScrollTrigger.getAll().forEach((t) => t.kill());
       });
 
       /* =========================
          모바일
       ========================= */
       mm.add("(max-width: 768px)", () => {
-        // 모바일에서는 모두 보이게
         gsap.set(bg, { backgroundColor: "#fff" });
         gsap.set(panels, {
-          clearProps: "all", // GSAP 스타일 제거
+          clearProps: "all",
           autoAlpha: 1,
           position: "relative",
           y: 0,
+        });
+
+        panels.forEach((panel) => {
+          const text = panel.querySelector(".text-area");
+          const image = panel.querySelector(".image-display-area");
+          if (text) gsap.set(text, { clearProps: "all" });
+          if (image) gsap.set(image, { clearProps: "all" });
         });
       });
 

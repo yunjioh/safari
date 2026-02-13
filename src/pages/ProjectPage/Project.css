@@ -45,6 +45,10 @@
   height: 100%;
   overflow: hidden;
 }
+.text-area,
+.image-display-area {
+  will-change: transform, opacity;
+}
 
 .text-area {
   display: flex;
@@ -69,12 +73,10 @@
 
 strong {
   font-size: 22px;
-  /* 섹션 라벨 느낌 */
   font-weight: 600;
   display: block;
   margin-bottom: 10px;
   letter-spacing: 0.4px;
-  line-height: 1.7;
   opacity: 0.85;
 }
 
@@ -128,7 +130,7 @@ strong {
 }
 
 .project-panel:nth-child(2) .image-display-area {
-  top: 56%;
+  top: 62%;
 }
 
 /* 기여도 라인 */
@@ -148,11 +150,11 @@ strong {
 .contrib-label {
   font-size: 18px;
   font-weight: 700;
+  opacity: 0.65;
 }
 
 .contrib-value {
   font-size: 18px;
-  opacity: 0.65;
 }
 
 /* sticky가 동작하려면 상위에 overflow가 막히면 안 됨 */
@@ -175,6 +177,8 @@ strong {
 .project .title-container {
   margin-bottom: 68px;
 }
+
+
 
 @media (max-width: 1400px) {
   .project-section .title {
