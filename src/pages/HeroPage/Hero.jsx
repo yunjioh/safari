@@ -144,6 +144,10 @@ export default function Hero() {
         <div className="marquee-track">
           <span>OH YUNJI · UI/UX DESIGNER · INTERACTION DESIGN · </span>
           <span>OH YUNJI · UI/UX DESIGNER · INTERACTION DESIGN · </span>
+          <span>OH YUNJI · UI/UX DESIGNER · INTERACTION DESIGN · </span>
+          <span>OH YUNJI · UI/UX DESIGNER · INTERACTION DESIGN · </span>
+          <span>OH YUNJI · UI/UX DESIGNER · INTERACTION DESIGN · </span>
+          <span>OH YUNJI · UI/UX DESIGNER · INTERACTION DESIGN · </span>
         </div>
       </div>
     </section>

@@ -45,11 +45,11 @@ const projectData = [
     bg: "#FB773C",
     contribution: [
       { label: "기획", value: 80 },
-      { label: "디자인", value: 70 },
+      { label: "디자인", value: 80 },
       { label: "개발", value: 90 },
     ],
     site: "https://yunjioh.github.io/1million/",
-    doc: "https://www.figma.com/proto/aXpojpcM780EqJOBHuUMLw/14.%EC%98%A4%EC%9C%A4%EC%A7%80?page-id=1730%3A2501&node-id=2166-7882&viewport=518%2C307%2C0.02&t=e1lP80PZXa264VIY-1&scaling=min-zoom&content-scaling=fixed",
+    doc: "https://www.figma.com/proto/aXpojpcM780EqJOBHuUMLw/14.%EC%98%A4%EC%9C%A4%EC%A7%80?page-id=1730%3A2501&node-id=2166-7882&viewport=518%2C307%2C0.02&t=e1lP80PZXa264VIY-1&scaling=scale-down-width&content-scaling=fixed",
   },
   {
     subTitle: "버츄얼 팬덤 어플",
@@ -64,12 +64,12 @@ const projectData = [
     imageMobile: "/img/project3_mo.svg",
     bg: "#0B2F9F",
     contribution: [
-      { label: "기획", value: 80 },
-      { label: "디자인", value: 80 },
+      { label: "기획", value: 70 },
+      { label: "디자인", value: 70 },
       { label: "개발", value: 90 },
     ],
     site: "https://tubi-team-project.vercel.app/",
-    doc: "https://www.figma.com/proto/aXpojpcM780EqJOBHuUMLw/14.%EC%98%A4%EC%9C%A4%EC%A7%80?page-id=1730%3A2501&node-id=2166-6413&viewport=518%2C307%2C0.02&t=e1lP80PZXa264VIY-1&scaling=min-zoom&content-scaling=fixed",
+    doc: "https://www.figma.com/proto/aXpojpcM780EqJOBHuUMLw/14.%EC%98%A4%EC%9C%A4%EC%A7%80?page-id=1730%3A2501&node-id=2166-6413&viewport=518%2C307%2C0.02&t=e1lP80PZXa264VIY-1&scaling=scale-down-width&content-scaling=fixed",
   },
 ];
 
