@@ -42,7 +42,7 @@ const projectData = [
 유지되도록 기여했습니다.`,
     image: "/img/project2.svg",
     imageMobile: "/img/project2_mo.svg",
-    bg: "#FB773C",
+    bg: "#FF6421",
     contribution: [
       { label: "기획", value: 80 },
       { label: "디자인", value: 80 },
