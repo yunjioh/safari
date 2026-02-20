@@ -204,6 +204,11 @@ strong {
   .project img {
     width: 60vw;
   }
+
+  .project {
+    padding: 0;
+  }
+
   .inner {
     gap: 8vh;
   }
@@ -236,6 +241,7 @@ strong {
 
   .project-content {
     flex-direction: column-reverse;
+    padding: 0;
   }
 
   .text-area {

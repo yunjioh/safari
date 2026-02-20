@@ -55,7 +55,6 @@ const Gallery = () => {
         bg,
         {
           filter: "grayscale(0%)",
-          borderRadius: "20px",
           ease: "none",
         },
         0,
