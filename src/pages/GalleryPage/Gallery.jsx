@@ -7,29 +7,38 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Gallery = () => {
   const sectionRef = useRef(null);
-
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
 
     const ctx = gsap.context(() => {
-      // ✅ el 자체가 .gallery 섹션이므로 querySelector로 다시 찾지 말기
       const gallery = el;
-
       const bg = el.querySelector(".gallery-bg");
       const textWrap = el.querySelector(".gallery-scale");
       const mainTitle = el.querySelector(".main-display-title");
       const top = el.querySelector(".top-label");
       const bottom = el.querySelector(".bottom-description");
 
-      // 안전장치 (없으면 애니메이션 적용 안 됨)
       if (!bg || !textWrap || !mainTitle || !top || !bottom) return;
 
-      // 초기 상태
-      gsap.set(gallery, { backgroundColor: "#fff" });
-      gsap.set(bg, { scale: 1, filter: "grayscale(100%)", opacity: 1 });
-      gsap.set(textWrap, { scale: 1 });
-      gsap.set(mainTitle, { color: "#fff" });
+      gsap.set(gallery, {
+        clipPath: "circle(0% at 50% 50%)",
+      });
+
+      gsap.to(gallery, {
+        clipPath: "circle(150% at 50% 50%)",
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 70%",
+          toggleActions: "restart none none reverse",
+        },
+      });
+
+      /* =========================
+       2️⃣ Pin + Scale 애니메이션
+    ========================= */
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -37,16 +46,14 @@ const Gallery = () => {
           start: "top top",
           end: "+=150%",
           pin: true,
-          scrub: 1,
+          scrub: 3,
           anticipatePin: 1,
-          invalidateOnRefresh: true,
         },
       });
 
       tl.to(
         bg,
         {
-          scale: 1,
           filter: "grayscale(0%)",
           borderRadius: "20px",
           ease: "none",
@@ -57,22 +64,6 @@ const Gallery = () => {
           textWrap,
           {
             scale: 2,
-            ease: "none",
-          },
-          0,
-        )
-        .to(
-          gallery,
-          {
-            backgroundColor: "#fff",
-            ease: "none",
-          },
-          0,
-        )
-        .to(
-          mainTitle,
-          {
-            color: "#fff",
             ease: "none",
           },
           0,
