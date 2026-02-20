@@ -51,7 +51,7 @@
 
 .text-area {
   display: flex;
-  padding: 12vh 0;
+  padding: 6vh 0;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
@@ -77,7 +77,7 @@ strong {
   display: block;
   margin-bottom: 10px;
   letter-spacing: 0.4px;
-  opacity: 0.85;
+  opacity: 0.65;
 }
 
 .duration-text {
@@ -99,6 +99,7 @@ strong {
   font-weight: 200;
   line-height: 1.6;
   letter-spacing: -1px;
+  width: 60%;
 }
 .button-group {
   margin-top: 28px;
@@ -121,7 +122,7 @@ strong {
 
 .image-display-area {
   position: absolute;
-  top: 35%;
+  top: 38%;
   right: 8%;
   transform: translateY(-50%);
 }
@@ -197,6 +198,12 @@ strong {
 @media (max-width: 1200px) {
   .project .title {
     font-size: 80px;
+  }
+  .project img {
+    width: 35vw;
+  }
+  .sub-title {
+    font-size: 20px;
   }
 }
 

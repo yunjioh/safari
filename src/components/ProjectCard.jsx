@@ -18,36 +18,37 @@ const ProjectCard = ({ project }) => {
             <div className="project-info">
               <p className="duration-text">
                 <strong>DURATION</strong> {project.duration}
+                {Array.isArray(project.contribution) &&
+                  project.contribution.length > 0 && (
+                    <div className="contrib">
+                      <div className="con">
+                        <strong>Contribution</strong>
+                      </div>
+                      <div className="num">
+                        {project.contribution.map((item, idx) => (
+                          <div className="contrib-row" key={idx}>
+                            <span className="contrib-label">{item.label}</span>
+                            <span className="contrib-value">{item.value}%</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
               </p>
+              <div className="border-box">
+                <div className="role-text">
+                  <strong>PROJECT ROLE</strong>
+                  <p>{project.role}</p>
+                </div>
 
-              <div className="role-text">
-                <strong>PROJECT ROLE</strong>
-                <p>{project.role}</p>
-              </div>
+                <p className="detail-text">{project.detail}</p>
 
-              <p className="detail-text">{project.detail}</p>
-              {Array.isArray(project.contribution) &&
-                project.contribution.length > 0 && (
-                  <div className="contrib">
-                    <div className="con">
-                      <strong>Contribution</strong>
-                    </div>
-                    <div className="num">
-                      {project.contribution.map((item, idx) => (
-                        <div className="contrib-row" key={idx}>
-                          <span className="contrib-label">{item.label}</span>
-                          <span className="contrib-value">{item.value}%</span>
-                        </div>
-                      ))}
-                    </div>
+                <div className="bottom">
+                  <div className="button-group">
+                    <Button text="WEBSITE  →" href={project.site} />
+                    <Button text="PROPOSAL  →" href={project.doc} />
                   </div>
-                )}
-            </div>
-
-            <div className="bottom">
-              <div className="button-group">
-                <Button text="WEBSITE  →" href={project.site} />
-                <Button text="PROPOSAL  →" href={project.doc} />
+                </div>
               </div>
             </div>
           </div>
