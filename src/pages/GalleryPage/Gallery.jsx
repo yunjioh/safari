@@ -46,7 +46,7 @@ const Gallery = () => {
       tl.to(
         bg,
         {
-          scale: 0.5,
+          scale: 1,
           filter: "grayscale(0%)",
           borderRadius: "20px",
           ease: "none",
@@ -56,7 +56,7 @@ const Gallery = () => {
         .to(
           textWrap,
           {
-            scale: 1.5,
+            scale: 2,
             ease: "none",
           },
           0,
@@ -64,7 +64,7 @@ const Gallery = () => {
         .to(
           gallery,
           {
-            backgroundColor: "#021526",
+            backgroundColor: "#fff",
             ease: "none",
           },
           0,
@@ -72,7 +72,7 @@ const Gallery = () => {
         .to(
           mainTitle,
           {
-            color: "#BBFF52",
+            color: "#fff",
             ease: "none",
           },
           0,

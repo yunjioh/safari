@@ -2,12 +2,7 @@
   margin: 0 auto;
   padding: 10vw 6vw;
   min-height: 160vh;
-  background: #021526;
-}
-
-.think .title,
-.think .sub-title {
-  color: white;
+  background: #fff;
 }
 
 /* ✅ 공통: 컨테이너가 레이아웃(칸 크기)을 결정 */
@@ -53,8 +48,16 @@
   flex-direction: column;
 }
 
+.think .title-container {
+  margin-bottom: 50px;
+}
+
+.think .subTitle.right {
+  margin-bottom: 60px;
+}
+
 .front {
-  background-color: var(--card-color);
+  background-color: #000;
   z-index: 2;
   justify-content: center;
   align-items: center;
@@ -78,7 +81,7 @@
 }
 
 .think-q-text {
-  font-size: 25px;
+  font-size: 22px;
   font-weight: 500;
   line-height: 1.4;
   color: white;

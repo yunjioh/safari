@@ -82,11 +82,14 @@
   transition: all 0.4s ease;
 }
 
+.skill .title-container {
+  margin-bottom: 100px;
+}
+
 /* Hover 시 커지는 효과 (PC 위주) */
 .skill-card:hover {
   width: 250px;
   height: 350px;
-  background-color: #1a1a1a !important;
 }
 
 .skill-card:hover .icon-box {

@@ -52,9 +52,17 @@ export default function Hero() {
         },
       });
 
-      tl.to(strokeText, { scale: 3, filter: "blur(14px)", opacity: 0, ease: "power2.out" }, 0)
+      tl.to(
+        strokeText,
+        { scale: 3, filter: "blur(14px)", opacity: 0, ease: "power2.out" },
+        0,
+      )
         .to(videoLayer, { opacity: 1, ease: "power2.out" }, 0.12)
-        .to(videoLayer, { scale: 0.8, borderRadius: 20, ease: "power3.out" }, 0.12)
+        .to(
+          videoLayer,
+          { scale: 0.8, borderRadius: 20, ease: "power3.out" },
+          0.12,
+        )
         .to(videoLayer, { yPercent: 6, ease: "power3.out" }, 0.12)
         .to(decoderWrap, { opacity: 0, ease: "none" }, 0.2);
 
@@ -97,15 +105,31 @@ export default function Hero() {
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Menu"
         >
-          <span></span><span></span><span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
 
         <nav className={`hero-nav ${isMenuOpen ? "active" : ""}`}>
-          <a href="#home" className="active" onClick={() => setIsMenuOpen(false)}>Home</a>
-          <a href="#about" onClick={() => setIsMenuOpen(false)}>About</a>
-          <a href="#process" onClick={() => setIsMenuOpen(false)}>Process</a>
-          <a href="#project" onClick={() => setIsMenuOpen(false)}>Project</a>
-          <a href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</a>
+          <a
+            href="#home"
+            className="active"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Home
+          </a>
+          <a href="#about" onClick={() => setIsMenuOpen(false)}>
+            About
+          </a>
+          <a href="#process" onClick={() => setIsMenuOpen(false)}>
+            Process
+          </a>
+          <a href="#project" onClick={() => setIsMenuOpen(false)}>
+            Project
+          </a>
+          <a href="#contact" onClick={() => setIsMenuOpen(false)}>
+            Contact
+          </a>
         </nav>
       </div>
 
@@ -126,28 +150,30 @@ export default function Hero() {
       <div className="hero-center">
         <div className="decoder-wrap" aria-label="DECODER masked video">
           <div className="decoder-mask-container">
-            <video className="decoder-video" src="/video/video.mp4" autoPlay muted loop playsInline />
+            <video
+              className="decoder-video"
+              src="/video/video.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
           </div>
         </div>
       </div>
 
       {/* ✅ 풀 영상 레이어 */}
       <div className="full-video-layer" ref={videoLayerRef}>
-        <video className="full-video" src="/video/video.mp4" autoPlay muted loop playsInline />
+        <video
+          className="full-video"
+          src="/video/video.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
         <div className="video-text-overlay">
           <p className="video-text">ABOUT ME</p>
-        </div>
-      </div>
-
-      {/* ✅ 430px에서 보일 마키 텍스트 (영상 아래) */}
-      <div className="hero-marquee" aria-hidden="true">
-        <div className="marquee-track">
-          <span>OH YUNJI · UI/UX DESIGNER · INTERACTION DESIGN · </span>
-          <span>OH YUNJI · UI/UX DESIGNER · INTERACTION DESIGN · </span>
-          <span>OH YUNJI · UI/UX DESIGNER · INTERACTION DESIGN · </span>
-          <span>OH YUNJI · UI/UX DESIGNER · INTERACTION DESIGN · </span>
-          <span>OH YUNJI · UI/UX DESIGNER · INTERACTION DESIGN · </span>
-          <span>OH YUNJI · UI/UX DESIGNER · INTERACTION DESIGN · </span>
         </div>
       </div>
     </section>

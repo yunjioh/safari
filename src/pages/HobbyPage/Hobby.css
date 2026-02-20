@@ -125,7 +125,12 @@
   width: 40vw;
   height: 35vw;
   object-fit: cover;
+  filter: grayscale(100%);
   transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hobby-thumb img:hover {
+  filter: grayscale(0%);
 }
 
 @media (max-width: 1630px) {

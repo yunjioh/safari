@@ -70,7 +70,7 @@
 
 .hero-nav a.active {
   background: #111;
-  color: #bbff52;
+  color: #fff;
 }
 
 /* 하단 라인 박스 */
@@ -197,28 +197,6 @@
   letter-spacing: -2px;
 }
 
-/* ✅ 마키 기본 */
-.hero-marquee {
-  width: 100%;
-  overflow: hidden;
-  border-top: 1px solid rgba(0, 0, 0, 0.25);
-  padding: 14px 0;
-}
-
-.marquee-track {
-  display: inline-flex;
-  gap: 24px;
-  white-space: nowrap;
-  will-change: transform;
-  animation: marquee 14s linear infinite;
-}
-
-.marquee-track span {
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -262,7 +240,6 @@
     font-size: 18px;
   }
 }
-
 
 @media (max-width: 1600px) {
   .full-video {

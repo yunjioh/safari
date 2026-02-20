@@ -16,7 +16,8 @@
   top: 50%;
   width: 100%;
   height: 80vh;
-  background-color: #bbff52; /* 요청하신 연두색 */
+  background-color: #000; /* 요청하신 연두색 */
+  color: white;
   transform: translateY(-50%) scaleY(0); /* 중앙에서 높이 0으로 시작 */
   transform-origin: center center;
   z-index: 1;
@@ -58,13 +59,14 @@
   font-size: 30px;
   font-weight: 600;
   letter-spacing: -1px;
-  color: black;
+  color: white;
   margin-bottom: 32px;
 }
 
 .contact-email {
   font-size: clamp(32px, 4vw, 65px);
   font-weight: 700;
+  color: white;
   letter-spacing: -0.02em;
   margin-bottom: 50px;
 }
@@ -72,7 +74,7 @@
 .contact-info {
   font-size: 20px;
   line-height: 1.6;
-  color: black;
+  color: white;
   font-weight: 500;
 }
 
@@ -89,6 +91,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  color: white;
 }
 
 .brand-title {
@@ -101,7 +104,7 @@
 
 .copyright {
   font-size: 18px;
-  color: black;
+  color: white;
 }
 
 @media (max-width: 1400px) {

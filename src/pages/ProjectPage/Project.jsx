@@ -105,14 +105,13 @@ export default function Project() {
           },
         });
 
-        // ✅ 0번(첫 카드) 켜고, 첫 카드도 등장 애니메이션
-        tl.set(panels[0], { autoAlpha: 1 }, 0);
+        gsap.set(panels[0], { autoAlpha: 1 });
 
         const firstText = panels[0].querySelector(".text-area");
         const firstImg = panels[0].querySelector(".image-display-area");
 
-        tl.to(firstText, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.1);
-        tl.to(firstImg, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.18);
+        gsap.set(firstText, { autoAlpha: 1, x: 0 });
+        gsap.set(firstImg, { autoAlpha: 1, x: 0 });
 
         // ✅ 1번부터 전환 애니메이션
         projectData.forEach((p, i) => {
@@ -128,8 +127,16 @@ export default function Project() {
 
           tl.to(bg, { backgroundColor: p.bg, ease: "none" }, i);
 
-          tl.to(prevText, { autoAlpha: 0, x: -70, duration: 0.35, ease: "power2.out" }, i);
-          tl.to(prevImg, { autoAlpha: 0, x: 70, duration: 0.35, ease: "power2.out" }, i);
+          tl.to(
+            prevText,
+            { autoAlpha: 0, x: -70, duration: 0.35, ease: "power2.out" },
+            i,
+          );
+          tl.to(
+            prevImg,
+            { autoAlpha: 0, x: 70, duration: 0.35, ease: "power2.out" },
+            i,
+          );
 
           tl.to(prev, { autoAlpha: 0, duration: 0.2, ease: "none" }, i + 0.05);
 
@@ -138,8 +145,16 @@ export default function Project() {
           tl.set(curText, { autoAlpha: 0, x: -70 }, i + 0.1);
           tl.set(curImg, { autoAlpha: 0, x: 70 }, i + 0.1);
 
-          tl.to(curText, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, i + 0.18);
-          tl.to(curImg, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, i + 0.24);
+          tl.to(
+            curText,
+            { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" },
+            i + 0.18,
+          );
+          tl.to(
+            curImg,
+            { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" },
+            i + 0.24,
+          );
         });
 
         return () => ScrollTrigger.getAll().forEach((t) => t.kill());
