@@ -60,7 +60,7 @@ export default function Hero() {
         .to(videoLayer, { opacity: 1, ease: "power2.out" }, 0.12)
         .to(
           videoLayer,
-          { scale: 0.8, borderRadius: 20, ease: "power3.out" },
+          { scale: 1, borderRadius: 10, ease: "power3.out" },
           0.12,
         )
         .to(videoLayer, { yPercent: 6, ease: "power3.out" }, 0.12)
