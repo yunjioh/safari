@@ -179,9 +179,9 @@
 
 .full-video {
   width: 70%;
-  height: 83%;
+  height: 78%;
   object-fit: cover;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .video-text-overlay {
@@ -233,7 +233,7 @@
     height: 46vh;
     margin: 0 auto;
     display: block;
-    border-radius: 16px;
+    border-radius: 10px;
   }
 
   .video-text {
@@ -244,7 +244,6 @@
 @media (max-width: 1600px) {
   .full-video {
     height: 75%;
-    border-radius: 30px;
   }
 
   .video-text {
@@ -359,7 +358,6 @@
   .full-video {
     width: min(75vw, 980px);
     height: min(78vh, 460px);
-    border-radius: 20px;
   }
 }
 
