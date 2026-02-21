@@ -328,6 +328,11 @@ strong {
     font-size: 40px;
   }
 
+  .project .sub-title {
+    font-size: 12px;
+  }
+
+
   strong {
     font-size: 16px;
   }
