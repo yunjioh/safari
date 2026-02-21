@@ -24,6 +24,7 @@ code {
   padding: 0;
   box-sizing: border-box;
 }
+
 html,
 body,
 div,
@@ -88,6 +89,7 @@ td {
   margin: 0;
   padding: 0;
 }
+
 h1,
 h2,
 h3,
@@ -97,27 +99,34 @@ h6 {
   font-weight: 700;
   font-size: inherit;
 }
+
 a {
   color: inherit;
   text-decoration: inherit;
 }
+
 img {
   vertical-align: middle;
 }
+
 a img {
   border: none;
 }
+
 li {
   list-style: none;
 }
+
 address,
 em,
 i {
   font-style: normal;
 }
+
 a:focus {
   outline: none;
 }
+
 button:focus {
   outline: none;
 }
@@ -126,6 +135,9 @@ button:focus {
   --blue: #5289ff;
   --orange: #ff8e1d;
   --purple: #9f75ff;
+  --pro1: #021526;
+  --pro2: #FF6421;
+  --pro3: #0B2F9F;
 }
 
 .highlight {

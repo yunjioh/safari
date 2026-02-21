@@ -10,6 +10,16 @@
   padding: 0 6vw;
 }
 
+.title-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.project .sub-title {
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
 /* 배경 레이어 */
 .project-bg {
   position: absolute;
@@ -17,13 +27,13 @@
   z-index: 0;
 }
 
-.project .title {
+/* .project .title {
   color: white;
 }
 
 .project .sub-title {
   color: white;
-}
+} */
 
 /* 실제 컨텐츠 래퍼 */
 .project-inner {
@@ -44,6 +54,7 @@
   height: 100%;
   overflow: hidden;
 }
+
 .text-area,
 .image-display-area {
   will-change: transform, opacity;
@@ -64,7 +75,7 @@
   width: 100%;
   height: 100%;
   gap: 56px;
-  padding: 8vh 0;
+  padding: 4vh 0;
 }
 
 .project-info {
@@ -72,12 +83,11 @@
 }
 
 strong {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
   display: block;
   margin-bottom: 10px;
   letter-spacing: 0.4px;
-  opacity: 0.65;
 }
 
 .duration-text {
@@ -97,10 +107,11 @@ strong {
   margin-top: 10px;
   font-size: 18px;
   font-weight: 200;
-  line-height: 1.6;
+  line-height: 1.5;
   letter-spacing: -1px;
   width: 60%;
 }
+
 .button-group {
   margin-top: 28px;
   display: flex;
@@ -109,20 +120,22 @@ strong {
 }
 
 .project .main-button {
-  border: 1px solid white;
+  border: 1px solid black;
   background: transparent;
   font-size: 12px;
   font-family: "Pretendard", sans-serif;
   font-weight: 500;
   letter-spacing: 0.2px;
+  padding: 12px 20px;
 }
+
 .project img {
   width: 30vw;
 }
 
 .image-display-area {
   position: absolute;
-  top: 38%;
+  top: 40%;
   right: 8%;
   transform: translateY(-50%);
 }
@@ -134,6 +147,7 @@ strong {
   margin-top: 24px;
   flex-wrap: wrap;
 }
+
 .contrib-row {
   display: flex;
   gap: 10px;
@@ -143,10 +157,9 @@ strong {
 .inner {
   height: 100%;
   display: flex;
-  color: white;
+  /* color: white; */
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  padding: 0 4vw;
 }
 
 .num {
@@ -199,11 +212,9 @@ strong {
   .project .title {
     font-size: 80px;
   }
+
   .project img {
     width: 35vw;
-  }
-  .sub-title {
-    font-size: 20px;
   }
 }
 
@@ -219,11 +230,13 @@ strong {
   .inner {
     gap: 8vh;
   }
+
   .image-display-area {
     position: relative;
     transform: none;
     right: 0;
   }
+
   .project .title {
     letter-spacing: 0;
   }
@@ -231,8 +244,9 @@ strong {
   .inner {
     border-bottom: none;
     flex-direction: column-reverse;
-    padding: 4vh 4vw;
+    padding: 8vh 4vw;
   }
+
   .project .title {
     font-size: 50px;
   }
@@ -253,6 +267,10 @@ strong {
 
   .text-area {
     padding: 0;
+  }
+
+  .badge {
+    font-size: 15px;
   }
 
   .project .title-container {
@@ -278,10 +296,9 @@ strong {
 
   strong {
     font-size: 18px;
-    margin-bottom: 0;
   }
 
-  .sub-title {
+  .project .sub-title {
     font-size: 14px;
   }
 
@@ -296,6 +313,7 @@ strong {
   .role-text {
     font-size: 16px;
   }
+
   .contrib-label {
     font-size: 16px;
   }
@@ -308,10 +326,6 @@ strong {
 @media (max-width: 560px) {
   .project .title {
     font-size: 40px;
-  }
-
-  .project img {
-    width: 50vw;
   }
 
   strong {

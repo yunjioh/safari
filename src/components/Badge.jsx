@@ -8,7 +8,7 @@ const Badge = ({ text, color, rotate, position, style: extraStyle }) => {
 
     padding: "8px 25px",
     borderRadius: "30px",
-    fontSize: "18px",
+    fontSize: "clamp(11px, 0.9vw, 14px)",
 
     ...extraStyle,
   };

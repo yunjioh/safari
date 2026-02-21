@@ -10,7 +10,7 @@ const projectData = [
   {
     subTitle: "영양제 복용 관리 어플",
     mainTitle: "Dr.Pill app",
-    decoTitle: "MANAGEMENT APP",
+    type: "personal",
     duration: "2025.10.22 - 2025.11.21",
     role: "“이 프로젝트에서는 서비스의 UX 기획부터 최종 디자인까지 전 과정을 수행하였습니다”",
     detail: `더블 다이아몬드 프로세스를 바탕으로 데스크 리서치와 사용자 조사를 통해 문제를 정의하고, 
@@ -20,7 +20,7 @@ const projectData = [
 기획부터 최종 전달(Deliver)까지의 프로젝트 사이클을 완수했습니다.`,
     image: "/img/project1.svg",
     imageMobile: "/img/project1_mo.svg",
-    bg: "#021526",
+    bg: "--pro1",
     contribution: [
       { label: "기획", value: 100 },
       { label: "디자인", value: 100 },
@@ -32,7 +32,7 @@ const projectData = [
   {
     subTitle: "댄서 원밀리언 웹사이트 리뉴얼",
     mainTitle: "1MILLION web",
-    decoTitle: "WEBSITE RENEWAL",
+    type: "team",
     duration: "2025.11.26 - 2025.12.28",
     role: "“이 프로젝트에서는 서브 디자이너 및 프론트엔드 메인 코더로서 팀을 지원했습니다”",
     detail: `원밀리언 브랜드의 역동성을 시각화한 메인 페이지 디자인을 수행하고, 
@@ -42,7 +42,7 @@ const projectData = [
 유지되도록 기여했습니다.`,
     image: "/img/project2.svg",
     imageMobile: "/img/project2_mo.svg",
-    bg: "#FF6421",
+    bg: "--pro2",
     contribution: [
       { label: "기획", value: 80 },
       { label: "디자인", value: 80 },
@@ -54,7 +54,7 @@ const projectData = [
   {
     subTitle: "버츄얼 팬덤 어플",
     mainTitle: "NOVA app",
-    decoTitle: "NOVA APP",
+    type: "team",
     duration: "2025.01.02 - 2026.01.26",
     role: "“이 프로젝트에서는 메인 페이지와 핵심 기능을 디자인하고, 이후 개발에 참여하여 배포하였습니다”",
     detail: `이 프로젝트의 메인 디자이너로서 서비스의 시각 시스템을 총괄하며 메인 페이지와 핵심 기능을 디자인했습니다. 
@@ -62,13 +62,13 @@ const projectData = [
 이후 배너와 포스터 등 제작은 물론, Vercel 배포와 최종 QA를 도맡아 하며 실제 서비스로 완성되는 전 과정을 책임졌습니다.`,
     image: "/img/project3.svg",
     imageMobile: "/img/project3_mo.svg",
-    bg: "#0B2F9F",
+    bg: "--pro3",
     contribution: [
       { label: "기획", value: 70 },
       { label: "디자인", value: 70 },
       { label: "개발", value: 90 },
     ],
-    site: "https://tubi-team-project.vercel.app/",
+    site: "https://tubi-nova.vercel.app/",
     doc: "https://www.figma.com/proto/aXpojpcM780EqJOBHuUMLw/14.%EC%98%A4%EC%9C%A4%EC%A7%80?page-id=1730%3A2501&node-id=2166-6413&viewport=518%2C307%2C0.02&t=e1lP80PZXa264VIY-1&scaling=scale-down-width&content-scaling=fixed",
   },
 ];

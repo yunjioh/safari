@@ -1,28 +1,40 @@
 import React from "react";
 import Title from "./Title";
 import Button from "./Button";
+import Badge from "./Badge";
 import "../pages/ProjectPage/Project.css";
 
 const ProjectCard = ({ project }) => {
   return (
     <section className="project">
       <div className="project-content">
-        <div className="inner" style={{ backgroundColor: project.bg }}>
+        <div className="inner">
           <div className="text-area">
-            <Title
-              subTitle={project.subTitle}
-              mainTitle={project.mainTitle}
-              animate={false}
-            />
+            <div className="title-wrapper">
+              <Title
+                subTitle={project.subTitle}
+                mainTitle={project.mainTitle}
+                animate={false}
+              />
+
+              {project.type && (
+                <Badge
+                  text={project.type === "team" ? "TEAM PROJECT" : "PERSONAL PROJECT"}
+                  color={project.bg}
+                  rotate={0}
+                  position={{ top: "0", right: "0" }}
+                />
+              )}
+            </div>
 
             <div className="project-info">
               <p className="duration-text">
-                <strong>DURATION</strong> {project.duration}
+                <strong style={{ color: `var(${project.bg})` }}>DURATION</strong> {project.duration}
                 {Array.isArray(project.contribution) &&
                   project.contribution.length > 0 && (
                     <div className="contrib">
                       <div className="con">
-                        <strong>Contribution</strong>
+                        <strong style={{ color: `var(${project.bg})` }}>Contribution</strong>
                       </div>
                       <div className="num">
                         {project.contribution.map((item, idx) => (
@@ -37,7 +49,7 @@ const ProjectCard = ({ project }) => {
               </p>
               <div className="border-box">
                 <div className="role-text">
-                  <strong>PROJECT ROLE</strong>
+                  <strong style={{ color: `var(${project.bg})` }}>PROJECT ROLE</strong>
                   <p>{project.role}</p>
                 </div>
 
