@@ -94,7 +94,7 @@ export default function Hero() {
       if (decoderWrap) gsap.set(decoderWrap, { opacity: 0 });
 
       // 모바일에서는 첫 번째 텍스트만 보여주거나 모두 숨김 처리
-      gsap.set(overlayTexts, { opacity: 1, y: 0 });
+      gsap.set(overlayTexts, { opacity: 0, y: 0 });
 
       return () => { };
     });
