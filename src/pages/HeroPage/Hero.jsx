@@ -17,11 +17,13 @@ export default function Hero() {
 
     const mm = gsap.matchMedia();
 
-    // ✅ 431px 이상: 기존 스크롤 애니메이션
+    // ✅ 431px 이상: 기존 스크롤 애니메이션 + 텍스트 3개 순차 노출
     mm.add("(min-width: 431px)", () => {
       const strokeText = heroEl.querySelector(".decoder-mask-container");
       const decoderWrap = heroEl.querySelector(".decoder-wrap");
+      const overlayTexts = videoLayer.querySelectorAll(".video-text"); // 텍스트 3개 선택
 
+      // 초기 세팅
       gsap.set(videoLayer, {
         opacity: 0,
         scale: 1.55,
@@ -40,11 +42,14 @@ export default function Hero() {
 
       gsap.set(decoderWrap, { opacity: 1 });
 
+      // 텍스트 초기 상태: 투명하고 살짝 아래에 위치
+      gsap.set(overlayTexts, { opacity: 0, y: 50 });
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: heroEl,
           start: "top top",
-          end: "+=260%",
+          end: "+=450%", // 텍스트 3개가 충분히 머물 수 있도록 길이 연장
           scrub: 1,
           pin: true,
           anticipatePin: 1,
@@ -52,19 +57,19 @@ export default function Hero() {
         },
       });
 
-      tl.to(
-        strokeText,
-        { scale: 3, filter: "blur(14px)", opacity: 0, ease: "power2.out" },
-        0,
-      )
+      // 1단계: 마스크 뚫리면서 영상 등장 및 축소
+      tl.to(strokeText, { scale: 3, filter: "blur(14px)", opacity: 0, ease: "power2.out" }, 0)
         .to(videoLayer, { opacity: 1, ease: "power2.out" }, 0.12)
-        .to(
-          videoLayer,
-          { scale: 1, borderRadius: 5, ease: "power3.out" },
-          0.12,
-        )
-        .to(videoLayer, { yPercent: 6, ease: "power3.out" }, 0.12)
+        .to(videoLayer, { scale: 0.9, borderRadius: 20, ease: "power3.out" }, 0.12)
+        .to(videoLayer, { yPercent: 0, ease: "power3.out" }, 0.12) // 위치 조정
         .to(decoderWrap, { opacity: 0, ease: "none" }, 0.2);
+
+      // 2단계: 텍스트 3개 순차 애니메이션 (영상이 작아진 후)
+      overlayTexts.forEach((text, index) => {
+        const startTime = 0.4 + index * 0.6; // 0.4초 지점부터 간격을 두고 시작
+        tl.to(text, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, startTime)
+          .to(text, { opacity: 0, y: -50, duration: 0.4, ease: "power2.in" }, startTime + 0.5);
+      });
 
       return () => {
         tl.kill();
@@ -72,24 +77,26 @@ export default function Hero() {
       };
     });
 
-    // ✅ 430px 이하: 스크롤 없이 바로 영상 노출
-    mm.add("(max-width: 560px)", () => {
-      // 혹시 이전 트리거 남아있으면 정리
+    // ✅ 430px 이하: 모바일 대응
+    mm.add("(max-width: 430px)", () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
 
       gsap.set(videoLayer, {
         opacity: 1,
         scale: 1,
         yPercent: 0,
-        borderRadius: 5,
-        clearProps: "filter",
+        borderRadius: 0,
+        clearProps: "all",
       });
 
-      // 마스크(DECODER) 영역은 필요하면 숨김(영상만 보여주고 싶으면)
       const decoderWrap = heroEl.querySelector(".decoder-wrap");
+      const overlayTexts = videoLayer.querySelectorAll(".video-text");
       if (decoderWrap) gsap.set(decoderWrap, { opacity: 0 });
 
-      return () => {};
+      // 모바일에서는 첫 번째 텍스트만 보여주거나 모두 숨김 처리
+      gsap.set(overlayTexts, { opacity: 1, y: 0 });
+
+      return () => { };
     });
 
     return () => mm.revert();
@@ -111,25 +118,11 @@ export default function Hero() {
         </button>
 
         <nav className={`hero-nav ${isMenuOpen ? "active" : ""}`}>
-          <a
-            href="#home"
-            className="active"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Home
-          </a>
-          <a href="#about" onClick={() => setIsMenuOpen(false)}>
-            About
-          </a>
-          <a href="#process" onClick={() => setIsMenuOpen(false)}>
-            Process
-          </a>
-          <a href="#project" onClick={() => setIsMenuOpen(false)}>
-            Project
-          </a>
-          <a href="#contact" onClick={() => setIsMenuOpen(false)}>
-            Contact
-          </a>
+          <a href="#home" className="active" onClick={() => setIsMenuOpen(false)}>Home</a>
+          <a href="#about" onClick={() => setIsMenuOpen(false)}>About</a>
+          <a href="#process" onClick={() => setIsMenuOpen(false)}>Process</a>
+          <a href="#project" onClick={() => setIsMenuOpen(false)}>Project</a>
+          <a href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</a>
         </nav>
       </div>
 
@@ -152,7 +145,7 @@ export default function Hero() {
           <div className="decoder-mask-container">
             <video
               className="decoder-video"
-              src="/video/video.mp4"
+              src="/video/video2.mp4"
               autoPlay
               muted
               loop
@@ -162,18 +155,20 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ✅ 풀 영상 레이어 */}
+      {/* ✅ 풀 영상 및 텍스트 레이어 */}
       <div className="full-video-layer" ref={videoLayerRef}>
         <video
           className="full-video"
-          src="/video/video.mp4"
+          src="/video/video2.mp4"
           autoPlay
           muted
           loop
           playsInline
         />
         <div className="video-text-overlay">
-          <p className="video-text">ABOUT ME</p>
+          <p className="video-text">기술적 이해를 바탕으로</p>
+          <p className="video-text">최적의 경험의 설계하는</p>
+          <p className="video-text">디자이너 오윤지입니다</p>
         </div>
       </div>
     </section>
