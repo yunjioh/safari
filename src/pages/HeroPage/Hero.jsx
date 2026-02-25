@@ -65,11 +65,11 @@ export default function Hero() {
         .to(decoderWrap, { opacity: 0, ease: "none" }, 0.2);
 
       // 2단계: 텍스트 3개 순차 애니메이션 (영상이 작아진 후)
-      overlayTexts.forEach((text, index) => {
-        const startTime = 0.4 + index * 0.6; // 0.4초 지점부터 간격을 두고 시작
-        tl.to(text, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, startTime)
-          .to(text, { opacity: 0, y: -50, duration: 0.4, ease: "power2.in" }, startTime + 0.5);
-      });
+      // overlayTexts.forEach((text, index) => {
+      //   const startTime = 0.4 + index * 0.6; // 0.4초 지점부터 간격을 두고 시작
+      //   tl.to(text, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, startTime)
+      //     .to(text, { opacity: 0, y: -50, duration: 0.4, ease: "power2.in" }, startTime + 0.5);
+      // });
 
       return () => {
         tl.kill();
@@ -165,11 +165,11 @@ export default function Hero() {
           loop
           playsInline
         />
-        <div className="video-text-overlay">
+        {/* <div className="video-text-overlay">
           <p className="video-text">기술적 이해를 바탕으로</p>
           <p className="video-text">최적의 경험의 설계하는</p>
           <p className="video-text">디자이너 오윤지입니다</p>
-        </div>
+        </div> */}
       </div>
     </section>
   );

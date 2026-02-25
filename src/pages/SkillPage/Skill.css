@@ -109,6 +109,10 @@
   .skill .title {
     width: 100%;
   }
+  .skill-card {
+    width: 150px;
+    height: 150px;
+  }
 }
 
 @media (max-width: 955px) {

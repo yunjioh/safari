@@ -5,7 +5,7 @@ const ScrollReveal = ({
   children,
   animation = "fadeUp",
   delay = 0,
-  once = false
+  once = true
 }) => {
   const ref = useRef(null);
 
