@@ -7,102 +7,70 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Gallery = () => {
   const sectionRef = useRef(null);
+
   useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-
     const ctx = gsap.context(() => {
-      const gallery = el;
-      const bg = el.querySelector(".gallery-bg");
-      const textWrap = el.querySelector(".gallery-scale");
-      const mainTitle = el.querySelector(".main-display-title");
-      const top = el.querySelector(".top-label");
-      const bottom = el.querySelector(".bottom-description");
+      const section = sectionRef.current;
+      const inner = section.querySelector(".gallery-inner");
+      const bg = section.querySelector(".gallery-bg");
+      const textWrap = section.querySelector(".gallery-scale");
+      const top = section.querySelector(".top-label");
+      const bottom = section.querySelector(".bottom-description");
 
-      if (!bg || !textWrap || !mainTitle || !top || !bottom) return;
-
-      gsap.set(gallery, {
-        clipPath: "circle(0% at 50% 50%)",
-      });
-
-      gsap.to(gallery, {
-        clipPath: "circle(150% at 50% 50%)",
-        duration: 1,
-        ease: "power3.out",
+      // 1. 처음 등장할 때 서서히 커지는 ClipPath 효과
+      gsap.to(inner, {
+        ease: "power2.inOut",
         scrollTrigger: {
-          trigger: el,
-          start: "top 70%",
-          toggleActions: "restart none none reverse",
+          trigger: section,
+          start: "top 80%", // 섹션이 보이기 시작할 때
+          end: "top 20%",
+          scrub: true,
         },
       });
 
-      /* =========================
-       2️⃣ Pin + Scale 애니메이션
-    ========================= */
-
+      // 2. 스크롤에 따른 스케일 및 필터 변화 (Sticky 구간 내에서 동작)
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: el,
-          start: "top top",
-          end: "+=150%",
-          pin: true,
-          scrub: 3,
-          anticipatePin: 1,
+          trigger: section,
+          start: "top top",   // 섹션 상단이 화면 위에 닿을 때 시작
+          end: "bottom bottom", // 섹션 하단이 화면 밑에 닿을 때 종료
+          scrub: 1, // 값이 낮을수록 스크롤에 더 즉각적으로 반응 (부드러움)
         },
       });
 
-      tl.to(
-        bg,
-        {
-          filter: "grayscale(0%)",
-          ease: "none",
-        },
-        0,
-      )
-        .to(
-          textWrap,
-          {
-            scale: 2,
-            ease: "none",
-          },
-          0,
-        )
-        .to(
-          [top, bottom],
-          {
-            y: -20,
-            ease: "none",
-          },
-          0.1,
-        );
-    }, el);
+      tl.to(bg, { filter: "grayscale(0%)", ease: "none" }, 0)
+        .to(textWrap, { scale: 1.5, ease: "none" }, 0)
+        .to([top, bottom], { y: -30, autoAlpha: 0.5, ease: "none" }, 0.1);
+
+    }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
     <section className="gallery" ref={sectionRef}>
-      {/* 🔹 이미지 배경 */}
-      <div className="gallery-bg" aria-hidden="true" />
-      <div className="text">
-        <p className="top-label">UX/UI DESIGN @2026</p>
+      {/* 고정되어 보여질 컨테이너 */}
+      <div className="gallery-inner">
+        <div className="gallery-bg" aria-hidden="true" />
+        <div className="text">
+          <p className="top-label">UX/UI DESIGN @2026</p>
 
-        {/* 🔹 텍스트 스케일 영역 */}
-        <div className="gallery-scale">
-          <div className="center">
-            <h1 className="main-display-title">
-              MY WORK PAGE
-              <br />
-              GALLERY
-            </h1>
+          <div className="gallery-scale">
+            <div className="center">
+              <h1 className="main-display-title">
+                MY WORK PAGE
+                <br />
+                GALLERY
+              </h1>
+            </div>
           </div>
-        </div>
 
-        <p className="bottom-description">
-          UI/UX 프로젝트, 클론 코딩, 디자인 작업물로
-          <br />
-          창의성과 실용성을 담아낸 저의 디자인 역량을 확인하실 수 있습니다
-        </p>
+          <p className="bottom-description">
+            UI/UX 프로젝트, 클론 코딩, 디자인 작업물로
+            <br />
+            창의성과 실용성을 담아낸 저의 디자인 역량을 확인하실 수 있습니다
+          </p>
+        </div>
       </div>
     </section>
   );

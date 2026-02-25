@@ -1,9 +1,7 @@
 .coding {
   width: 100%;
   overflow: hidden;
-  /* 필수: 오른쪽 대기 시 가로 스크롤 방지 */
   position: relative;
-  margin-top: 15vh;
   background-color: black;
 }
 
@@ -230,9 +228,6 @@
 }
 
 @media (max-width: 530px) {
-  .coding {
-    margin-top: 5vh;
-  }
 
   .coding .subTitle {
     margin-bottom: 5vh;

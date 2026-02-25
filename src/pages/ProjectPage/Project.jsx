@@ -1,10 +1,7 @@
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useEffect, useRef, useState } from "react";
 import ProjectCard from "../../components/ProjectCard";
 import "./Project.css";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const projectData = [
   {
@@ -74,128 +71,73 @@ const projectData = [
 ];
 
 export default function Project() {
-  const sectionRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const sectionsRef = useRef([]);
+
+  /* 🔥 이미지 preload */
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const section = sectionRef.current;
-      const bg = section.querySelector(".project-bg");
-      const panels = gsap.utils.toArray(".project-panel");
+    projectData.forEach((project) => {
+      const img1 = new Image();
+      img1.src = project.image;
 
-      const mm = gsap.matchMedia();
-      mm.add("(min-width: 768px)", () => {
-        gsap.set(panels, { autoAlpha: 0 });
-        gsap.set(bg, { backgroundColor: projectData[0].bg });
+      const img2 = new Image();
+      img2.src = project.imageMobile;
+    });
+  }, []);
 
-        // 내부 요소 초기값
-        panels.forEach((panel) => {
-          const text = panel.querySelector(".text-area");
-          const image = panel.querySelector(".image-display-area");
-          if (text) gsap.set(text, { autoAlpha: 0, x: -70 });
-          if (image) gsap.set(image, { autoAlpha: 0, x: 70 });
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const index = Number(entry.target.dataset.index);
+
+          setActiveIndex((prev) => {
+            if (prev === index) return prev; // 🔥 같으면 리렌더 안 함
+            return index;
+          });
         });
+      },
+      {
+        threshold: 0.3, // 🔥 0.6 → 0.3
+      }
+    );
 
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: `+=${projectData.length * 100}%`,
-            scrub: 1.6,
-            pin: true,
-            anticipatePin: 1,
-          },
-        });
+    sectionsRef.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
 
-        gsap.set(panels[0], { autoAlpha: 1 });
-
-        const firstText = panels[0].querySelector(".text-area");
-        const firstImg = panels[0].querySelector(".image-display-area");
-
-        gsap.set(firstText, { autoAlpha: 1, x: 0 });
-        gsap.set(firstImg, { autoAlpha: 1, x: 0 });
-
-        // ✅ 1번부터 전환 애니메이션
-        projectData.forEach((p, i) => {
-          if (i === 0) return;
-
-          const prev = panels[i - 1];
-          const cur = panels[i];
-
-          const prevText = prev.querySelector(".text-area");
-          const prevImg = prev.querySelector(".image-display-area");
-          const curText = cur.querySelector(".text-area");
-          const curImg = cur.querySelector(".image-display-area");
-
-          tl.to(bg, { backgroundColor: p.bg, ease: "none" }, i);
-
-          tl.to(
-            prevText,
-            { autoAlpha: 0, x: -70, duration: 0.35, ease: "power2.out" },
-            i,
-          );
-          tl.to(
-            prevImg,
-            { autoAlpha: 0, x: 70, duration: 0.35, ease: "power2.out" },
-            i,
-          );
-
-          tl.to(prev, { autoAlpha: 0, duration: 0.2, ease: "none" }, i + 0.05);
-
-          tl.set(cur, { autoAlpha: 1 }, i + 0.1);
-
-          tl.set(curText, { autoAlpha: 0, x: -70 }, i + 0.1);
-          tl.set(curImg, { autoAlpha: 0, x: 70 }, i + 0.1);
-
-          tl.to(
-            curText,
-            { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" },
-            i + 0.18,
-          );
-          tl.to(
-            curImg,
-            { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" },
-            i + 0.24,
-          );
-        });
-
-        return () => ScrollTrigger.getAll().forEach((t) => t.kill());
-      });
-
-      /* =========================
-         모바일
-      ========================= */
-      mm.add("(max-width: 768px)", () => {
-        gsap.set(bg, { backgroundColor: "#fff" });
-        gsap.set(panels, {
-          clearProps: "all",
-          autoAlpha: 1,
-          position: "relative",
-          y: 0,
-        });
-
-        panels.forEach((panel) => {
-          const text = panel.querySelector(".text-area");
-          const image = panel.querySelector(".image-display-area");
-          if (text) gsap.set(text, { clearProps: "all" });
-          if (image) gsap.set(image, { clearProps: "all" });
-        });
-      });
-
-      return () => mm.revert();
-    }, sectionRef);
-
-    return () => ctx.revert();
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section className="project-section" ref={sectionRef} id="project">
-      <div className="project-bg" aria-hidden="true" />
-      <div className="project-inner">
+    <section className="project-section" id="project">
+
+      {/* Sticky 고정 영역 */}
+      <div
+        className="project-sticky"
+      >
         {projectData.map((project, idx) => (
-          <div className="project-panel" key={idx}>
+          <div
+            key={idx}
+            className={`card-wrapper ${activeIndex === idx ? "active" : ""
+              }`}
+          >
             <ProjectCard project={project} />
           </div>
         ))}
       </div>
+
+      {/* 스크롤 트리거용 더미 섹션 */}
+      {projectData.map((_, idx) => (
+        <div
+          key={idx}
+          data-index={idx}
+          ref={(el) => (sectionsRef.current[idx] = el)}
+          className="project-spacer"
+        />
+      ))}
     </section>
   );
 }

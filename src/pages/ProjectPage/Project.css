@@ -1,8 +1,46 @@
-/* 섹션 자체가 한 화면에서 pin 되며 내부 내용만 바뀜 */
 .project-section {
   position: relative;
+  padding-bottom: 20vh;
+}
+
+/* 🔥 고정 영역 */
+.project-sticky {
+  position: sticky;
+  top: 0;
   height: 100vh;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-spacer:last-child {
+  height: 140vh;
+}
+
+/* 🔥 카드 겹쳐놓기 */
+.card-wrapper {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-wrapper.active {
+  opacity: 1;
+  transform: translateY(0);
+  z-index: 2;
+}
+
+/* 🔥 스크롤 길이용 */
+.project-spacer {
+  height: 100vh;
 }
 
 .project {
@@ -17,7 +55,11 @@
 
 .project .sub-title {
   font-size: 18px;
-  margin-bottom: 0;
+  margin-bottom: 10px;
+}
+
+.project-card {
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 /* 배경 레이어 */
@@ -135,7 +177,7 @@ strong {
 
 .image-display-area {
   position: absolute;
-  top: 40%;
+  top: 42%;
   right: 8%;
   transform: translateY(-50%);
 }
@@ -254,6 +296,28 @@ strong {
   .project-section {
     height: auto;
     overflow: visible;
+    padding-bottom: 0vh;
+  }
+
+  .project-spacer:last-child {
+    height: 82vh;
+  }
+
+  .project-sticky {
+    display: block;
+    position: relative;
+    opacity: 1;
+    overflow: visible;
+  }
+
+  .project-spacer {
+    height: 88vh;
+  }
+
+  .card-wrapper {
+    transition: none;
+    position: relative;
+    opacity: 1;
   }
 
   .project-bg {
@@ -332,6 +396,9 @@ strong {
     font-size: 12px;
   }
 
+  .project-spacer {
+    height: 78vh;
+  }
 
   strong {
     font-size: 16px;
@@ -347,5 +414,11 @@ strong {
 
   .role-text {
     font-size: 15px;
+  }
+}
+
+@media (max-width: 490px) {
+  .project-spacer {
+    height: 72vh;
   }
 }
