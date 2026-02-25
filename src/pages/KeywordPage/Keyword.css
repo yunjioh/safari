@@ -38,20 +38,16 @@
   position: relative;
   z-index: 10;
   /* 위아래 페이드 효과 */
-  mask-image: linear-gradient(
-    to bottom,
-    transparent,
-    black 30%,
-    black 70%,
-    transparent
-  );
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent,
-    black 30%,
-    black 70%,
-    transparent
-  );
+  mask-image: linear-gradient(to bottom,
+      transparent,
+      black 30%,
+      black 70%,
+      transparent);
+  -webkit-mask-image: linear-gradient(to bottom,
+      transparent,
+      black 30%,
+      black 70%,
+      transparent);
 }
 
 .keyword-text-list {
@@ -123,10 +119,6 @@
     display: none;
   }
 
-  .keyword-images {
-    height: 300px;
-  }
-
   .photo-box {
     width: 55vw;
     left: 50% !important;
@@ -164,5 +156,9 @@
 @media (max-width: 530px) {
   .photo-box {
     width: 100%;
+  }
+
+  .keyword-text-list {
+    padding-top: 25vh;
   }
 }

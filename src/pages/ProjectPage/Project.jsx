@@ -69,10 +69,9 @@ const projectData = [
     doc: "https://www.figma.com/proto/aXpojpcM780EqJOBHuUMLw/14.%EC%98%A4%EC%9C%A4%EC%A7%80?page-id=1730%3A2501&node-id=2166-6413&viewport=518%2C307%2C0.02&t=e1lP80PZXa264VIY-1&scaling=scale-down-width&content-scaling=fixed",
   },
 ];
-
 export default function Project() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const sectionsRef = useRef([]);
+  const sectionRef = useRef(null);
 
   /* 🔥 이미지 preload */
   useEffect(() => {
@@ -85,59 +84,52 @@ export default function Project() {
     });
   }, []);
 
+  /* 🔥 scroll progress 방식 */
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
+    const handleScroll = () => {
+      const section = sectionRef.current;
+      if (!section) return;
 
-          const index = Number(entry.target.dataset.index);
+      const rect = section.getBoundingClientRect();
+      const sectionHeight = section.offsetHeight;
+      const windowHeight = window.innerHeight;
 
-          setActiveIndex((prev) => {
-            if (prev === index) return prev; // 🔥 같으면 리렌더 안 함
-            return index;
-          });
-        });
-      },
-      {
-        threshold: 0.3, // 🔥 0.6 → 0.3
+      // 섹션이 화면 안에 있을 때만 계산
+      if (rect.top <= 0 && rect.bottom >= windowHeight) {
+        const progress = Math.abs(rect.top) / (sectionHeight - windowHeight);
+
+        const index = Math.min(
+          projectData.length - 1,
+          Math.floor(progress * projectData.length)
+        );
+
+        setActiveIndex((prev) => (prev === index ? prev : index));
       }
-    );
+    };
 
-    sectionsRef.current.forEach((el) => {
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <section className="project-section" id="project">
-
-      {/* Sticky 고정 영역 */}
-      <div
-        className="project-sticky"
-      >
+    <section
+      className="project-section"
+      ref={sectionRef}
+      style={{ height: `${projectData.length * 100}vh` }}
+      id="project"
+    >
+      <div className="project-sticky">
         {projectData.map((project, idx) => (
           <div
             key={idx}
-            className={`card-wrapper ${activeIndex === idx ? "active" : ""
-              }`}
+            className={`card-wrapper ${
+              activeIndex === idx ? "active" : ""
+            }`}
           >
             <ProjectCard project={project} />
           </div>
         ))}
       </div>
-
-      {/* 스크롤 트리거용 더미 섹션 */}
-      {projectData.map((_, idx) => (
-        <div
-          key={idx}
-          data-index={idx}
-          ref={(el) => (sectionsRef.current[idx] = el)}
-          className="project-spacer"
-        />
-      ))}
     </section>
   );
 }

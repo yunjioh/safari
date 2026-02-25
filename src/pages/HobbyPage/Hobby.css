@@ -9,7 +9,8 @@
 .hobbyTit {
   color: black;
   font-size: 150px;
-  line-height: 0.5; /* font-family: "Basis Grotesque Arabic Pro", sans-serif; */
+  line-height: 0.5;
+  /* font-family: "Basis Grotesque Arabic Pro", sans-serif; */
   font-family: "PP Editorial New", serif;
   font-weight: 500;
   letter-spacing: -5px;
@@ -62,6 +63,7 @@
   color: white;
   border-bottom-color: white;
 }
+
 .subTitle.right {
   margin-bottom: 200px;
 }
@@ -149,6 +151,7 @@
   .hobby-item {
     height: 350px;
   }
+
   .hobby .subTitle.right {
     margin-bottom: 0;
   }
@@ -162,6 +165,7 @@
   .hobbyTit {
     margin-bottom: 140px;
   }
+
   .hobby .subTitle.right {
     margin-bottom: 150px;
   }
@@ -171,6 +175,7 @@
   .hobby-item {
     height: 250px;
   }
+
   .hobby-line {
     top: -3%;
   }
@@ -243,6 +248,7 @@
     display: block;
     height: 500px;
   }
+
   .hobby-line {
     top: 0%;
   }
@@ -262,6 +268,10 @@
 
   .hobby-thumb {
     width: 100%;
+  }
+
+  .hobby .subTitle.right {
+    margin-bottom: 75px;
   }
 }
 

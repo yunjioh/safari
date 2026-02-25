@@ -1,9 +1,7 @@
 .project-section {
   position: relative;
-  padding-bottom: 20vh;
 }
 
-/* 🔥 고정 영역 */
 .project-sticky {
   position: sticky;
   top: 0;
@@ -13,7 +11,6 @@
   align-items: center;
   justify-content: center;
 }
-
 .project-spacer:last-child {
   height: 140vh;
 }
@@ -292,32 +289,21 @@ strong {
   .project .title {
     font-size: 50px;
   }
-
-  .project-section {
-    height: auto;
+ .project-section {
+    height: auto !important;
     overflow: visible;
-    padding-bottom: 0vh;
-  }
-
-  .project-spacer:last-child {
-    height: 82vh;
   }
 
   .project-sticky {
-    display: block;
     position: relative;
-    opacity: 1;
-    overflow: visible;
-  }
-
-  .project-spacer {
-    height: 88vh;
+    height: auto;
+    display: block;
   }
 
   .card-wrapper {
-    transition: none;
     position: relative;
     opacity: 1;
+    transform: none;
   }
 
   .project-bg {
