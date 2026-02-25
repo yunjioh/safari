@@ -234,6 +234,7 @@
     margin: 0 auto;
     display: block;
     border-radius: 10px;
+    overflow: hidden;
   }
 
   .video-text {
