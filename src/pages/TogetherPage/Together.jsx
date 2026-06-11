@@ -42,7 +42,7 @@ const Together = () => {
           <div className="center">
             <h1 className="main-display-title">
               LET’S BUILD <br />
-              SOMETHING TOGETHER.
+              SOMETHING TOGETHER
             </h1>
           </div>
         </ScrollReveal>

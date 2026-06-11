@@ -5,7 +5,6 @@
   align-items: center;
   justify-content: center;
   background-color: #fff;
-  overflow: hidden;
   position: relative;
 }
 
@@ -40,13 +39,13 @@
   /* 위아래 페이드 효과 */
   mask-image: linear-gradient(to bottom,
       transparent,
-      black 30%,
-      black 70%,
+      #2c2c2c 30%,
+      #2c2c2c 70%,
       transparent);
   -webkit-mask-image: linear-gradient(to bottom,
       transparent,
-      black 30%,
-      black 70%,
+      #2c2c2c 30%,
+      #2c2c2c 70%,
       transparent);
 }
 
@@ -72,7 +71,7 @@
 }
 
 .kw-item.active {
-  color: #000;
+  color: #2c2c2c;
   opacity: 1;
   font-style: italic;
   transform: scale(1.1);
@@ -80,7 +79,6 @@
 
 .photo-box {
   position: absolute;
-  width: 320px;
   opacity: 0.03;
   filter: grayscale(100%) blur(2px);
   transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);

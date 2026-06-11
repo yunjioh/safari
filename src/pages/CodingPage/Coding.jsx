@@ -1,155 +1,66 @@
-import React, { useState, useMemo, useEffect, useRef } from "react";
+import React from "react";
 import "./Coding.css";
 import Title from "../../components/Title";
 import SubTitle from "../../components/SubTitle";
 import ScrollReveal from "../../components/ScrollReveal";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const codingProjects = [
   {
     id: "01",
-    name: "Phomein Website",
-    img: "/img/coding2.png",
-    link: "https://yunjioh.github.io/Phomein/",
+    sub: "CLONE CODING 01",
+    name: "Y.Studio Agency",
+    txt: "메인 비주얼 배너에 슬라이더를 활용한 자동 재생 기능을 구현하였고,\n미디어 쿼리를 통해 레이아웃이 유기적으로 재배치되는 반응형 그리드를 적용하였습니다.",
+    img: "/img/coding1.jpg",
+    link: "https://yunjioh.github.io/Y.Studio/"
   },
   {
     id: "02",
+    sub: "CLONE CODING 02",
     name: "The Dopda Platform",
-    img: "/img/coding5.png",
-    link: "https://yunjioh.github.io/Dopda/",
+    txt: '스크롤 이벤트에 맞춰 상단에 고정되는 Fixed 헤더를 제어하였고, \n제이쿼리/자바스크립트의 터치 스와이프 이벤트를 활용하여 메인 배너 슬라이더를 구현하였습니다.',
+    img: "/img/coding5.jpg",
+    link: "https://yunjioh.github.io/Dopda/"
   },
   {
     id: "03",
-    name: "Musign W. Agency",
-    img: "/img/coding4.png",
-    link: "https://yunjioh.github.io/Musign/",
+    sub: "CLONE CODING 03",
+    name: "Crew a la mode Agency",
+    txt: '메인 배너의 백그라운드 영상과 Splitting.js를 활용한 텍스트 모션으로 첫 화면을 구성하였고, \nGSAP의 ScrollTrigger를 활용하여 감각적인 스크롤 인터랙션을 구현하였습니다.',
+    img: "/img/coding3.jpg",
+    link: "https://yunjioh.github.io/Crew-a-la-mode/"
   },
   {
     id: "04",
-    img: "/img/coding3.png",
-    name: "Crew a la mode Agency",
-    link: "https://yunjioh.github.io/Crew-a-la-mode/",
+    sub: "CLONE CODING 04",
+    name: "Phomein Website",
+    txt: '시맨틱 마크업을 기반으로 단일 페이지 내 많은 정보를 구조화하였고, \n자바스크립트를 활용한 탭(Tab) 메뉴 전환과 아코디언 컴포넌트로 메인 콘텐츠의 시각적 접근성을 높였습니다.',
+    img: "/img/coding2.jpg",
+    link: "https://yunjioh.github.io/Phomein/"
   },
   {
     id: "05",
-    name: "Daebang Website",
-    img: "/img/coding6.png",
-    link: "https://yunjioh.github.io/Daebang/",
+    sub: "CLONE CODING 05",
+    name: "Musign W. Agency",
+    txt: '마우스 무브 이벤트를 활용하여 화면을 따라다니는 커스텀 포인터 효과를 주었고, \nCSS Transition과 패러랙스 스크롤을 연동하여 동적인 시차 모션을 구현하였습니다.',
+    img: "/img/coding4.jpg",
+    link: "https://yunjioh.github.io/Musign/"
   },
   {
     id: "06",
-    name: "Y.Studio Agency",
-    img: "/img/coding1.png",
-    link: "https://yunjioh.github.io/Y.Studio/",
+    sub: "CLONE CODING 06",
+    name: "Daebang Website",
+    txt: '자바스크립트로 멀티 레벨 GNB 드롭다운과 컨트롤러 연동 슬라이더를 빌드하였고, \nCSS 애니메이션을 활용하여 스크롤에 따라 테두리가 그려지고 색이 채워지는 효과를 구현하였습니다.',
+    img: "/img/coding6.jpg",
+    link: "https://yunjioh.github.io/Daebang/"
   },
 ];
 
-const EASING = "cubic-bezier(0.25, 1, 0.5, 1)";
-const DURATION = 0.6;
-
 export default function Coding() {
-  const visualRef = useRef(null);
-
-  // ✅ clone 포함 슬라이드
-  const slides = useMemo(() => {
-    const first = codingProjects[0];
-    const last = codingProjects[codingProjects.length - 1];
-    return [last, ...codingProjects, first];
-  }, []);
-
-  const realTotal = codingProjects.length; // 6
-  const total = slides.length; // 8 (lastClone + 6 + firstClone)
-
-  // ✅ 처음부터 2번 보이게: slides 기준 index 2가 "02"
-  const [currentIndex, setCurrentIndex] = useState(2);
-
-  // ✅ transition on/off를 state로 제어 (튐 방지 핵심)
-  const [transitionOn, setTransitionOn] = useState(true);
-
-  // ✅ 버튼 연타 시 꼬임 방지(선택이지만 안정성↑)
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  // 섹션 진입 애니메이션(기존 유지)
-  useEffect(() => {
-    const el = visualRef.current;
-    if (!el) return;
-
-    const tween = gsap.fromTo(
-      el,
-      { x: 200, opacity: 0 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1.4,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: el,
-          start: "top 95%",
-          toggleActions: "restart pause resume pause",
-        },
-      }
-    );
-
-    return () => {
-      tween.scrollTrigger?.kill();
-      tween.kill();
-    };
-  }, []);
-
-  const move = (dir) => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setCurrentIndex((prev) => prev + dir);
-  };
-
-  // ✅ transition end에서 clone 보정 (React state로 transition 끄고 순간이동)
-  const handleTransitionEnd = () => {
-    setIsAnimating(false);
-
-    // 맨 끝 firstClone에 도착했으면 -> 진짜 첫 번째(01 = index 1)로 순간이동
-    if (currentIndex === total - 1) {
-      setTransitionOn(false);
-      setCurrentIndex(1);
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => setTransitionOn(true));
-      });
-      return;
-    }
-
-    // 맨 앞 lastClone에 도착했으면 -> 진짜 마지막(06 = index total-2)로 순간이동
-    if (currentIndex === 0) {
-      setTransitionOn(false);
-      setCurrentIndex(total - 2);
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => setTransitionOn(true));
-      });
-    }
-  };
-
-  // ✅ active 계산(실제 0~5)
-  const realIndex =
-    currentIndex === 0
-      ? realTotal - 1
-      : currentIndex === total - 1
-      ? 0
-      : currentIndex - 1;
-
-  const handleMouseMove = (e) => {
-    const slide = e.currentTarget;
-    const cursor = slide.querySelector(".cursor");
-    if (!cursor) return;
-    const rect = slide.getBoundingClientRect();
-    cursor.style.left = `${e.clientX - rect.left - cursor.offsetWidth / 2}px`;
-    cursor.style.top = `${e.clientY - rect.top - cursor.offsetHeight / 2}px`;
-  };
-
   return (
     <section className="coding">
       <div className="coding-container">
+
+        {/* 상단 타이틀 영역 */}
         <div className="coding-info">
           <ScrollReveal delay={0.3}>
             <Title subTitle="HTML · CSS · JavaScript" mainTitle="CLONE CODING" animate={false} />
@@ -171,66 +82,41 @@ export default function Coding() {
           </ScrollReveal>
         </div>
 
-        <div className="coding-visual" ref={visualRef}>
-          <div className="swiper-wrap is-visible">
-            <div className="swiper-container">
-              <div
-                className="swiper-track-horizontal"
-                style={{
-                  transform: `translateX(-${currentIndex * 100}%)`,
-                  transition: transitionOn ? `transform ${DURATION}s ${EASING}` : "none",
-                }}
-                onTransitionEnd={handleTransitionEnd}
-              >
-                {slides.map((p, idx) => {
-                  const mappedRealIndex =
-                    idx === 0 ? realTotal - 1 : idx === total - 1 ? 0 : idx - 1;
+        {/* 카드 스택 리스트 영역 */}
+        <div className="coding-list">
+          {codingProjects.map((p, index) => (
+            <div
+              key={p.id}
+              className="slide-card"
+              style={{
+                // 상단 고정 위치 계산: 카드가 완전히 겹치게 하려면 고정값(예: 80px),
+                // 이미지처럼 계단식으로 살짝 보이게 겹치려면 인덱스를 곱해줍니다.
+                top: `${80 + index * 25}px`,
+                zIndex: index + 1,
+              }}
+            >
+              <div className="card-inner">
 
-                  // ✅ circlePath id 중복 방지(슬라이드 여러개면 id 충돌 가능)
-                  const circleId = `circlePath-${idx}`;
+                {/* 왼쪽: 프로젝트 정보 */}
+                <div className="card-text-side">
+                  <span className="card-sub">{p.sub}</span>
+                  <div className="txtbox">
+                    <h3 className="card-title">{p.name}</h3>
+                    <h3 className="card-text">{p.txt}</h3>
+                  </div>
+                  <a href={p.link} target="_blank" rel="noopener noreferrer" className="tag-badge">GO TO SITE →</a>
+                </div>
 
-                  return (
-                    <a
-                      key={`${p.id}-${idx}`}
-                      className={`slide ${mappedRealIndex === realIndex ? "active" : ""}`}
-                      href={p.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onMouseMove={handleMouseMove}
-                    >
-                      <div className="slide-inner">
-                        <img src={p.img} alt={p.name} />
-                        <div className="cursor">
-                          <svg className="cursor-text" width="120" height="120" viewBox="0 0 120 120">
-                            <defs>
-                              <path
-                                id={circleId}
-                                d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"
-                              />
-                            </defs>
-                            <text>
-                              <textPath href={`#${circleId}`}>
-                                VIEW PROJECT • VIEW PROJECT • VIEW PROJECT
-                              </textPath>
-                            </text>
-                          </svg>
-                          <div className="cursor-arrow">→</div>
-                        </div>
-                      </div>
-                    </a>
-                  );
-                })}
+                {/* 오른쪽: 이미지 영역 */}
+                <div className="card-img-side">
+                  <img src={p.img} alt={p.name} />
+                </div>
+
               </div>
             </div>
-
-            <button className="nav-btn nav-left" onClick={() => move(-1)} aria-label="Previous">
-              <FaArrowLeft />
-            </button>
-            <button className="nav-btn nav-right" onClick={() => move(1)} aria-label="Next">
-              <FaArrowRight />
-            </button>
-          </div>
+          ))}
         </div>
+
       </div>
     </section>
   );

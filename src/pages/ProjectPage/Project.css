@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.project .title {
+  font-size: 80px;
+}
+
 .project-sticky {
   position: sticky;
   top: 0;
@@ -11,11 +15,12 @@
   align-items: center;
   justify-content: center;
 }
+
 .project-spacer:last-child {
   height: 140vh;
 }
 
-/* 🔥 카드 겹쳐놓기 */
+/* 카드 겹쳐놓기 */
 .card-wrapper {
   position: absolute;
   inset: 0;
@@ -35,19 +40,18 @@
   z-index: 2;
 }
 
-/* 🔥 스크롤 길이용 */
+/* 스크롤 길이용 */
 .project-spacer {
   height: 100vh;
 }
 
 .project {
   height: 100%;
-  padding: 0 6vw;
+  padding: 0 4vw;
 }
 
 .title-wrapper {
   position: relative;
-  display: inline-block;
 }
 
 .project .sub-title {
@@ -66,14 +70,6 @@
   z-index: 0;
 }
 
-/* .project .title {
-  color: white;
-}
-
-.project .sub-title {
-  color: white;
-} */
-
 /* 실제 컨텐츠 래퍼 */
 .project-inner {
   position: relative;
@@ -82,7 +78,7 @@
   display: grid;
   place-items: center;
   background-color: white;
-  padding: 0 6vw;
+  padding: 0 4vw;
   box-sizing: border-box;
 }
 
@@ -97,14 +93,14 @@
 .text-area,
 .image-display-area {
   will-change: transform, opacity;
+  display: flex;
+  align-items: center;
 }
 
 .text-area {
   display: flex;
-  padding: 6vh 0;
-  flex-direction: column;
+  gap: 4vw;
   justify-content: space-between;
-  height: 100%;
 }
 
 .project-content {
@@ -114,7 +110,7 @@
   width: 100%;
   height: 100%;
   gap: 56px;
-  padding: 4vh 0;
+  padding: 12vh 0;
 }
 
 .project-info {
@@ -125,65 +121,109 @@ strong {
   font-size: 20px;
   font-weight: 600;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
   letter-spacing: 0.4px;
 }
 
 .duration-text {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 200;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
   opacity: 0.85;
 }
 
 .role-text {
-  margin-top: 10px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
 }
 
 .detail-text {
   margin-top: 10px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 200;
   line-height: 1.5;
   letter-spacing: -1px;
-  width: 60%;
 }
 
 .button-group {
-  margin-top: 28px;
+  margin-top: 40px;
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
 
-.project .main-button {
-  border: 1px solid black;
-  background: transparent;
-  font-size: 12px;
-  font-family: "Pretendard", sans-serif;
-  font-weight: 500;
-  letter-spacing: 0.2px;
-  padding: 12px 20px;
+/* ===================================================
+   📸 ✨ 이미지 슬라이더 (2개 1세트 세팅) 스타일 정의
+   =================================================== */
+.image-display-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.image-pair-wrapper {
+  display: flex;
+  gap: 20px;
+  /* 디바이스 목업 간 격차 */
+  align-items: center;
+  justify-content: center;
+}
+
+.image-wrapper {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .project img {
-  width: 30vw;
+  width: 26vw;
+  height: auto;
 }
 
-.image-display-area {
-  position: absolute;
-  top: 42%;
-  right: 8%;
+/* 화살표 내비게이션용 라운드 버튼 공통 속성 */
+.slide-btn {
   transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  color: #ffffff;
+  border: none;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
 }
 
-/* 기여도 라인 */
+/* 왼쪽 화살표 버튼 (시안 매칭: 연한 반투명 그레이 톤) */
+.slide-btn {
+  left: -60px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.slide-btn:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* ===================================================
+   📱 반응형 레이아웃 
+   =================================================== */
 .contrib {
   text-align: start;
   gap: 22px;
-  margin-top: 24px;
+  margin-bottom: 40px;
   flex-wrap: wrap;
 }
 
@@ -193,36 +233,26 @@ strong {
   align-items: center;
 }
 
-.inner {
-  height: 100%;
-  display: flex;
-  /* color: white; */
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-}
-
 .num {
   display: flex;
   gap: 10px;
 }
 
 .contrib-label {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   opacity: 0.65;
 }
 
 .contrib-value {
-  font-size: 18px;
+  font-size: 20px;
 }
 
-/* sticky가 동작하려면 상위에 overflow가 막히면 안 됨 */
 .project-page {
   width: 100%;
   background-color: black;
 }
 
-/* 스택 영역: 카드들이 겹겹이 나오게 충분한 스크롤 길이 확보 */
 .project-sticky-stack {
   padding: 80px 0 140px;
 }
@@ -234,7 +264,7 @@ strong {
 }
 
 .project .title-container {
-  margin-bottom: 68px;
+  margin-bottom: 120px;
 }
 
 @media (max-width: 1400px) {
@@ -243,53 +273,18 @@ strong {
   }
 
   .project {
-    padding: 0 6vw;
-  }
-}
-
-@media (max-width: 1200px) {
-  .project .title {
-    font-size: 80px;
+    padding: 0 4vw;
   }
 
-  .project img {
-    width: 35vw;
-  }
-}
-
-@media (max-width: 768px) {
-  .project img {
-    width: 60vw;
-  }
-
-  .project {
-    padding: 0;
-  }
-
-  .inner {
-    gap: 8vh;
-  }
-
+  .text-area,
   .image-display-area {
-    position: relative;
-    transform: none;
-    right: 0;
-  }
-
-  .project .title {
-    letter-spacing: 0;
-  }
-
-  .inner {
-    border-bottom: none;
+    will-change: transform, opacity;
+    display: flex;
+    align-items: center;
     flex-direction: column-reverse;
-    padding: 8vh 4vw;
   }
 
-  .project .title {
-    font-size: 50px;
-  }
- .project-section {
+  .project-section {
     height: auto !important;
     overflow: visible;
   }
@@ -304,6 +299,65 @@ strong {
     position: relative;
     opacity: 1;
     transform: none;
+  }
+
+  .project img {
+    width: 30vw;
+  }
+
+}
+
+@media (max-width: 1200px) {
+  .project .title {
+    font-size: 80px;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .project {
+    padding: 0;
+  }
+
+  .inner {
+    gap: 8vh;
+  }
+
+  .image-display-area {
+    position: relative;
+    transform: none;
+    right: 0;
+  }
+
+  .project img {
+    width: 42vw;
+  }
+
+  /* 모바일 가독성을 위해 간격 및 버튼 포지션 재정렬 */
+  .image-pair-wrapper {
+    gap: 10px;
+  }
+
+  .slide-btn.prev {
+    left: -10px;
+  }
+
+  .slide-btn.next {
+    right: -10px;
+  }
+
+  .project .title {
+    letter-spacing: 0;
+  }
+
+  .inner {
+    border-bottom: none;
+    flex-direction: column-reverse;
+    padding: 8vh 4vw;
+  }
+
+  .project .title {
+    font-size: 50px;
   }
 
   .project-bg {
@@ -324,11 +378,11 @@ strong {
   }
 
   .project .title-container {
-    margin-bottom: 45px;
+    margin-bottom: 80px;
   }
 
   .duration-text {
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
 
   .project-inner {
@@ -370,6 +424,11 @@ strong {
 
   .contrib-value {
     font-size: 16px;
+  }
+
+  .slide-btn {
+    width: 40px;
+    height: 40px;
   }
 }
 

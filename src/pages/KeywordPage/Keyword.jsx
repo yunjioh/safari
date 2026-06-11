@@ -22,62 +22,62 @@ const Keyword = () => {
 
   const photos = [
     {
-      src: "img/key1.svg",
+      src: "img/key1.jpg",
       badge: {
         text: "협업",
         color: "--blue",
         rotate: -12,
         position: { top: "40px", left: "-30px" },
       },
-      pos: { top: "16%", right: "8%", rotate: "8deg" },
+      pos: { top: "12%", right: "4%", rotate: "8deg" },
     },
     {
-      src: "img/key2.svg",
+      src: "img/key2.jpg",
       badge: {
         text: "열정",
-        color: "--orange",
+        color: "--pro2",
         rotate: 8,
         position: { top: "-14px", right: "-14px" },
       },
       pos: { top: "16%", left: "5%", rotate: "-5deg" },
     },
     {
-      src: "img/key3.svg",
+      src: "img/key3.jpg",
       badge: {
         text: "아이디어",
         color: "--orange",
         rotate: -10,
         position: { top: "40px", left: "-30px" },
       },
-      pos: { top: "31%", right: "5%", rotate: "3deg" },
+      pos: { top: "31%", right: "6%", rotate: "5deg" },
     },
     {
-      src: "img/key4.svg",
+      src: "img/key4.jpg",
       badge: {
         text: "책임감",
         color: "--purple",
         rotate: -14,
         position: { top: "-14px", right: "-14px" },
       },
-      pos: { top: "30%", left: "3%", rotate: "-7deg" },
+      pos: { top: "30%", left: "4%", rotate: "-7deg" },
     },
     {
-      src: "img/key5.svg",
+      src: "img/key5.jpg",
       badge: {
         text: "끈기",
         color: "--purple",
         rotate: -10,
-        position: { top: "40px", left: "-30px" },
+        position: { top: "26px", left: "-30px" },
       },
-      pos: { top: "57%", right: "8%", rotate: "6deg" },
+      pos: { top: "50%", right: "3%", rotate: "6deg" },
     },
     {
-      src: "img/key6.svg",
+      src: "img/key6.jpg",
       badge: {
         text: "꼼꼼함",
         color: "--blue",
         rotate: 10,
-        position: { top: "-14px", right: "-14px" },
+        position: { top: "28px", right: "-42px" },
       },
       pos: { top: "59%", left: "3%", rotate: "-4deg" },
     },

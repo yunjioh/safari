@@ -120,7 +120,7 @@ const Skill = () => {
   const displaySkills = isGrid ? skills : [...skills, ...skills];
 
   return (
-    <section className={`skill ${isGrid ? "grid-mode" : "marquee-mode"}`}>
+    <section id="skill" className={`skill ${isGrid ? "grid-mode" : "marquee-mode"}`}>
       <div className="skill-header">
         <div className="header-left">
           <Title subTitle="I CAN DO" mainTitle={`DE-CODER’S\nTOOLKIT`} />
