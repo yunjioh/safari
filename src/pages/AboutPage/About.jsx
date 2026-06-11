@@ -68,10 +68,9 @@ const About = () => {
 
       <div className="content-section">
         <div className="text-content">
-          <div className="quote-mark">“</div>
           <h3 className="intro-phrase">
             [ I am a <TextFill>De-Coder:</TextFill> ] <br />
-            디자인으로 해석하고 코드로 해독하는 디자이너
+            디자인으로 해석하고 코드로 해독하는 디자이너 
           </h3>
 
           <p className="description">
@@ -87,7 +86,7 @@ const About = () => {
 
         <div className="image-content">
           <div className="profile-wrapper">
-            <img src="/img/profile.svg" alt="Yunji Oh" className="profile-img" />
+            <img src="/img/profile.jpg" alt="Yunji Oh" className="profile-img" />
           </div>
         </div>
       </div>

@@ -1,58 +1,191 @@
 .coding {
   width: 100%;
-  overflow: hidden;
   position: relative;
-  background-color: black;
+  background-color: #ffffff;
+  padding-bottom: 200px;
+  padding: 12vw 4vw 0;
 }
 
-.coding-visual {
-  position: relative;
-  width: 100%;
-  margin-bottom: 200px;
-  will-change: transform, opacity;
-  /* 애니메이션 성능 최적화 */
+
+.coding .sub-desc {
+  margin-left: 0;
+  width: 75%;
 }
+
 
 .coding .title-container {
-  margin-bottom: 55px;
-}
-
-.coding .title {
-  color: white;
-}
-
-.coding .sub-title {
-  color: white;
+  margin-bottom: 60px;
 }
 
 .coding .subTitle {
+  text-align: left;
+  margin-bottom: 120px;
+}
+
+.coding-container {
+  position: relative;
+}
+
+.coding-list {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  position: relative;
+  width: 100%;
+}
+
+.slide-card {
+  width: 100%;
+  height: 480px;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 20px;
+  overflow: hidden;
+
+  position: sticky;
+
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.card-inner {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: #111111;
+  position: relative;
+}
+
+.card-text-side {
+  flex: 1;
+  padding: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #ffffff;
+}
+
+.card-sub {
+  font-size: 13px;
+  font-weight: 600;
+  color: #b0b0b0;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.txtbox {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.card-title {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  letter-spacing: -0.02em;
+}
+
+.card-text {
+  color: #505050;
+  font-weight: normal;
+  white-space: pre-line;
+  line-height: 1.6;
+}
+
+.tag-badge {
+  border: 1px solid black;
+  background: transparent;
+  font-size: 12px;
+  font-family: "Pretendard", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  padding: 12px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.card-img-side {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-img-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
   color: white;
-  text-align: right;
-  margin-bottom: 150px;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 100;
 }
 
-.coding-info {
-  padding: 12vw 6vw 0;
-}
-
-.coding-visual {
-  position: relative;
-  width: 100%;
-  margin-bottom: 200px;
-}
-
-.swiper-wrap {
-  position: relative;
-  width: 100%;
+.card-inner:hover .cursor {
   opacity: 1;
+  transform: scale(1);
 }
 
-/* ✅ Tech Tabs 위치 고정 */
+.cursor-text {
+  width: 100%;
+  height: 100%;
+  animation: spin 6s linear infinite;
+  fill: white;
+}
+
+.cursor text {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+}
+
+.cursor-arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  font-size: 40px;
+  font-weight: 100;
+  z-index: 2;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .tech-tabs {
   position: absolute;
-  top: -14%;
+  top: -80px;
   width: 100%;
-  z-index: 0;
+  z-index: 10;
 }
 
 .tech-tab {
@@ -83,165 +216,67 @@
   transform: rotate(-2deg);
 }
 
-/* ✅ 네비게이션 버튼 */
-.nav-btn {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 30;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s;
-}
-
-.nav-btn:hover {
-  background: #fff;
-  color: #000;
-}
-
-.nav-left {
-  left: 3%;
-}
-
-.nav-right {
-  right: 3%;
-}
-
-.cursor {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px);
-  color: white;
-  opacity: 0;
-  transform: scale(0.6);
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
-  z-index: 100;
-}
-
-.slide:hover .cursor {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.cursor-text {
-  width: 100%;
-  height: 100%;
-  animation: spin 6s linear infinite;
-  /* 원래 6s spin */
-  fill: white;
-}
-
-.cursor text {
-  font-size: 10px;
-  letter-spacing: 0.25em;
-}
-
-.cursor-arrow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-45deg);
-  /* 원래 주신 -45도 */
-  font-size: 40px;
-  font-weight: 100;
-  z-index: 2;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.swiper-container {
-  width: 100%;
-  max-width: 1000px;
-  /* 원하는 슬라이드 영역 너비 */
-  margin: 0 auto;
-  position: relative;
-}
-
-.swiper-track-horizontal {
-  display: flex;
-  /* 가로 나열 */
-  width: 100%;
-}
-
-.slide {
-  flex: 0 0 100%;
-  /* 한 화면에 1개씩 보일 때 */
-  width: 100%;
-  padding: 0 10px;
-  /* 슬라이드 간 간격 */
-  box-sizing: border-box;
-  position: relative;
-  display: block;
-}
-
-.slide-inner {
-  position: relative;
-  width: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-.slide img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.5s ease;
-}
-
 @media (max-width: 1400px) {
   .coding .subTitle {
     margin-bottom: 10vh;
   }
+}
 
-  .nav-btn {
-    width: 50px;
-    height: 50px;
+@media (max-width: 992px) {
+  .card-inner {
+    flex-direction: column;
+  }
+
+  .coding .sub-desc {
+    width: 100%;
+  }
+
+  .slide-card {
+    height: auto;
+    position: relative !important;
+    top: auto !important;
+    margin-bottom: 40px;
+  }
+
+  .card-text-side {
+    padding: 40px 30px;
+  }
+
+  .card-img-side {
+    padding: 30px;
+    height: 320px;
+  }
+
+  .card-title {
+    font-size: 28px;
+    margin-bottom: 18px;
+  }
+
+  .tech-tab {
+    font-size: 16px;
+    padding: 8px 20px;
   }
 }
 
 @media (max-width: 530px) {
-
   .coding .subTitle {
     margin-bottom: 5vh;
   }
 
-  .slide-inner {
+  .slide-card {
     border-radius: 10px;
   }
 
-  .sub-desc {
-    width: 100%;
+  .card-text-side {
+    padding: 25px 20px;
   }
 
-  .coding-visual {
-    margin-bottom: 120px;
+  .card-title {
+    font-size: 22px;
+  }
+
+  .card-img-side {
+    height: 220px;
+    padding: 15px;
   }
 }

@@ -39,7 +39,7 @@ const Gallery = () => {
       });
 
       tl.to(bg, { filter: "grayscale(0%)", ease: "none" }, 0)
-        .to(textWrap, { scale: 1.5, ease: "none" }, 0)
+        .to(textWrap, { scale: 1.2, ease: "none" }, 0)
         .to([top, bottom], { y: -30, autoAlpha: 0.5, ease: "none" }, 0.1);
 
     }, sectionRef);
@@ -58,9 +58,9 @@ const Gallery = () => {
           <div className="gallery-scale">
             <div className="center">
               <h1 className="main-display-title">
-                MY WORK PAGE
+                WANT TO SEE HOW I
                 <br />
-                GALLERY
+                DESIGN, CODE, AND GROW?
               </h1>
             </div>
           </div>

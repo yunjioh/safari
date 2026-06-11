@@ -8,23 +8,23 @@ import SubTitle from "../../components/SubTitle";
 gsap.registerPlugin(ScrollTrigger);
 
 const hobbyList = [
-  { id: 1, title: "HEALING", img: "/img/hobby1.svg", label: "Mind" },
-  { id: 2, title: "TAKE\nPHOTO", img: "/img/hobby2.svg", label: "Culture" },
+  { id: 1, title: "HEALING", img: "/img/hobby1.jpg", label: "Mind" },
+  { id: 2, title: "TAKE\nPHOTO", img: "/img/hobby2.jpg", label: "Culture" },
   {
     id: 3,
     title: "VISIT\nEXHIBITION",
-    img: "/img/hobby3.svg",
+    img: "/img/hobby3.jpg",
     label: "Inspiration",
   },
-  { id: 4, title: "World\nTravel", img: "/img/hobby4.svg", label: "History" },
+  { id: 4, title: "World\nTravel", img: "/img/hobby4.jpg", label: "History" },
   {
     id: 5,
     title: "MAKING\nPERFUME",
-    img: "/img/hobby7.svg",
+    img: "/img/hobby7.jpg",
     label: "Experience",
   },
-  { id: 6, title: "Daily\nActivity", img: "/img/hobby6.svg", label: "Energy" },
-  { id: 7, title: "VISIT\nMUSEUM", img: "/img/hobby5.svg", label: "Discovery" },
+  { id: 6, title: "Daily\nActivity", img: "/img/hobby6.jpg", label: "Energy" },
+  { id: 7, title: "VISIT\nMUSEUM", img: "/img/hobby5.jpg", label: "Discovery" },
 ];
 
 const Hobby = () => {
