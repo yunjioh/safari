@@ -446,6 +446,10 @@ strong {
     font-size: 16px;
   }
 
+  .contrib-row {
+    gap: 6px;
+  }
+
   .slide-btn {
     width: 40px;
     height: 40px;
@@ -455,6 +459,10 @@ strong {
 @media (max-width: 560px) {
   .project .title {
     font-size: 40px;
+  }
+
+  .contrib-row {
+    gap: 4px;
   }
 
   .project img {
