@@ -1,505 +1,307 @@
-.project-section {
+.coding {
+  width: 100%;
+  position: relative;
+  background-color: #ffffff;
+  padding-bottom: 200px;
+  padding: 12vw 4vw 0;
+}
+
+
+.coding .sub-desc {
+  margin-left: 0;
+  width: 75%;
+}
+
+
+.coding .title-container {
+  margin-bottom: 60px;
+}
+
+.coding .subTitle {
+  text-align: left;
+  margin-bottom: 120px;
+}
+
+.coding-container {
   position: relative;
 }
 
-.project .title {
-  font-size: 80px;
+.coding-list {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  position: relative;
+  width: 100%;
 }
 
-.project-sticky {
+.slide-card {
+  width: 100%;
+  height: 480px;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 20px;
+  overflow: hidden;
+
   position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
+
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.card-inner {
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.project-spacer:last-child {
-  height: 140vh;
-}
-
-/* 카드 겹쳐놓기 */
-.card-wrapper {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transform: translateY(40px);
-  transition:
-    opacity 0.6s ease,
-    transform 0.6s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card-wrapper.active {
-  opacity: 1;
-  transform: translateY(0);
-  z-index: 2;
-}
-
-/* 스크롤 길이용 */
-.project-spacer {
-  height: 100vh;
-}
-
-.project {
+  width: 100%;
   height: 100%;
-  padding: 4vh 4vw;
-}
-
-.title-wrapper {
+  text-decoration: none;
+  align-items: center;
+  color: #111111;
   position: relative;
 }
 
-.project .sub-title {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.project-card {
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-/* 배경 레이어 */
-.project-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-/* 실제 컨텐츠 래퍼 */
-.project-inner {
-  position: relative;
-  z-index: 1;
-  height: 100%;
-  display: grid;
-  place-items: center;
-  background-color: white;
-  padding: 0 4vw;
-  box-sizing: border-box;
-}
-
-/* 각 프로젝트 패널은 겹쳐 놓고 교체 */
-.project-panel {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.text-area,
-.image-display-area {
-  will-change: transform, opacity;
-  display: flex;
-  align-items: center;
-}
-
-.text-area {
-  display: flex;
-  height: 100%;
-  gap: 4vw;
-  justify-content: space-between;
-}
-
-.project-content {
-  display: grid;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-  gap: 4vh;
-}
-
-.project-info {
-  text-align: start;
-  height: 100%;
+.card-text-side {
+  width: 50%;
+  padding: 70px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: flex-start;
+  background-color: #ffffff;
 }
 
-strong {
-  font-size: 20px;
-  font-weight: 600;
-  display: block;
-  margin-bottom: 16px;
-  letter-spacing: 0.4px;
-}
-
-.duration-text {
-  font-size: 20px;
-  font-weight: 200;
-  color: #505050;
-  opacity: 0.85;
-}
-
-.role-text {
-  font-size: 20px;
+.card-sub {
+  font-size: 12px;
   font-weight: 400;
-  color: #505050;
-}
-
-.detail-text {
-  margin-top: 12px;
-  font-size: 20px;
-  font-weight: 200;
-  line-height: 1.6;
-  letter-spacing: -1px;
-  color: #505050;
-}
-
-.button-group {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-/* ===================================================
-   📸 ✨ 이미지 슬라이더 (2개 1세트 세팅) 스타일 정의
-   =================================================== */
-.image-display-area {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.slider-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.image-pair-wrapper {
-  display: flex;
-  gap: 20px;
-  /* 디바이스 목업 간 격차 */
-  align-items: center;
-  justify-content: center;
-}
-
-.image-wrapper {
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.project img {
-  width: 26vw;
-  height: auto;
-}
-
-/* 화살표 내비게이션용 라운드 버튼 공통 속성 */
-.slide-btn {
-  transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
-  color: #ffffff;
-  border: none;
-  font-size: 26px;
-  line-height: 1;
-  cursor: pointer;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease, opacity 0.3s ease;
-}
-
-/* 왼쪽 화살표 버튼 (시안 매칭: 연한 반투명 그레이 톤) */
-.slide-btn {
-  left: -60px;
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-}
-
-.slide-btn:hover {
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-/* ===================================================
-   📱 반응형 레이아웃 
-   =================================================== */
-.contrib {
-  text-align: start;
-  gap: 22px;
-  flex-wrap: wrap;
-}
-
-.contrib-row {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  color: #505050;
-}
-
-.num {
-  display: flex;
-  gap: 14px;
-  color: #505050;
-}
-
-.contrib-label {
-  font-size: 20px;
-  font-weight: 400;
-  opacity: 0.65;
-  color: #505050
-}
-
-.contrib-value {
-  font-size: 20px;
-  font-weight: 200;
-  color: #505050;
-}
-
-.project-page {
-  width: 100%;
-  background-color: black;
-}
-
-.project-sticky-stack {
-  padding: 80px 0 140px;
-}
-
-.project-sticky-item {
-  position: sticky;
-  margin: 0 4vw 60px;
-  overflow: hidden;
-}
-
-.project .title-container {
+  color: #999;
+  letter-spacing: 0.08em;
   margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.txtbox {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.card-title {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  letter-spacing: -0.02em;
+}
+
+.card-text {
+  color: #505050;
+  font-weight: 200;
+  white-space: pre-line;
+  line-height: 1.6;
+}
+
+.tag-badge {
+  border: 1px solid black;
+  background: transparent;
+  font-size: 12px;
+  font-family: "Pretendard", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  padding: 12px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.card-img-side {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-img-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  color: white;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 100;
+}
+
+.card-inner:hover .cursor {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cursor-text {
+  width: 100%;
+  height: 100%;
+  animation: spin 6s linear infinite;
+  fill: white;
+}
+
+.cursor text {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+}
+
+.cursor-arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  font-size: 40px;
+  font-weight: 100;
+  z-index: 2;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.tech-tabs {
+  position: absolute;
+  top: -80px;
+  width: 100%;
+  z-index: 10;
+}
+
+.tech-tab {
+  position: absolute;
+  padding: 10px 30px;
+  border-radius: 999px;
+  font-size: 20px;
+}
+
+.tech-tab.orange {
+  background: #ff8e1d;
+  color: #fff;
+  right: 10%;
+  transform: rotate(-5deg);
+}
+
+.tech-tab.neon {
+  background: #9f75ff;
+  color: #fff;
+  right: 20%;
+  transform: rotate(5deg);
+}
+
+.tech-tab.blue {
+  background: #5289ff;
+  color: #fff;
+  right: 30%;
+  transform: rotate(-2deg);
 }
 
 @media (max-width: 1400px) {
-  .detail-text {
+  .coding .subTitle {
+    margin-bottom: 10vh;
+  }
+}
+
+@media (max-width: 992px) {
+  .coding .sub-desc {
     width: 100%;
   }
 
-  .project-content {
-    gap: 10vh;
-  }
-
-  .text-area {
-    gap: 6vw;
-  }
-
-  .project-info {
-    height: 60vh;
-  }
-
-  .text-area,
-  .image-display-area {
-    will-change: transform, opacity;
-    display: flex;
-    align-items: center;
-    flex-direction: column-reverse;
-  }
-
-  .project-section {
-    height: auto !important;
-    overflow: visible;
-  }
-
-  .project-sticky {
-    position: relative;
+  .slide-card {
     height: auto;
-    display: block;
+    position: relative !important;
+    top: auto !important;
+    margin-bottom: 40px;
   }
 
-  .card-wrapper {
-    position: relative;
-    opacity: 1;
-    transform: none;
+  .coding-list {
+    gap: 24px;
   }
 
-  .project img {
-    width: 30vw;
+  .card-text-side {
+    padding: 40px 30px 0;
   }
 
-}
-
-@media (max-width: 1200px) {
-  .project .title {
-    font-size: 80px;
+  .card-img-side {
+    padding: 0 30px 30px;
   }
 
-  .project-info {
-    height: 68vh;
-  }
-}
-
-@media (max-width: 768px) {
-  .inner {
-    gap: 8vh;
+  .card-title {
+    font-size: 28px;
+    margin-bottom: 18px;
   }
 
-  .project {
-    padding: 6vh 4vw;
+  .tech-tab {
+    font-size: 16px;
+    padding: 8px 20px;
   }
 
-  .image-display-area {
-    position: relative;
-    transform: none;
-    right: 0;
+  .card-inner {
+    flex-direction: column;
   }
 
-  .project img {
-    width: 42vw;
+  .card-inner {
+    width: 100%;
   }
 
-  /* 모바일 가독성을 위해 간격 및 버튼 포지션 재정렬 */
-  .image-pair-wrapper {
-    gap: 10px;
-  }
-
-  .slide-btn.prev {
-    left: -10px;
-  }
-
-  .slide-btn.next {
-    right: -10px;
-  }
-
-  .project .title {
-    letter-spacing: 0;
-  }
-
-  .inner {
-    border-bottom: none;
-    flex-direction: column-reverse;
-    padding: 8vh 4vw;
-  }
-
-  .project .title {
-    font-size: 50px;
-  }
-
-  .project-bg {
+  .tag-badge {
     display: none;
   }
 
-  .project-content {
-    flex-direction: column-reverse;
-    padding: 0;
-  }
-
-  .text-area {
-    padding: 0;
-  }
-
-  .badge {
-    font-size: 15px;
-  }
-
-  .project-inner {
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-  }
-
-  .project-panel {
-    position: relative;
+  .card-text-side {
     width: 100%;
-    height: auto;
-    min-height: unset;
-  }
-
-  .project-info {
-    height: 60vh;
-  }
-
-  strong {
-    font-size: 18px;
-  }
-
-  .project .sub-title {
-    font-size: 14px;
-  }
-
-  .project .main-button {
-    padding: 12px 20px;
-  }
-
-  .detail-text {
-    font-size: 16px;
-  }
-
-  .role-text {
-    font-size: 16px;
-  }
-
-  .contrib-label {
-    font-size: 16px;
-  }
-
-  .contrib-value {
-    font-size: 16px;
-  }
-
-  .duration-text {
-    font-size: 16px;
-  }
-
-  .contrib-row {
-    gap: 6px;
-  }
-
-  .slide-btn {
-    width: 40px;
-    height: 40px;
   }
 }
 
-@media (max-width: 560px) {
-  .project .title {
-    font-size: 40px;
+@media (max-width: 530px) {
+  .coding .subTitle {
+    margin-bottom: 5vh;
   }
 
-  .contrib-row {
-    gap: 4px;
+
+  .slide-card {
+    border-radius: 10px;
   }
 
-  .project img {
-    width: 60vw;
+  .card-text-side {
+    padding: 25px 20px 0;
   }
 
-  .project .sub-title {
-    font-size: 12px;
+  .txtbox {
+    margin-bottom: 0;
   }
 
-  .project-spacer {
-    height: 78vh;
+  .card-title {
+    font-size: 22px;
   }
 
-  strong {
-    font-size: 16px;
-  }
-
-  .duration-text {
-    font-size: 15px;
-  }
-
-  .detail-text {
+  .card-text {
     font-size: 14px;
   }
 
-  .role-text {
-    font-size: 15px;
-  }
-}
-
-@media (max-width: 490px) {
-  .project-spacer {
-    height: 72vh;
-  }
-
-  .badge-con {
-    position: relative;
+  .card-img-side {
+    height: 220px;
+    padding: 15px;
   }
 }
