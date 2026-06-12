@@ -108,10 +108,11 @@ export default function Coding() {
                 </div>
 
                 {/* 오른쪽: 이미지 영역 */}
-                <div className="card-img-side">
-                  <img src={p.img} alt={p.name} />
-                </div>
-
+                <a href={p.link} target="_blank" rel="noopener noreferrer">
+                  <div className="card-img-side">
+                    <img src={p.img} alt={p.name} />
+                  </div>
+                </a>
               </div>
             </div>
           ))}
