@@ -1,28 +1,31 @@
+.hobby {
+  font-family: "Basis Grotesque Arabic Pro", sans-serif;
+  overflow: hidden;
+}
+
 .hobby-header {
-  margin: 38vh 4vw 4vh;
+  margin: 12vw 6vw 10vw;
 }
 
 .hobbyTit {
-  color: #2c2c2c;
-  font-size: 140px;
+  color: black;
+  font-size: 10vw;
   line-height: 0.5;
-  /* font-family: "Basis Grotesque Arabic Pro", sans-serif; */
-  font-family: "PP Editorial New", serif;
-  font-weight: 600;
+  font-family: "Basis Grotesque Arabic Pro", sans-serif;
+  font-weight: 500;
   letter-spacing: -5px;
   text-align: left;
-  margin-bottom: 140px;
+  margin-bottom: 200px;
 }
 
 .hobbyTit span {
-  font-size: 90px;
-  color: #999999;
-  line-height: 1.3;
+  font-size: 5vw;
+  color: #9e9e9e;
   font-weight: normal;
 }
 
 .hobby .title-container .title.deco {
-  color: #999999;
+  color: #9e9e9e;
   font-size: 65px;
   font-weight: normal;
   line-height: 1.2;
@@ -60,22 +63,18 @@
   border-bottom-color: white;
 }
 
-.subTitle.right {
-  margin-bottom: 200px;
-}
-
 .hobby-list {
   position: relative;
-  margin: 14vh auto;
+  margin: 30vh auto 0;
 }
 
 .hobby-line {
   position: absolute;
   left: 50%;
-  top: -3%;
+  top: -5%;
   width: 1px;
   height: 100%;
-  background: #2c2c2c;
+  background: black;
   border-radius: 50%;
   transform: translateX(-50%);
 }
@@ -95,15 +94,17 @@
   padding: 20px 0;
 }
 
+
 .hobby-label {
   display: block;
   font-size: 0.75rem;
   color: #999;
-  margin-bottom: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
 }
 
 .hobby-title {
-  font-size: 36px;
+  font-size: 40px;
   line-height: 1.1;
   white-space: pre-line;
 }
@@ -112,6 +113,7 @@
   position: absolute;
   right: 0;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .hobby-item:nth-child(even) .hobby-thumb {
@@ -121,175 +123,21 @@
 
 .hobby-thumb img {
   width: 40vw;
-  height: 35vw;
   object-fit: cover;
-  filter: grayscale(100%);
   transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.hobby-thumb img:hover {
-  filter: grayscale(0%);
-}
-
-@media (max-width: 1630px) {
-  .hobbyTit {
-    font-size: 100px;
-  }
-
-  .hobbyTit span {
-    font-size: 70px;
-  }
-
-  .hobby-title {
-    font-size: 32px;
-  }
-
-  .hobby-item {
-    height: 350px;
-  }
-
-  .hobby .subTitle.right {
-    margin-bottom: 0;
-  }
-}
-
-@media (max-width: 1400px) {
-  .hobby-item {
-    height: 320px;
-  }
-
-  .hobbyTit {
-    margin-bottom: 140px;
-  }
-}
-
-@media (max-width: 1200px) {
-  .hobby-item {
-    height: 250px;
-  }
-
-  .hobby-line {
-    top: -3%;
-  }
-
-  .hobby-title {
-    font-size: 25px;
-  }
-
-  .hobbyTit span {
-    font-size: 48px;
-  }
-
-  .hobbyTit {
-    margin-bottom: 90px;
-  }
-
-  .hobby-list {
-    margin: 15vh auto;
-  }
-
-  .subTitle {
-    margin-bottom: 12vh;
-  }
-}
-
-@media (max-width: 955px) {
-  .hobbyTit {
-    font-size: 80px;
-    margin-bottom: 100px;
-  }
-
-  .hobby-item {
-    height: 235px;
-  }
-
-  .hobbyTit span {
-    font-size: 40px;
-  }
-
-
-  .hobby-title {
-    font-size: 23px;
-  }
-
-  .hobby-label {
-    font-size: 12px;
-  }
-
-  .hobby-title {
-    font-size: 22px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hobbyTit {
-    font-size: 70px;
-    margin-bottom: 100px;
-  }
-
-  .hobby-list {
-    margin: 6vh auto;
-  }
-
-  .hobbyTit span {
-    font-size: 36px;
-  }
-
-
-  .hobby-item {
-    height: 170px;
-  }
-}
-
-@media (max-width: 630px) {
-  .hobbyTit {
-    font-size: 55px;
-  }
-
-  .hobby-item {
-    display: block;
-    height: 500px;
-  }
-
-  .hobby-line {
-    top: 0%;
+@media (max-width: 1024px) {
+  .hobby-thumb {
+    width: 250px;
+    right: 5%;
   }
 
   .hobby-item:nth-child(even) .hobby-thumb {
-    right: 0;
+    left: 5%;
   }
 
-  .hobby-list {
-    margin: 2vh auto;
-  }
-
-  .hobby-thumb img {
-    width: 92vw;
-    height: auto;
-  }
-
-  .hobby-thumb {
-    width: 100%;
-  }
-
-  .hobby .subTitle.right {
-    margin-bottom: 75px;
-  }
-}
-
-@media (max-width: 600px) {
-  .hobbyTit {
-    font-size: 60px;
-  }
-
-  .hobbyTit span {
-    display: none;
-  }
-
-}
-
-@media (max-width: 430px) {
-  .hobby-item {
-    height: 410px;
+  .hobby-title {
+    font-size: 1.5rem;
   }
 }

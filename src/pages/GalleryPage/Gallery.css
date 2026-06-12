@@ -1,46 +1,39 @@
 .gallery {
-  height: 250vh; 
-  position: relative;
-}
-
-/* ⭐ 화면에 꽉 차게 고정되는 핵심 레이어 */
-.gallery-inner {
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  padding: 45px 4vw; /* 기존 여백 유지 */
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-.text {
-  height: 100%;
+  height: 110vh;
+  justify-content: center;
+  padding: 150px 0;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-/* ✅ 배경 레이어 */
-.gallery-bg {
+.gallery-bg-wrap {
   position: absolute;
   inset: 0;
   z-index: 0;
-  pointer-events: none;
-  /* background-image: url("/public/img/bg2.png");
-  background-size: cover;
-  background-position: center; */
+
+  transform-origin: 50% 50%;
+  will-change: transform;
 }
 
-.gallery-scale,
-.top-label,
-.bottom-description,
-.down_arrow {
-  position: relative;
-  z-index: 1;
+.gallery-bg {
+  position: absolute;
+  inset: 0;
+
+  background-image: url("/public/img/bg.svg");
+  background-size: cover;
+  background-position: center;
+}
+
+.gallery-bg-image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  max-width: 900px;
+  pointer-events: none;
 }
 
 .top-label {
@@ -48,43 +41,15 @@
   opacity: 0.8;
 }
 
+.main-display-title {
+  font-size: 156px;
+  font-weight: 500;
+  line-height: 0.95;
+  margin-bottom: 48px;
+}
+
 .bottom-description {
   font-size: 20px;
   line-height: 1.6;
   letter-spacing: -1px;
-}
-
-@keyframes down {
-  0%,
-  100% {
-    clip-path: inset(0 0 0 0);
-  }
-
-  25% {
-    clip-path: inset(100% 0 0 0);
-  }
-
-  50% {
-    clip-path: inset(0 0 100% 0);
-  }
-}
-
-@media (max-width: 1600px) {
-  .top-label {
-    font-size: 18px;
-  }
-
-  .bottom-description {
-    font-size: 18px;
-  }
-}
-
-@media (max-width: 560px) {
-  .top-label {
-    font-size: 14px;
-  }
-
-  .bottom-description {
-    font-size: 14px;
-  }
 }
