@@ -72,7 +72,7 @@ export default function Coding() {
               description={[
                 { text: "HTML, CSS, JavaScript ", highlight: true, color: "orange" },
                 {
-                  text: "에 대한 이해를 바탕으로 총 6개의 클론 코딩 프로젝트를 제작했습니다.\n실제 웹사이트의 구조와 인터랙션을 분석하며 반복적인 구현을 통해",
+                  text: "에 대한 이해를 바탕으로 총 6개의 클론 코딩 프로젝트를 제작했습니다.\n실제 웹사이트의 구조와 인터랙션을 분석하며 반복적인 구현을 통해 ",
                   highlight: false,
                 },
                 { text: "퍼블리싱과 인터랙션 구현 역량", highlight: true, color: "purple" },
