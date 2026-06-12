@@ -356,8 +356,8 @@
 
   /* 마스크 텍스트 스케일 다운 + 자간 조정 */
   .decoder-mask-container {
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1900' height='510' viewBox='0 0 1900 520'%3E%3Ctext x='950' y='500' text-anchor='middle' font-family='Impact' font-weight='500' font-size='550' letter-spacing='-10'%3EDECODER%3C/text%3E%3C/svg%3E");
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1900' height='510' viewBox='0 0 1900 520'%3E%3Ctext x='950' y='500' text-anchor='middle' font-family='Impact' font-weight='500' font-size='550' letter-spacing='-10'%3EDECODER%3C/text%3E%3C/svg%3E");
+     -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1900' height='510' viewBox='0 0 1900 520'%3E%3Ctext x='950' y='480' text-anchor='middle' font-family='Black Han Sans' font-weight='400' font-size='420' letter-spacing='-30'%3EDECODER%3C/text%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1900' height='510' viewBox='0 0 1900 520'%3E%3Ctext x='950' y='480' text-anchor='middle' font-family='Black Han Sans' font-weight='400' font-size='420' letter-spacing='-30'%3EDECODER%3C/text%3E%3C/svg%3E");
     -webkit-mask-position: 50% bottom;
     mask-position: 50% bottom;
   }
