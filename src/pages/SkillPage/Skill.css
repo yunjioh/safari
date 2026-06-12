@@ -1,0 +1,211 @@
+.skill {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.skill-header {
+  justify-content: space-between;
+  align-items: center;
+  padding: 12vw 4vw 6vw;
+}
+
+.skill .subTitle.right {
+  margin-bottom: 0;
+}
+
+.skill .title {
+  width: 80%;
+}
+
+/* 마키 애니메이션 정의 */
+.marquee-wrapper {
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: 100px;
+}
+
+.marquee-content {
+  display: flex;
+  gap: 15px;
+  width: max-content;
+  align-items: flex-end;
+  animation: scrollMarquee 40s linear infinite;
+}
+
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-wrapper:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+/* 카드 기본 스타일 */
+.skill-card {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  transform-origin: bottom;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-box {
+  font-size: 50px;
+  transition: all 0.4s ease;
+}
+
+.skill-name {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: all 0.4s ease;
+}
+
+.skill-active-title {
+  position: absolute;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+/* 💡 설명글 기본 상태: 카드 정중앙에 숨겨둠 */
+.skill-hover-desc {
+  position: absolute;
+  width: 100%;
+  padding: 0 15px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+}
+
+.skill .title-container {
+  margin-bottom: 100px;
+}
+
+.skill-card:hover .icon-box,
+.skill-card:hover .skill-name {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+/* 호버 시 설명글만 깔끔하게 등장 */
+.skill-card:hover .skill-hover-desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ===================================================
+   📱 반응형 미디어 쿼리
+   =================================================== */
+@media (max-width: 1400px) {
+  .skill-card {
+    width: 120px;
+    height: 120px;
+  }
+
+  .icon-box {
+    font-size: 28px;
+  }
+
+  .skill-hover-desc {
+    font-size: 13px;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .skill .title {
+    width: 100%;
+  }
+}
+
+@media (max-width: 955px) {
+  .skill-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .marquee-content {
+    height: auto;
+  }
+
+  /* 955px 이하에서는 그리드/모바일 모드이므로 호버 효과 필요 없음 */
+  .skill-card {
+    width: 100px;
+    height: 100px;
+  }
+
+  .skill-name {
+    margin-top: 4px;
+  }
+
+  .skill-name
+  .skill-card:hover {
+    width: 100px;
+    height: 100px;
+  }
+
+  .skill-card:hover .icon-box,
+  .skill-card:hover .skill-name {
+    opacity: 1;
+    transform: none;
+  }
+
+  .skill-card:hover .skill-hover-desc {
+    opacity: 0;
+    transform: none;
+  }
+
+  .marquee-wrapper {
+    margin-top: 10vh;
+  }
+
+  .icon-box {
+    font-size: 25px;
+  }
+
+  .skill-name {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 630px) {
+  .marquee-wrapper {
+    margin-top: 2vh;
+    margin-bottom: 8vh;
+  }
+}
+
+@media (max-width: 530px) {
+  .skill-card {
+    border-radius: 8px;
+    width: 80px;
+    height: 80px;
+  }
+
+  .skill-card:hover {
+    width: 80px;
+    height: 80px;
+  }
+
+  .skill-name {
+    font-size: 14px;
+  }
+}

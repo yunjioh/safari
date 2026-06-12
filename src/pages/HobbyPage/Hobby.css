@@ -1,0 +1,295 @@
+.hobby-header {
+  margin: 38vh 4vw 4vh;
+}
+
+.hobbyTit {
+  color: #2c2c2c;
+  font-size: 140px;
+  line-height: 0.5;
+  /* font-family: "Basis Grotesque Arabic Pro", sans-serif; */
+  font-family: "PP Editorial New", serif;
+  font-weight: 600;
+  letter-spacing: -5px;
+  text-align: left;
+  margin-bottom: 140px;
+}
+
+.hobbyTit span {
+  font-size: 90px;
+  color: #999999;
+  line-height: 1.3;
+  font-weight: normal;
+}
+
+.hobby .title-container .title.deco {
+  color: #999999;
+  font-size: 65px;
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+.selected-projects-label {
+  color: var(--purple);
+  font-size: 12px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 5;
+}
+
+.go-to-site {
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+  padding-bottom: 200px;
+}
+
+.go-to-site a {
+  color: var(--purple);
+  font-size: 14px;
+  font-weight: normal;
+  text-decoration: none;
+  border-bottom: 1px solid var(--purple);
+  padding-bottom: 4px;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+}
+
+.go-to-site a:hover {
+  color: white;
+  border-bottom-color: white;
+}
+
+.subTitle.right {
+  margin-bottom: 200px;
+}
+
+.hobby-list {
+  position: relative;
+  margin: 14vh auto;
+}
+
+.hobby-line {
+  position: absolute;
+  left: 50%;
+  top: -3%;
+  width: 1px;
+  height: 100%;
+  background: #2c2c2c;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.hobby-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  width: 100%;
+}
+
+.hobby-text {
+  z-index: 5;
+  background: white;
+  padding: 20px 0;
+}
+
+.hobby-label {
+  display: block;
+  font-size: 0.75rem;
+  color: #999;
+  margin-bottom: 12px;
+}
+
+.hobby-title {
+  font-size: 36px;
+  line-height: 1.1;
+  white-space: pre-line;
+}
+
+.hobby-thumb {
+  position: absolute;
+  right: 0;
+  overflow: hidden;
+}
+
+.hobby-item:nth-child(even) .hobby-thumb {
+  right: auto;
+  left: 0;
+}
+
+.hobby-thumb img {
+  width: 40vw;
+  height: 35vw;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hobby-thumb img:hover {
+  filter: grayscale(0%);
+}
+
+@media (max-width: 1630px) {
+  .hobbyTit {
+    font-size: 100px;
+  }
+
+  .hobbyTit span {
+    font-size: 70px;
+  }
+
+  .hobby-title {
+    font-size: 32px;
+  }
+
+  .hobby-item {
+    height: 350px;
+  }
+
+  .hobby .subTitle.right {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 1400px) {
+  .hobby-item {
+    height: 320px;
+  }
+
+  .hobbyTit {
+    margin-bottom: 140px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .hobby-item {
+    height: 250px;
+  }
+
+  .hobby-line {
+    top: -3%;
+  }
+
+  .hobby-title {
+    font-size: 25px;
+  }
+
+  .hobbyTit span {
+    font-size: 48px;
+  }
+
+  .hobbyTit {
+    margin-bottom: 90px;
+  }
+
+  .hobby-list {
+    margin: 15vh auto;
+  }
+
+  .subTitle {
+    margin-bottom: 12vh;
+  }
+}
+
+@media (max-width: 955px) {
+  .hobbyTit {
+    font-size: 80px;
+    margin-bottom: 80px;
+  }
+
+  .hobby-item {
+    height: 235px;
+  }
+
+  .hobbyTit span {
+    font-size: 40px;
+  }
+
+
+  .hobby-title {
+    font-size: 23px;
+  }
+
+  .hobby-label {
+    font-size: 12px;
+  }
+
+  .hobby-title {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hobbyTit {
+    font-size: 70px;
+    margin-bottom: 60px;
+  }
+
+  .hobby-list {
+    margin: 6vh auto;
+  }
+
+  .hobbyTit span {
+    font-size: 36px;
+  }
+
+
+  .hobby-item {
+    height: 170px;
+  }
+}
+
+@media (max-width: 630px) {
+  .hobbyTit {
+    font-size: 55px;
+  }
+
+  .hobby-item {
+    display: block;
+    height: 500px;
+  }
+
+  .hobby-line {
+    top: 0%;
+  }
+
+  .hobby-item:nth-child(even) .hobby-thumb {
+    right: 0;
+  }
+
+  .hobby-list {
+    margin: 2vh auto;
+  }
+
+  .hobby-thumb img {
+    width: 92vw;
+    height: auto;
+  }
+
+  .hobby-thumb {
+    width: 100%;
+  }
+
+  .hobby .subTitle.right {
+    margin-bottom: 75px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hobbyTit {
+    font-size: 60px;
+  }
+
+  .hobbyTit span {
+    display: none;
+  }
+
+}
+
+@media (max-width: 430px) {
+  .hobby-item {
+    height: 410px;
+  }
+}
