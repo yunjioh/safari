@@ -1,0 +1,23 @@
+.fill-text {
+  position: relative;
+  display: inline-block;
+  --p: 0;              /* 0~1 채움 진행률 */
+  --fill: #0066ff;     /* 채움 색 */
+}
+
+.fill-text__base {
+  color: #b5b5b5;      /* 기본 회색 */
+}
+
+.fill-text__fill {
+  position: absolute;
+  inset: 0;
+  color: var(--fill);
+
+  /* ✅ 왼→오로 드러나게 */
+  clip-path: inset(0 calc(100% - (var(--p) * 100%)) 0 0);
+
+  /* 글자 선택/복사 안전 */
+  pointer-events: none;
+  white-space: pre-wrap;
+}

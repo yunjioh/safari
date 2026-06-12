@@ -1,0 +1,78 @@
+.subTitle {
+  margin-bottom: 320px;
+}
+
+.subTitle.right {
+  text-align: right;
+  margin-left: auto;
+}
+
+.sub-phrase {
+  font-family: "PP Editorial New", serif;
+  font-size: 36px;
+  line-height: 1.2;
+  color: #2c2c2c;
+  font-weight: normal;
+  margin-bottom: 24px;
+}
+
+.sub-desc {
+  font-size: 20px;
+  color: #999999;
+  white-space: pre-wrap;
+  letter-spacing: -1px;
+  line-height: 1.5;
+}
+
+@media (max-width: 1600px) {
+  .sub-phrase {
+    font-size: 32px;
+  }
+
+  .sub-desc {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .sub-desc {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .sub-phrase {
+    font-size: 28px;
+  }
+
+  .sub-desc {
+    font-size: 18px;
+    white-space: inherit;
+    margin-left: auto;
+  }
+
+  .subTitle {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .sub-phrase {
+    letter-spacing: -1px;
+  }
+
+  .sub-desc {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 630px) {
+  .sub-phrase {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .sub-desc {
+    white-space: inherit;
+  }
+}
