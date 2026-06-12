@@ -266,12 +266,20 @@
     margin-bottom: 5vh;
   }
 
+  .tag-badge {
+    display: none;
+  }
+
   .slide-card {
     border-radius: 10px;
   }
 
   .card-text-side {
-    padding: 25px 20px;
+    padding: 25px 20px 0;
+  }
+
+  .txtbox {
+    margin-bottom: 0;
   }
 
   .card-title {
