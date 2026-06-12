@@ -48,9 +48,24 @@
   will-change: transform;
 }
 
+/* 1. 폰트 등록 (Regular 파일이지만 기본값으로 등록) */
+@font-face {
+  font-family: 'Lalezar';
+  src: url('../../assets//fonts//Lalezar-Regular.ttf') format('truetype');
+  font-weight: 400;
+  /* Regular 파일이므로 400으로 등록 */
+  font-style: normal;
+}
+
+/* 2. 사용할 때 Bold 적용 */
 .hero-name {
   font-size: 30px;
   font-family: 'Lalezar', sans-serif;
+  font-weight: 600;
+  /* 💡 브라우저에게 강제로 볼드로 그리라고 명령 */
+
+  /* 아이패드에서 가짜 볼드가 너무 지저분하게 번지는 것을 방지 */
+  -webkit-font-smoothing: antialiased;
 }
 
 .hero-nav {
