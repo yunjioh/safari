@@ -1,0 +1,23 @@
+const Badge = ({ text, color, rotate, position, style: extraStyle }) => {
+  const style = {
+    backgroundColor: `var(${color})`,
+    color: "#ffffff",
+    transform: `rotate(${rotate}deg)`,
+    position: "absolute",
+    ...position,
+
+    padding: "10px 30px",
+    borderRadius: "30px",
+    fontSize: "20px",
+
+    ...extraStyle,
+  };
+
+  return (
+    <span className="badge" style={style}>
+      {text}
+    </span>
+  );
+};
+
+export default Badge;
