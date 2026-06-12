@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Skill.css";
 import Title from "../../components/Title";
 import SubTitle from "../../components/SubTitle";
@@ -18,17 +18,6 @@ import {
 } from "react-icons/si";
 
 const Skill = () => {
-  // 955px 이하 여부 감지
-  const [isGrid, setIsGrid] = useState(window.innerWidth <= 955);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsGrid(window.innerWidth <= 955);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   const skills = [
     {
       id: "figma",
@@ -40,8 +29,8 @@ const Skill = () => {
     {
       id: "illustrator",
       name: "Illustrator",
-      icon: <SiAdobeillustrator />,
       color: "var(--orange)",
+      icon: <SiAdobeillustrator />,
       desc: "벡터 그래픽 및 브랜드 시각화 작업 숙련",
     },
     {
@@ -56,7 +45,7 @@ const Skill = () => {
       name: "HTML5",
       icon: <SiHtml5 />,
       color: "var(--blue)",
-      desc: "시맨틱한 마크업 작성이 가능합니다.",
+      desc: "다양한 사이트의 클론 코딩을 통해 Box 구조의 원리를 이해하고 구조 작성이 가능합니다.",
     },
     {
       id: "css",
@@ -91,7 +80,7 @@ const Skill = () => {
       name: "GSAP",
       icon: <SiGreensock />,
       color: "var(--blue)",
-      desc: "스크롤 애니메이션 및 인터랙션 최적화",
+      desc: "풍부한 인터랙션을 위한 스크롤 애니메이션 최적화",
     },
     {
       id: "gpt",
@@ -105,22 +94,21 @@ const Skill = () => {
       name: "Midjourney",
       icon: <SiArtstation />,
       color: "var(--purple)",
-      desc: "AI 이미지 생성 및 컨셉 아트 도출",
+      desc: "프롬프트 기반 AI 이미지 생성 및 컨셉 아트 도출",
     },
     {
       id: "gemini",
       name: "Gemini",
       icon: <SiGooglegemini />,
       color: "var(--blue)",
-      desc: "LLM을 활용한 기획 및 데이터 분석",
+      desc: "대규모 언어 모델을 활용한 기획 및 데이터 분석",
     },
   ];
 
-  // 그리드 모드일 때는 1세트만, 마키 모드일 때는 무한 루프를 위해 2세트 사용
-  const displaySkills = isGrid ? skills : [...skills, ...skills];
+  const doubleSkills = [...skills, ...skills];
 
   return (
-    <section id="skill" className={`skill ${isGrid ? "grid-mode" : "marquee-mode"}`}>
+    <section className="skill">
       <div className="skill-header">
         <div className="header-left">
           <Title subTitle="I CAN DO" mainTitle={`DE-CODER’S\nTOOLKIT`} />
@@ -140,21 +128,37 @@ const Skill = () => {
 
       <div className="marquee-wrapper">
         <div className="marquee-content">
-          {displaySkills.map((skill, index) => (
-            <div
-              key={`${skill.id}-${index}`}
-              className="skill-card"
-              style={{
-                backgroundColor: skill.color,
-                color: "#ffffff",
-              }}
-            >
-              <div className="skill-active-title">{skill.name}</div>
-              <div className="icon-box">{skill.icon}</div>
-              <span className="skill-name">{skill.name}</span>
-              <div className="skill-hover-desc">{skill.desc}</div>
-            </div>
-          ))}
+          {doubleSkills.map((skill, index) => {
+            return (
+              <div
+                key={`${skill.id}-${index}`}
+                className="skill-card"
+                style={{
+                  backgroundColor: skill.color,
+                  color: "#ffffff",
+                }}
+              >
+                <div
+                  className="skill-active-title"
+                  style={{ color: "inherit" }}
+                >
+                  {skill.name}
+                </div>
+
+                <div className="icon-box" style={{ color: "inherit" }}>
+                  {skill.icon}
+                </div>
+
+                <span className="skill-name" style={{ color: "inherit" }}>
+                  {skill.name}
+                </span>
+
+                <div className="skill-hover-desc" style={{ color: "inherit" }}>
+                  {skill.desc}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

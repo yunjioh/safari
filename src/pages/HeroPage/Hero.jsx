@@ -8,124 +8,69 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Hero() {
   const heroRef = useRef(null);
   const videoLayerRef = useRef(null);
-
   useEffect(() => {
-    const heroEl = heroRef.current;
-    const videoLayer = videoLayerRef.current;
-
-    if (!heroEl || !videoLayer) return;
-
-    const mm = gsap.matchMedia();
-
-    mm.add("(min-width: 431px)", () => {
-      const strokeText = heroEl.querySelector(".decoder-mask-container");
-      const decoderWrap = heroEl.querySelector(".decoder-wrap");
-
-      if (!strokeText || !decoderWrap) return;
-
-      gsap.set(videoLayer, {
-        opacity: 0,
-        scale: 1.55,
-        borderRadius: 0,
-        transformOrigin: "50% 50%",
-        willChange: "transform, opacity",
-      });
-
-      gsap.set(strokeText, {
-        opacity: 1,
+    const ctx = gsap.context(() => {
+      // ✅ 초기값 세팅
+      gsap.set(".decoder-wrap", {
         scale: 1,
-        transformOrigin: "50% 50%",
-        willChange: "transform, opacity",
+        transformOrigin: "50% 85%",
+        opacity: 1,
       });
 
-      gsap.set(decoderWrap, {
-        opacity: 1,
+      // ✅ 비디오 레이어(카드) 초기: 아래에서 대기 + 안 보임
+      gsap.set(videoLayerRef.current, {
+        y: "190%",
+        scale: 1.5, // ⭐ 처음부터 "카드 크기"로
+        transformOrigin: "50% 50%",
       });
 
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: heroEl,
+          trigger: heroRef.current,
           start: "top top",
-          end: "+=450%",
+          end: "+=300%",
           scrub: 1,
           pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
         },
       });
 
+      // 1) 텍스트가 커지며 사라짐
+      tl.to(".decoder-wrap", { opacity: 0, scale: 2, ease: "power2.inOut" }, 0);
+
+      // 2) 텍스트가 사라질 때, 영상 카드가 올라오며 나타남
       tl.to(
-        strokeText,
-        {
-          scale: 3,
-          opacity: 0,
-          ease: "power2.out",
-        },
-        0
-      )
-        .to(
-          videoLayer,
-          {
-            opacity: 1,
-            ease: "power2.out",
-          },
-          0.12
-        )
-        .to(
-          videoLayer,
-          {
-            scale: 0.9,
-            borderRadius: 20,
-            ease: "power3.out",
-          },
-          0.12
-        )
-        .to(
-          decoderWrap,
-          {
-            opacity: 0,
-            ease: "none",
-          },
-          0.2
-        );
+        videoLayerRef.current,
+        { y: "0%", opacity: 1, ease: "power2.out", duration: 1.0 },
+        0.25,
+      );
 
-      return () => {
-        tl.kill();
-      };
-    });
+      // (원하면) 문구도 여기서 순차 노출 가능
+    }, heroRef);
 
-    mm.add("(max-width: 430px)", () => {
-      const decoderWrap = heroEl.querySelector(".decoder-wrap");
-
-      gsap.set(videoLayer, {
-        opacity: 1,
-        scale: 1,
-        borderRadius: 0,
-        clearProps: "transform",
-      });
-
-      if (decoderWrap) {
-        gsap.set(decoderWrap, {
-          opacity: 0,
-        });
-      }
-    });
-
-    return () => {
-      mm.revert();
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
     <section className="hero" ref={heroRef} id="home">
-      {/* 하단 텍스트 */}
+      <div className="header">
+        <div className="hero-name">OH YUNJI</div>
+        <nav className="hero-nav">
+          <a href="#home" className="active">
+            Home
+          </a>
+          <a href="#about">About</a>
+          <a href="#process">Process</a>
+          <a href="#project">Project</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+
       <div className="hero-bottomBox">
         <div className="hero-bottom-content">
           <div className="hero-bottom left">
             <p>Designer Yunji Oh</p>
             <p>UI/UX DESIGNER · INTERACTION DESIGNER</p>
           </div>
-
           <div className="hero-bottom right">
             <p>스스로를 디자인하다</p>
             <p>논리로 기초를 다지고 감각으로 경험을 설계합니다</p>
@@ -133,40 +78,40 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* DECODER 마스크 */}
-      <div className="hero-center">
-        <div className="decoder-wrap" aria-label="DECODER masked video">
-          <div className="decoder-mask-container">
-            <video
-              className="decoder-video"
-              poster="/img/hero-thumb.webp"
-              preload="metadata"
-              autoPlay
-              muted
-              loop
-              playsInline
-            >
-              <source src="/video/video2.webm" type="video/webm" />
-              <source src="/video/video2.mp4" type="video/mp4" />
-            </video>
-          </div>
-        </div>
-      </div>
+     {/* ✅ DECODER (영상 마스크) - Safari 호환: CSS -webkit-mask */}
+<div className="hero-center">
+  <div className="decoder-wrap" aria-label="DECODER masked video">
+    {/* 마스크가 적용될 레이어 */}
+    <div className="decoder-mask-container">
+      <video
+        className="decoder-video"
+        src="/video/video.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
+    </div>
 
-      {/* 전체 화면 비디오 */}
+    {/* 외곽선 텍스트 */}
+    <div className="decoder-stroke-text">DECODER</div>
+  </div>
+</div>
+
+
+      {/* ✅ 스크롤 전환: 풀스크린 비디오 레이어 */}
       <div className="full-video-layer" ref={videoLayerRef}>
         <video
           className="full-video"
-          poster="/img/hero-thumb.webp"
-          preload="metadata"
+          src="/video/video.mp4"
           autoPlay
           muted
           loop
           playsInline
-        >
-          <source src="/video/video2.webm" type="video/webm" />
-          <source src="/video/video2.mp4" type="video/mp4" />
-        </video>
+        />
+        <div className="video-text-overlay">
+          <p className="video-text">ABOUT ME</p>
+        </div>
       </div>
     </section>
   );

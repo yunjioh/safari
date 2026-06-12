@@ -1,10 +1,8 @@
 .contact {
   position: relative;
   width: 100%;
-  height: 80vh;
-  /* 80vh 고정 */
-  background-color: #fff;
-  /* 기본 배경 */
+  height: 80vh; /* 80vh 고정 */
+  background-color: #fff; /* 기본 배경 */
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -18,11 +16,8 @@
   top: 50%;
   width: 100%;
   height: 80vh;
-  background-color: #000;
-  /* 요청하신 연두색 */
-  color: white;
-  transform: translateY(-50%) scaleY(0);
-  /* 중앙에서 높이 0으로 시작 */
+  background-color: #bbff52; /* 요청하신 연두색 */
+  transform: translateY(-50%) scaleY(0); /* 중앙에서 높이 0으로 시작 */
   transform-origin: center center;
   z-index: 1;
   will-change: transform;
@@ -36,8 +31,7 @@
   transform: translate(-50%, -50%);
   font-size: 20vw;
   font-weight: 900;
-  color: rgba(0, 0, 0, 0.03);
-  /* 아주 연하게 */
+  color: rgba(0, 0, 0, 0.03); /* 아주 연하게 */
   z-index: 1;
   white-space: nowrap;
   pointer-events: none;
@@ -49,8 +43,7 @@
   z-index: 2;
   width: 100%;
   height: 100%;
-  padding: 6vw 4vw;
-  /* 보내주신 패딩 유지 */
+  padding: 120px 129px; /* 보내주신 패딩 유지 */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -65,14 +58,13 @@
   font-size: 30px;
   font-weight: 600;
   letter-spacing: -1px;
-  color: white;
+  color: black;
   margin-bottom: 32px;
 }
 
 .contact-email {
   font-size: clamp(32px, 4vw, 65px);
   font-weight: 700;
-  color: white;
   letter-spacing: -0.02em;
   margin-bottom: 50px;
 }
@@ -80,7 +72,7 @@
 .contact-info {
   font-size: 20px;
   line-height: 1.6;
-  color: white;
+  color: black;
   font-weight: 500;
 }
 
@@ -97,11 +89,10 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  color: white;
 }
 
 .brand-title {
-  font-size: clamp(52px, 7vw, 150px);
+  font-size: clamp(64px, 7vw, 150px);
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 0.9;
@@ -110,79 +101,24 @@
 
 .copyright {
   font-size: 18px;
-  color: white;
+  color: black;
 }
 
-@media (max-width: 1400px) {
-  .contact {
-    height: 65vh;
-  }
-}
-
-@media (max-width: 1200px) {
-  .contact {
-    height: 45vh;
-  }
-
-  .contact-email {
-    margin-bottom: 30px;
-  }
-
-  .copyright {
-    font-size: 16px;
-  }
-
-  .contact-label {
-    font-size: 22px;
-  }
-}
-
+/* 모바일 대응 */
 @media (max-width: 768px) {
-  .contact-container {
-    padding: 42px 24px 40px;
+  .contact {
+    height: auto;
+    min-height: 80vh;
   }
-
+  .contact-container {
+    padding: 80px 24px 40px;
+  }
   .contact-bottom {
     flex-direction: column;
     align-items: flex-start;
     gap: 24px;
   }
-
   .brand-title {
-    font-size: 60px;
-  }
-
-  .contact-email {
-    margin-bottom: 15px;
-    font-size: 20px;
-  }
-
-  .contact-label {
-    margin-bottom: 15px;
-    font-size: 18px;
-  }
-
-  .contact-info {
-    font-size: 16px;
-  }
-
-  .copyright {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 560px) {
-  .brand-title {
-    font-size: 40px;
-  }
-
-  .copyright {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 430px) {
-  .brand-title {
-    font-size: 32px;
+    font-size: 64px;
   }
 }
