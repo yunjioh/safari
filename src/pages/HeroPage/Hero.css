@@ -57,15 +57,17 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Black Han Sans';
+  src: url('../../assets//fonts//BlackHanSans-Regular.ttf') format('truetype');
+  font-style: normal;
+}
+
 /* 2. 사용할 때 Bold 적용 */
 .hero-name {
   font-size: 30px;
   font-family: 'Lalezar', sans-serif;
   font-weight: 600;
-  /* 💡 브라우저에게 강제로 볼드로 그리라고 명령 */
-
-  /* 아이패드에서 가짜 볼드가 너무 지저분하게 번지는 것을 방지 */
-  -webkit-font-smoothing: antialiased;
 }
 
 .hero-nav {
@@ -74,6 +76,7 @@
   background: white;
   border-radius: 30px;
   align-items: center;
+  border: 1px solid #dfdfdf;
   gap: 8px;
 }
 
@@ -286,6 +289,7 @@
     width: 40%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.95);
+    border: none;
     /* 어두운 배경 */
     border-radius: 0;
     display: flex;
