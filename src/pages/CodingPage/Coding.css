@@ -1,0 +1,289 @@
+.coding {
+  width: 100%;
+  position: relative;
+  background-color: #ffffff;
+  padding-bottom: 200px;
+  padding: 12vw 4vw 0;
+}
+
+
+.coding .sub-desc {
+  margin-left: 0;
+  width: 75%;
+}
+
+
+.coding .title-container {
+  margin-bottom: 60px;
+}
+
+.coding .subTitle {
+  text-align: left;
+  margin-bottom: 120px;
+}
+
+.coding-container {
+  position: relative;
+}
+
+.coding-list {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  position: relative;
+  width: 100%;
+}
+
+.slide-card {
+  width: 100%;
+  height: 480px;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 20px;
+  overflow: hidden;
+
+  position: sticky;
+
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.card-inner {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: #111111;
+  position: relative;
+}
+
+.card-text-side {
+  flex: 1;
+  padding: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #ffffff;
+}
+
+.card-sub {
+  font-size: 12px;
+  font-weight: 400;
+  color: #999;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.txtbox {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.card-title {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  letter-spacing: -0.02em;
+}
+
+.card-text {
+  color: #505050;
+  font-weight: 200;
+  white-space: pre-line;
+  line-height: 1.6;
+}
+
+.tag-badge {
+  border: 1px solid black;
+  background: transparent;
+  font-size: 12px;
+  font-family: "Pretendard", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  padding: 12px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.card-img-side {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-img-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  color: white;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 100;
+}
+
+.card-inner:hover .cursor {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cursor-text {
+  width: 100%;
+  height: 100%;
+  animation: spin 6s linear infinite;
+  fill: white;
+}
+
+.cursor text {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+}
+
+.cursor-arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  font-size: 40px;
+  font-weight: 100;
+  z-index: 2;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.tech-tabs {
+  position: absolute;
+  top: -80px;
+  width: 100%;
+  z-index: 10;
+}
+
+.tech-tab {
+  position: absolute;
+  padding: 10px 30px;
+  border-radius: 999px;
+  font-size: 20px;
+}
+
+.tech-tab.orange {
+  background: #ff8e1d;
+  color: #fff;
+  right: 10%;
+  transform: rotate(-5deg);
+}
+
+.tech-tab.neon {
+  background: #9f75ff;
+  color: #fff;
+  right: 20%;
+  transform: rotate(5deg);
+}
+
+.tech-tab.blue {
+  background: #5289ff;
+  color: #fff;
+  right: 30%;
+  transform: rotate(-2deg);
+}
+
+@media (max-width: 1400px) {
+  .coding .subTitle {
+    margin-bottom: 10vh;
+  }
+}
+
+@media (max-width: 992px) {
+  .card-inner {
+    flex-direction: column;
+  }
+
+  .coding .sub-desc {
+    width: 100%;
+  }
+
+  .slide-card {
+    height: auto;
+    position: relative !important;
+    top: auto !important;
+    margin-bottom: 40px;
+  }
+
+  .coding-list {
+    gap: 24px;
+  }
+
+  .card-text-side {
+    padding: 40px 30px;
+  }
+
+  .card-img-side {
+    padding: 0 30px 30px;
+  }
+
+  .card-title {
+    font-size: 28px;
+    margin-bottom: 18px;
+  }
+
+  .tech-tab {
+    font-size: 16px;
+    padding: 8px 20px;
+  }
+}
+
+@media (max-width: 530px) {
+  .coding .subTitle {
+    margin-bottom: 5vh;
+  }
+
+  .slide-card {
+    border-radius: 10px;
+  }
+
+  .card-text-side {
+    padding: 25px 20px;
+  }
+
+  .card-title {
+    font-size: 22px;
+  }
+
+  .card-text {
+    font-size: 14px;
+  }
+
+  .card-img-side {
+    height: 220px;
+    padding: 15px;
+  }
+}

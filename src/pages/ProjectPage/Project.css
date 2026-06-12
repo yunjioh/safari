@@ -1,0 +1,497 @@
+.project-section {
+  position: relative;
+}
+
+.project .title {
+  font-size: 80px;
+}
+
+.project-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-spacer:last-child {
+  height: 140vh;
+}
+
+/* 카드 겹쳐놓기 */
+.card-wrapper {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-wrapper.active {
+  opacity: 1;
+  transform: translateY(0);
+  z-index: 2;
+}
+
+/* 스크롤 길이용 */
+.project-spacer {
+  height: 100vh;
+}
+
+.project {
+  height: 100%;
+  padding: 4vh 4vw;
+}
+
+.title-wrapper {
+  position: relative;
+}
+
+.project .sub-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.project-card {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* 배경 레이어 */
+.project-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* 실제 컨텐츠 래퍼 */
+.project-inner {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background-color: white;
+  padding: 0 4vw;
+  box-sizing: border-box;
+}
+
+/* 각 프로젝트 패널은 겹쳐 놓고 교체 */
+.project-panel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.text-area,
+.image-display-area {
+  will-change: transform, opacity;
+  display: flex;
+  align-items: center;
+}
+
+.text-area {
+  display: flex;
+  height: 100%;
+  gap: 4vw;
+  justify-content: space-between;
+}
+
+.project-content {
+  display: grid;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  gap: 4vh;
+}
+
+.project-info {
+  text-align: start;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+strong {
+  font-size: 20px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 16px;
+  letter-spacing: 0.4px;
+}
+
+.duration-text {
+  font-size: 20px;
+  font-weight: 200;
+  color: #505050;
+  opacity: 0.85;
+}
+
+.role-text {
+  font-size: 20px;
+  font-weight: 400;
+  color: #505050;
+}
+
+.detail-text {
+  margin-top: 12px;
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 1.6;
+  letter-spacing: -1px;
+  color: #505050;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ===================================================
+   📸 ✨ 이미지 슬라이더 (2개 1세트 세팅) 스타일 정의
+   =================================================== */
+.image-display-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.image-pair-wrapper {
+  display: flex;
+  gap: 20px;
+  /* 디바이스 목업 간 격차 */
+  align-items: center;
+  justify-content: center;
+}
+
+.image-wrapper {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project img {
+  width: 26vw;
+  height: auto;
+}
+
+/* 화살표 내비게이션용 라운드 버튼 공통 속성 */
+.slide-btn {
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  color: #ffffff;
+  border: none;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+/* 왼쪽 화살표 버튼 (시안 매칭: 연한 반투명 그레이 톤) */
+.slide-btn {
+  left: -60px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.slide-btn:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* ===================================================
+   📱 반응형 레이아웃 
+   =================================================== */
+.contrib {
+  text-align: start;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.contrib-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: #505050;
+}
+
+.num {
+  display: flex;
+  gap: 14px;
+  color: #505050;
+}
+
+.contrib-label {
+  font-size: 20px;
+  font-weight: 400;
+  opacity: 0.65;
+  color: #505050
+}
+
+.contrib-value {
+  font-size: 20px;
+  font-weight: 200;
+  color: #505050;
+}
+
+.project-page {
+  width: 100%;
+  background-color: black;
+}
+
+.project-sticky-stack {
+  padding: 80px 0 140px;
+}
+
+.project-sticky-item {
+  position: sticky;
+  margin: 0 4vw 60px;
+  overflow: hidden;
+}
+
+.project .title-container {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 1400px) {
+  .detail-text {
+    width: 100%;
+  }
+
+  .project-content {
+    gap: 10vh;
+  }
+
+  .text-area {
+    gap: 6vw;
+  }
+
+  .project-info {
+    height: 60vh;
+  }
+
+  .text-area,
+  .image-display-area {
+    will-change: transform, opacity;
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+
+  .project-section {
+    height: auto !important;
+    overflow: visible;
+  }
+
+  .project-sticky {
+    position: relative;
+    height: auto;
+    display: block;
+  }
+
+  .card-wrapper {
+    position: relative;
+    opacity: 1;
+    transform: none;
+  }
+
+  .project img {
+    width: 30vw;
+  }
+
+}
+
+@media (max-width: 1200px) {
+  .project .title {
+    font-size: 80px;
+  }
+
+  .project-info {
+    height: 68vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .inner {
+    gap: 8vh;
+  }
+
+  .project {
+    padding: 6vh 4vw;
+  }
+
+  .image-display-area {
+    position: relative;
+    transform: none;
+    right: 0;
+  }
+
+  .project img {
+    width: 42vw;
+  }
+
+  /* 모바일 가독성을 위해 간격 및 버튼 포지션 재정렬 */
+  .image-pair-wrapper {
+    gap: 10px;
+  }
+
+  .slide-btn.prev {
+    left: -10px;
+  }
+
+  .slide-btn.next {
+    right: -10px;
+  }
+
+  .project .title {
+    letter-spacing: 0;
+  }
+
+  .inner {
+    border-bottom: none;
+    flex-direction: column-reverse;
+    padding: 8vh 4vw;
+  }
+
+  .project .title {
+    font-size: 50px;
+  }
+
+  .project-bg {
+    display: none;
+  }
+
+  .project-content {
+    flex-direction: column-reverse;
+    padding: 0;
+  }
+
+  .text-area {
+    padding: 0;
+  }
+
+  .badge {
+    font-size: 15px;
+  }
+
+  .project-inner {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .project-panel {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: unset;
+  }
+
+  .project-info {
+    height: 60vh;
+  }
+
+  strong {
+    font-size: 18px;
+  }
+
+  .project .sub-title {
+    font-size: 14px;
+  }
+
+  .project .main-button {
+    padding: 12px 20px;
+  }
+
+  .detail-text {
+    font-size: 16px;
+  }
+
+  .role-text {
+    font-size: 16px;
+  }
+
+  .contrib-label {
+    font-size: 16px;
+  }
+
+  .contrib-value {
+    font-size: 16px;
+  }
+
+  .duration-text {
+    font-size: 16px;
+  }
+
+  .slide-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 560px) {
+  .project .title {
+    font-size: 40px;
+  }
+
+  .project img {
+    width: 60vw;
+  }
+
+  .project .sub-title {
+    font-size: 12px;
+  }
+
+  .project-spacer {
+    height: 78vh;
+  }
+
+  strong {
+    font-size: 16px;
+  }
+
+  .duration-text {
+    font-size: 15px;
+  }
+
+  .detail-text {
+    font-size: 14px;
+  }
+
+  .role-text {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 490px) {
+  .project-spacer {
+    height: 72vh;
+  }
+
+  .badge-con {
+    position: relative;
+  }
+}

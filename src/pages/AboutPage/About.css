@@ -1,0 +1,145 @@
+.about {
+  color: #2c2c2c;
+  min-height: 100vh;
+  padding: 12vw 4vw;
+}
+
+.content-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-content {
+  text-align: start;
+}
+
+.quote-mark {
+  font-size: 70px;
+  color: #2c2c2c;
+  font-family: 'Basis Grotesque Arabic Pro';
+  line-height: 0.5;
+}
+
+.intro-phrase {
+  font-size: 48px;
+  font-weight: 500;
+  margin-bottom: 40px;
+  letter-spacing: -2px;
+  line-height: 1.4;
+}
+
+.description {
+  color: #999999;
+  line-height: 1.7;
+  font-size: 22px;
+  letter-spacing: -1px;
+  white-space: pre-line;
+}
+
+.image-content {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-wrapper {
+  position: relative;
+  display: flex;
+}
+
+.profile-wrapper img {
+  width: 20vw;
+}
+
+@media (max-width: 1600px) {
+  .intro-phrase {
+    font-size: 42px;
+  }
+
+  .quote-mark {
+    font-size: 65px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .intro-phrase {
+    font-size: 36px;
+  }
+
+  .description {
+    font-size: 20px;
+  }
+
+  .quote-mark {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .profile-wrapper img {
+    width: 38vw;
+  }
+
+  .content-section {
+    gap: 75px;
+    flex-direction: column-reverse;
+  }
+
+  .quote-mark {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .intro-phrase {
+    font-size: 30px;
+  }
+
+  .quote-mark {
+    font-size: 45px;
+  }
+
+  .about {
+    padding: 0 4vw 12vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro-phrase {
+    font-size: 28px;
+  }
+
+  .description {
+    font-size: 18px;
+    white-space: inherit;
+  }
+
+  .profile-wrapper img {
+    width: 60vw;
+  }
+
+  .about {
+    padding: 10vh 4vw 12vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .intro-phrase {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 430px) {
+  .intro-phrase {
+    font-size: 20px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+}
