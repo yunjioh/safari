@@ -107,11 +107,8 @@ export default function Coding() {
                   <a href={p.link} target="_blank" rel="noopener noreferrer" className="tag-badge">GO TO SITE →</a>
                 </div>
 
-                {/* 오른쪽: 이미지 영역 */}
-                <a href={p.link} target="_blank" rel="noopener noreferrer">
-                  <div className="card-img-side">
-                    <img src={p.img} alt={p.name} />
-                  </div>
+                <a href={p.link} target="_blank" rel="noopener noreferrer" className="card-img-side">
+                  <img src={p.img} alt={p.name} />
                 </a>
               </div>
             </div>
