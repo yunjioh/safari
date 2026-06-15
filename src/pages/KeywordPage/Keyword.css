@@ -143,7 +143,7 @@
 
   /* 모바일 텍스트 높이가 60px이므로 첫 단어가 중앙에 오도록 패딩 탑을 60px로 조정 */
   .keyword-text-list {
-    padding-top: 20vh;
+    padding-top: 14vh;
   }
 
   .kw-item {
