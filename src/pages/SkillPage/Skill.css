@@ -37,6 +37,7 @@
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -156,8 +157,7 @@
     margin-top: 4px;
   }
 
-  .skill-name
-  .skill-card:hover {
+  .skill-name .skill-card:hover {
     width: 100px;
     height: 100px;
   }
@@ -201,11 +201,11 @@
   }
 
   .skill-card:hover {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
   }
 
   .skill-name {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
