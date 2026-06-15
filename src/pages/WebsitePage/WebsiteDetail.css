@@ -1,5 +1,5 @@
 .detail-page {
-  margin-top: 120px;
+  margin-top: 100px;
   padding: 2vw 4vw 8vw;
   color: #2c2c2c;
 }
@@ -230,6 +230,10 @@
     border-radius: 16px;
   }
 
+  .detail-page {
+    margin-top: 84px;
+  }
+
   .concept-title {
     width: 80%;
     margin: auto;
@@ -262,7 +266,7 @@
 
 @media (max-width: 500px) {
   .detail-page {
-    margin-top: 80px;
+    margin-top: 60px;
   }
 
   .detail-header {
