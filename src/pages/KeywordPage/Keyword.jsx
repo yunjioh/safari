@@ -23,68 +23,38 @@ const Keyword = () => {
   const photos = [
     {
       src: "img/key1.jpg",
-      badge: {
-        text: "협업",
-        color: "--blue",
-        rotate: -12,
-        position: { top: "40px", left: "-30px" },
-      },
+      badge: { text: "협업", color: "--blue", rotate: -12, position: { top: "40px", left: "-30px" } },
       pos: { top: "12%", right: "4%", rotate: "8deg" },
     },
     {
       src: "img/key2.jpg",
-      badge: {
-        text: "열정",
-        color: "--pro2",
-        rotate: 8,
-        position: { top: "-14px", right: "-14px" },
-      },
+      badge: { text: "열정", color: "--pro2", rotate: 8, position: { top: "-14px", right: "-14px" } },
       pos: { top: "16%", left: "5%", rotate: "-5deg" },
     },
     {
       src: "img/key3.jpg",
-      badge: {
-        text: "아이디어",
-        color: "--orange",
-        rotate: -10,
-        position: { top: "40px", left: "-30px" },
-      },
+      badge: { text: "아이디어", color: "--orange", rotate: -10, position: { top: "40px", left: "-30px" } },
       pos: { top: "31%", right: "6%", rotate: "5deg" },
     },
     {
       src: "img/key4.jpg",
-      badge: {
-        text: "책임감",
-        color: "--purple",
-        rotate: -14,
-        position: { top: "-14px", right: "-14px" },
-      },
+      badge: { text: "책임감", color: "--purple", rotate: -14, position: { top: "-14px", right: "-14px" } },
       pos: { top: "30%", left: "4%", rotate: "-7deg" },
     },
     {
       src: "img/key5.jpg",
-      badge: {
-        text: "끈기",
-        color: "--purple",
-        rotate: -10,
-        position: { top: "26px", left: "-30px" },
-      },
+      badge: { text: "끈기", color: "--purple", rotate: -10, position: { top: "74px", left: "-30px" } },
       pos: { top: "50%", right: "3%", rotate: "6deg" },
     },
     {
       src: "img/key6.jpg",
-      badge: {
-        text: "꼼꼼함",
-        color: "--blue",
-        rotate: 10,
-        position: { top: "28px", right: "-42px" },
-      },
+      badge: { text: "꼼꼼함", color: "--blue", rotate: 10, position: { top: "28px", right: "-42px" } },
       pos: { top: "59%", left: "3%", rotate: "-4deg" },
     },
   ];
 
   useEffect(() => {
-    // 반응형 체크
+    // 반응형 체크 함수
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
     checkMobile();
     window.addEventListener("resize", checkMobile);
@@ -113,27 +83,21 @@ const Keyword = () => {
       <p className="section-label">Keyword</p>
 
       <div className="keyword-pin">
-        {/* 이미지 섹션: PC에서는 absolute 분산, 모바일은 상단 고정 */}
+        {/* 이미지 섹션 */}
         <div className="keyword-images">
           {photos.map((p, i) => (
             <div
               key={i}
               className={`photo-box ${activeIndex === i ? "is-active" : ""}`}
               style={{
-                top: !isMobile ? p.pos.top : "0",
-
-                // ✅ left / right 조건 분기
-                ...(!isMobile && p.pos.right
-                  ? { right: p.pos.right, left: "auto" }
-                  : !isMobile && p.pos.left
-                    ? { left: p.pos.left, right: "auto" }
-                    : {}),
-
-                transform: !isMobile
-                  ? activeIndex === i
-                    ? `rotate(${p.pos.rotate}) scale(1)`
+                // PC일 때만 개별 데이터 기반 스타일 부여 (모바일 스타일은 CSS에서 일괄 처리)
+                ...(!isMobile && {
+                  top: p.pos.top,
+                  ...(p.pos.right ? { right: p.pos.right } : { left: p.pos.left }),
+                  transform: activeIndex === i 
+                    ? `rotate(${p.pos.rotate}) scale(1)` 
                     : `rotate(0deg) scale(0.9) translateY(40px)`
-                  : undefined,
+                })
               }}
             >
               <div className="badge-container">
@@ -144,12 +108,13 @@ const Keyword = () => {
           ))}
         </div>
 
-        {/* 텍스트 슬롯 섹션: 2~3개만 보이도록 설정 */}
+        {/* 텍스트 슬롯 섹션 */}
         <div className="keyword-text-wrapper">
           <div
             className="keyword-text-list"
             style={{
-              transform: `translateY(${-activeIndex * (isMobile ? 80 : 120)}px)`,
+              // 모바일 높이(60px)와 PC 높이(120px)에 맞춰 스크롤 이동 연산 분기
+              transform: `translateY(${-activeIndex * (isMobile ? 60 : 120)}px)`,
             }}
           >
             {keywords.map((k, i) => (
