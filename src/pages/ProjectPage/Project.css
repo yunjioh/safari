@@ -289,10 +289,6 @@ strong {
     gap: 6vw;
   }
 
-  .project-info {
-    height: 60vh;
-  }
-
   .text-area,
   .image-display-area {
     will-change: transform, opacity;
@@ -322,15 +318,19 @@ strong {
     width: 30vw;
   }
 
+  .project strong {
+    margin-bottom: 16px;
+  }
+
+  .project-info {
+    gap: 40px;
+  }
+
 }
 
 @media (max-width: 1200px) {
   .project .title {
     font-size: 80px;
-  }
-
-  .project-info {
-    height: 68vh;
   }
 }
 
@@ -411,7 +411,7 @@ strong {
   }
 
   .project-info {
-    height: 60vh;
+    gap: 24px;
   }
 
   strong {
