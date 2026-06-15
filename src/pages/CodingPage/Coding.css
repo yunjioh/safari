@@ -1,11 +1,14 @@
 .coding {
   width: 100%;
   position: relative;
-  background-color: #ffffff;
+  background-color: #121212;
   padding-bottom: 200px;
-  padding: 12vw 4vw 0;
+  padding: 12vw 4vw;
 }
 
+.coding .title {
+  color: white;
+}
 
 .coding .sub-desc {
   margin-left: 0;
@@ -36,9 +39,8 @@
 
 .slide-card {
   width: 100%;
-  height: 480px;
-  background: #ffffff;
-  border: 1px solid #e8e8e8;
+  background: #1f1f1f;
+  border: 1px solid #505050;
   border-radius: 20px;
   overflow: hidden;
 
@@ -65,7 +67,6 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  background-color: #ffffff;
 }
 
 .card-sub {
@@ -83,6 +84,7 @@
 }
 
 .card-title {
+  color: white;
   font-size: 34px;
   font-weight: 700;
   margin-bottom: 28px;
@@ -90,14 +92,15 @@
 }
 
 .card-text {
-  color: #505050;
+  color: rgba(255, 255, 255, 0.8);
   font-weight: 200;
   white-space: pre-line;
   line-height: 1.6;
 }
 
 .tag-badge {
-  border: 1px solid black;
+  border: 1px solid white;
+  color: white;
   background: transparent;
   font-size: 12px;
   font-family: "Pretendard", sans-serif;
