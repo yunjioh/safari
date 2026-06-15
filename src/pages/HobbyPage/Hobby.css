@@ -29,7 +29,7 @@
 }
 
 .selected-projects-label {
-  color: var(--purple);
+  color: #999;
   font-size: 12px;
   font-weight: normal;
   text-transform: uppercase;
@@ -225,6 +225,10 @@
   .hobbyTit {
     font-size: 70px;
     margin-bottom: 60px;
+  }
+
+  .hobby-header {
+    margin: 4vh 4vw;
   }
 
   .hobby-list {
