@@ -171,6 +171,7 @@ export default function Website() {
 
                   <Link to={`/website/${project.id}`} className="screen">
                     <img src={project.img} alt={project.name} />
+                    <p className="imgtxt">{project.name}<br/>자세히 보기</p>
                   </Link>
 
                   <div className="item-bottom">
