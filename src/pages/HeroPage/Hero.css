@@ -65,9 +65,9 @@
 
 /* 2. 사용할 때 Bold 적용 */
 .hero-name {
-  font-size: 30px;
+  font-size: 24px;
   font-family: 'Lalezar', sans-serif;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .hero-nav {
