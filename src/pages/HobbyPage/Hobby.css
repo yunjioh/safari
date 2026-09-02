@@ -157,10 +157,6 @@
   .hobby-item {
     height: 320px;
   }
-
-  .hobbyTit {
-    margin-bottom: 120px;
-  }
 }
 
 @media (max-width: 1200px) {
@@ -181,6 +177,7 @@
   }
 
   .hobbyTit {
+    font-size: 80px;
     margin-bottom: 90px;
   }
 
