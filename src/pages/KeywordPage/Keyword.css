@@ -52,7 +52,7 @@
   height: 120px;
   line-height: 120px;
   font-family: "PP Editorial New", serif;
-  font-size: clamp(40px, 6vw, 100px);
+  font-size: clamp(40px, 5vw, 100px);
   font-weight: 500;
   color: #eee;
   transition: all 0.5s ease;
