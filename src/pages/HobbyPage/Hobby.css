@@ -4,7 +4,7 @@
 
 .hobbyTit {
   color: #2c2c2c;
-  font-size: 140px;
+  font-size: 120px;
   line-height: 0.5;
   /* font-family: "Basis Grotesque Arabic Pro", sans-serif; */
   font-family: "PP Editorial New", serif;
@@ -159,7 +159,7 @@
   }
 
   .hobbyTit {
-    margin-bottom: 140px;
+    margin-bottom: 120px;
   }
 }
 
