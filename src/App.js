@@ -74,72 +74,149 @@ function AppContent() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const headerEl = headerRef.current;
-      if (!headerEl) return;
+useEffect(() => {
+  const ctx = gsap.context(() => {
+    const headerEl = headerRef.current;
+    if (!headerEl) return;
 
-      // 스크롤 방향 감지 (위로 올릴 때 헤더 노출)
-      ScrollTrigger.create({
-        start: "top top",
-        onUpdate: (self) => {
-          if (self.direction === 1) {
-            gsap.to(headerEl, { yPercent: -100, duration: 0.25, ease: "power2.out" });
-          } else if (self.direction === -1) {
-            gsap.to(headerEl, { yPercent: 0, duration: 0.25, ease: "power2.out" });
-          }
-        },
-      });
-      const sectionMap = {
-        home: "home",
+    // Hero 섹션
+    const heroEl = document.getElementById("home");
 
-        about: "about",
-        keyword: "about",
-        hobby: "about",
+    if (!heroEl) return;
 
-        skill: "skill",
+    let isInHero = true;
 
-        gallery: "project",
-        project: "project",
-        website: "project",
-        coding: "project",
+    // Hero 영역 감지
+    ScrollTrigger.create({
+      trigger: heroEl,
+      start: "top top",
+      end: "bottom top",
 
-        think: "contact",
-        together: "contact",
-        contact: "contact",
-      };
+      onEnter: () => {
+        isInHero = true;
 
-      // 메인 홈 주소("/")일 때만 메인 섹션들 트레킹 작동
-      if (location.pathname === "/") {
-        const sections = Object.keys(sectionMap);
-
-        sections.forEach((id) => {
-          const el = document.getElementById(id);
-
-          if (!el) return;
-
-          ScrollTrigger.create({
-            trigger: el,
-            start: "top center",
-            end: "bottom center",
-
-            onEnter: () => {
-              setActiveSection(sectionMap[id]);
-            },
-
-            onEnterBack: () => {
-              setActiveSection(sectionMap[id]);
-            },
-          });
+        // Hero에서는 항상 헤더 노출
+        gsap.to(headerEl, {
+          yPercent: 0,
+          duration: 0.3,
+          ease: "power2.out",
         });
-      }
+      },
+
+      onLeave: () => {
+        isInHero = false;
+      },
+
+      onEnterBack: () => {
+        isInHero = true;
+
+        // 다시 Hero로 올라오면 헤더 노출
+        gsap.to(headerEl, {
+          yPercent: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      },
+
+      onLeaveBack: () => {
+        isInHero = true;
+
+        // Hero 위쪽에서는 항상 노출
+        gsap.to(headerEl, {
+          yPercent: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      },
     });
 
-    return () => {
-      ctx.revert();
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    // 전체 페이지 스크롤 방향 감지
+    ScrollTrigger.create({
+      start: "top top",
+
+      onUpdate: (self) => {
+        // Hero 안에서는 무조건 보이기
+        if (isInHero) {
+          gsap.to(headerEl, {
+            yPercent: 0,
+            duration: 0.2,
+            overwrite: true,
+          });
+          return;
+        }
+
+        // Hero 밖에서 아래로 스크롤 → 숨김
+        if (self.direction === 1) {
+          gsap.to(headerEl, {
+            yPercent: -100,
+            duration: 0.25,
+            ease: "power2.out",
+            overwrite: true,
+          });
+        }
+
+        // Hero 밖에서 위로 스크롤 → 노출
+        if (self.direction === -1) {
+          gsap.to(headerEl, {
+            yPercent: 0,
+            duration: 0.25,
+            ease: "power2.out",
+            overwrite: true,
+          });
+        }
+      },
+    });
+
+    // 기존 sectionMap
+    const sectionMap = {
+      home: "home",
+
+      about: "about",
+      keyword: "about",
+      hobby: "about",
+
+      skill: "skill",
+
+      gallery: "project",
+      project: "project",
+      website: "project",
+      coding: "project",
+
+      think: "contact",
+      together: "contact",
+      contact: "contact",
     };
-  }, [location.pathname]); // 💡 경로가 바뀔 때마다 스크롤 트리거 재설정 및 클린업
+
+    if (location.pathname === "/") {
+      const sections = Object.keys(sectionMap);
+
+      sections.forEach((id) => {
+        const el = document.getElementById(id);
+
+        if (!el) return;
+
+        ScrollTrigger.create({
+          trigger: el,
+          start: "top center",
+          end: "bottom center",
+
+          onEnter: () => {
+            setActiveSection(sectionMap[id]);
+          },
+
+          onEnterBack: () => {
+            setActiveSection(sectionMap[id]);
+          },
+        });
+      });
+    }
+  });
+
+  return () => {
+    ctx.revert();
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  };
+}, [location.pathname]);
 
   // 네비게이션 메뉴 클릭 핸들러
   const handleNavClick = (e, id) => {
