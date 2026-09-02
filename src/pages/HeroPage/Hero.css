@@ -196,8 +196,9 @@
 }
 
 .full-video {
-  width: 100%;
-  border-radius: 20px;
+  height: 62vh;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
 }
 
 .video-text-overlay {
@@ -386,6 +387,8 @@
 
   .full-video {
     border-radius: 15px;
+    height: auto;
+    width: 100%;
   }
 
   .video-text {
