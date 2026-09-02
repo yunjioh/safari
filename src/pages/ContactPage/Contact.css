@@ -112,7 +112,7 @@
 }
 
 .copyright {
-  font-size: 18px;
+  font-size: 14px;
   color: #999;
 }
 
@@ -131,9 +131,6 @@
     margin-bottom: 30px;
   }
 
-  .copyright {
-    font-size: 16px;
-  }
 }
 
 @media (max-width: 768px) {
@@ -160,19 +157,11 @@
   .contact-info {
     font-size: 16px;
   }
-
-  .copyright {
-    font-size: 14px;
-  }
 }
 
 @media (max-width: 560px) {
   .brand-title {
     font-size: 40px;
-  }
-
-  .copyright {
-    font-size: 14px;
   }
 
   .contact {
