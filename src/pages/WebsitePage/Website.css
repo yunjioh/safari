@@ -26,7 +26,7 @@
 
 .website-item {
   text-align: left;
-  gap: 40px;
+  gap: 30px;
   display: flex;
   flex-direction: column;
 }
@@ -43,11 +43,11 @@
 }
 
 .dot {
-  margin-right: 14px;
+  margin-right: 10px;
 }
 
 .item-name {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 600;
   color: #2c2c2c;
 }
