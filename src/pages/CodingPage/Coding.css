@@ -7,7 +7,6 @@
 
 .coding .sub-desc {
   margin-left: 0;
-  width: 75%;
 }
 
 
@@ -16,7 +15,6 @@
 }
 
 .coding .subTitle {
-  text-align: left;
   margin-bottom: 120px;
 }
 
@@ -267,7 +265,7 @@
 
   .tag-badge {
     width: 100%;
-    margin: 16px 0 8px;
+    margin: 24px 0;
   }
 
   .card-text-side {
