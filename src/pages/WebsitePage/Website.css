@@ -26,7 +26,7 @@
 
 .website-item {
   text-align: left;
-  gap: 30px;
+  gap: 32px;
   display: flex;
   flex-direction: column;
 }
@@ -53,7 +53,7 @@
 }
 
 .item-txt {
-  font-size: 20px;
+  font-size: 18px;
   color: #505050;
   line-height: 1.6;
   margin-bottom: 24px;
