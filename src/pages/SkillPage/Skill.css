@@ -15,7 +15,7 @@
 }
 
 .skill .title {
-  width: 80%;
+  width: 70%;
 }
 
 /* 마키 애니메이션 정의 */
@@ -128,12 +128,6 @@
   .skill-hover-desc {
     font-size: 13px;
     padding: 0 10px;
-  }
-}
-
-@media (max-width: 1100px) {
-  .skill .title {
-    width: 100%;
   }
 }
 
