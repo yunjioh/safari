@@ -13,7 +13,7 @@
 
 .title {
   color: #2c2c2c;
-  font-size: 140px;
+  font-size: 120px;
   line-height: 1;
   /* font-family: "Basis Grotesque Arabic Pro", sans-serif; */
   font-family: "PP Editorial New", serif;
@@ -63,19 +63,19 @@
 
 @media (max-width: 1600px) {
   .title {
-    font-size: 120px;
+    font-size: 100px;
   }
 }
 
 @media (max-width: 1400px) {
   .title-container {
-    margin-bottom: 120px;
+    margin-bottom: 100px;
   }
 }
 
 @media (max-width: 1200px) {
   .title {
-    font-size: 100px;
+    font-size: 80px;
   }
 }
 
