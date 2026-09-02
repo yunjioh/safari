@@ -80,7 +80,7 @@
 }
 
 .contact-info {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.6;
   color: #999;
   font-weight: 500;
@@ -190,6 +190,6 @@
   }
 
   .contact {
-    height: 42vh;
+    height: 38vh;
   }
 }
