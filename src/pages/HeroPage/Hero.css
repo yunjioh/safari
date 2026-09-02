@@ -108,7 +108,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.65;
   font-weight: 400;
   text-align: start;
@@ -196,7 +196,7 @@
 }
 
 .full-video {
-  height: 62vh;
+  height: 80vh;
   border-top-right-radius: 40px;
   border-bottom-left-radius: 40px;
 }
@@ -264,6 +264,13 @@
 }
 
 @media (max-width: 1024px) {
+
+  .full-video {
+    border-radius: 15px;
+    height: auto;
+    width: 100%;
+  }
+
   .hamburger {
     display: flex;
   }
@@ -336,7 +343,7 @@
 
   .hero-bottom-content {
     width: 92%;
-    font-size: 14px;
+    font-size: 16px;
   }
 
   /* DECODER 영역 높이 고정(가로가 줄어도 안정적으로) */
@@ -372,7 +379,7 @@
   /* 하단 텍스트 2줄 구조 유지되게 */
   .hero-bottom-content {
     width: 90%;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.7;
     gap: 14px;
   }
@@ -383,12 +390,6 @@
 
   .decoder-wrap {
     height: 340px;
-  }
-
-  .full-video {
-    border-radius: 15px;
-    height: auto;
-    width: 100%;
   }
 
   .video-text {
