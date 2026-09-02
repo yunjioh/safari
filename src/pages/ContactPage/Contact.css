@@ -63,7 +63,7 @@
 }
 
 .contact-label {
-  font-size: 30px;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: -1px;
   color: #999;
@@ -133,10 +133,6 @@
 
   .copyright {
     font-size: 16px;
-  }
-
-  .contact-label {
-    font-size: 22px;
   }
 }
 
