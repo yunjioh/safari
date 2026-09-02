@@ -5,7 +5,7 @@
 
 .sub-title {
   color: #999999;
-  font-size: 24px;
+  font-size: 20px;
   letter-spacing: -1px;
   display: block;
   margin-bottom: 16px;
@@ -91,29 +91,17 @@
   .hobby-item {
     height: 250px;
   }
-
-  .sub-title {
-    font-size: 22px;
-  }
 }
 
 @media (max-width: 768px) {
   .title {
     font-size: 70px;
   }
-
-  .sub-title {
-    font-size: 20px;
-  }
 }
 
 @media (max-width: 630px) {
   .title {
     font-size: 55px;
-  }
-
-  .sub-title {
-    font-size: 18px;
   }
 
   .intro-phrase {
