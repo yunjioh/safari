@@ -77,7 +77,7 @@ const Contact = () => {
             <p className="reveal-text">
               GitHub:{" "}
               <a
-                href="https://github.com/yunjoh"
+                href="https://github.com/yunjioh"
                 target="_blank"
                 rel="noopener noreferrer"
               >
